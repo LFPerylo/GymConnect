@@ -21,7 +21,6 @@ Descrição do Produto:  O GymConnect é uma plataforma criada para facilitar a 
   <li>
     <a  href="https://www.figma.com/file/9Ge24LiUdsgQLD4Q5dIkW8/Untitled?type=design&mode=design&t=bEwwO6fFsok5L5SU-0"
       >Protótipo no Figma</a
-    >
   </li>
 
     >
