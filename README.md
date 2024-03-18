@@ -33,3 +33,7 @@ Descrição do Produto:  O GymConnect é uma plataforma criada para facilitar a 
 <br> 
 <h2> Print do Backlog </h2> 
  <img src="https://i.ibb.co/1z7T79s/Backlog-1.png" />
+ <h2> Print do Quadro Jira </h2> 
+  <img src="<a href="https://ibb.co/xgNrVWG"><img src="https://i.ibb.co/3FnPt2W/Captura-de-tela-2024-03-18-110610.png" alt="Captura-de-tela-2024-03-18-110610" border="0"></a>" />
+ 
+ 
