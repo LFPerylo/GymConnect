@@ -25,8 +25,8 @@ Descrição do Produto:  O GymConnect é uma plataforma criada para facilitar a 
 
   </li>
 </ul> 
-## > Screencast 01 do figma <br>
+<h2> Screencast 01 do figma</h2> <br>
 <a href="https://youtu.be/qlVSrfyOJuQ">
-  <img src="https://i.ibb.co/1z7T79s/Backlog-1.png" />
+  <img src="https://i.ibb.co/ZJ0qns9/BEEMO.png" />
 </a>
 
