@@ -47,7 +47,6 @@ input[type=submit]{
         
         #treino {
             width: 35%;
-            float: left;
             margin-left: 10%;
             background-color: lightblue;
             display: inline-block;
@@ -86,9 +85,9 @@ input[type=submit]{
         }
         .duvidaescrita{
             height: 400px;
-            resize: none; /* Impede a redimensionamento */
-            padding: 20px; /* Ajuste o espaço acima do texto conforme necessário */
-            caret-color: rgb(255, 0, 0); /* Cor do cursor de texto */
+            resize: none; 
+            padding: 20px; 
+            caret-color: rgb(255, 0, 0); 
             background-color: lightblue;
             border: 2px black solid;
             font: 14pt black bold;
@@ -99,3 +98,18 @@ input[type=submit]{
         #enviar_duvida:hover{
             cursor: pointer;
         }
+/*predefinidos*/
+.parte-corpo{
+    padding: 8px;
+    background-color: lightblue;
+    margin-top: 6px;
+    border: 1.5px black solid;
+}
+.parte-corpo:hover{
+    cursor: pointer;
+}
+#treino_add{
+    background-color: lightblue;
+    margin-top: 20px;
+    border: 1.5px solid black;
+}

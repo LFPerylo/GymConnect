@@ -21,15 +21,7 @@
             <br>
         <input type="submit" value="Enviar" id="enviar_duvida">
     </form>
-    <script>
-        document.getElementById('enviarDuvida').addEventListener('submit', function(event) {
-            event.preventDefault(); 
-            var conteudo = document.getElementById('conteudo').value; 
-            console.log(conteudo);
-            window.alert('Dúvida enviada com sucesso!');
-            document.getElementById('conteudo').value = "";
-        });
-        </script>
+    <script src="./enviar_duvida.js"></script>
     </div>
 </body>
 </html>
