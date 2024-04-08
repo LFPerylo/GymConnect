@@ -9,18 +9,27 @@
     </style>
 </head>
 <link rel="shortcut icon" href="./images/logo.png" type="imagem" />
-<body>
+<body>  
     <script src="./script.js"></script>
     <div id="menu">
         <h2 id="voltar" onclick="redirecionarParaLink('./home.html')">⇦</h2>
-        <h2>DUVIDAS</h2>
+        <h2>DÚVIDAS</h2>
     </div>
     <div id="duvidas_box">
-        <form action="" id="enviar">
-        
-            <input type="submit" value="Enviar" id="enviar">
+        <form action="" id="enviarDuvida">
+            <textarea id="conteudo" class="duvidaescrita" cols="30" rows="10" placeholder="Digite sua dúvida aqui..."></textarea>
+            <br>
+        <input type="submit" value="Enviar" id="enviar_duvida">
     </form>
-        <script src="./script.js"></script>
+    <script>
+        document.getElementById('enviarDuvida').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            var conteudo = document.getElementById('conteudo').value; 
+            console.log(conteudo);
+            window.alert('Dúvida enviada com sucesso!');
+            document.getElementById('conteudo').value = "";
+        });
+        </script>
     </div>
 </body>
 </html>
