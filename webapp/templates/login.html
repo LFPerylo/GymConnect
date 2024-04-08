@@ -5,9 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GymConnect - Login</title>
     <link rel="stylesheet" href="./style.css">
+    <style>
+        #login_box{
+            text-align: center;
+            align-items: center;
+
+        }
+    </style>
 </head>
 <link rel="shortcut icon" href="./images/logo.png" type="imagem" />
 <body>
-    
+    <div id="login_box">
+        <form action="">
+        <h3>login</h3>
+        <input type="text" name="msg" placeholder="usuário" type="text" required><br><br>
+        <input type="radio" id="professor" name="tipo" value="professor" required>
+        <label for="professor">Professor</label><br>
+        <input type="radio" id="aluno" name="tipo" value="aluno" required>
+        <label for="aluno">Aluno</label><br><br>
+        <input type="password"  type="text" name="msg" placeholder="senha"><br><br>
+        <input type="submit" value="enviar" id="enviar">
+    </form>
+    </div>
 </body>
 </html>
