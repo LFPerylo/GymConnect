@@ -3,5 +3,10 @@ from django.http import HttpResponse
 
 def pagina_login(request):
         
-    #return redirect('login')
     return render(request, 'login.html')
+
+def pagina_dicas(request):
+
+    return render(request, 'dicas.html')
+
+def pagina_home
