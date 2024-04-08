@@ -5,11 +5,11 @@ from webapp import views
 urlpatterns = [
     path('', views.login, name="login"),
     
-    path('', views.dicas, name="dicas"),
+    path('dicas.html', views.dicas, name="dicas"),
 
-    path('', views.home, name="home"),
+    path('home.html', views.home, name="home"),
 
-    path('', views.treinospredefinidos, name="treinospredefinidos"),
+    path('treinospredefinidos.html', views.treinospredefinidos, name="treinospredefinidos"),
 
-    path('', views.duvidas, name="duvidas")
+    path('duvidas.html', views.duvidas, name="duvidas")
 ]
