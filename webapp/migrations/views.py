@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.shortcuts import render
+from django.http import HttpResponse 
 
 def pagina_login(request):
         
@@ -9,4 +9,6 @@ def pagina_dicas(request):
 
     return render(request, 'dicas.html')
 
-def pagina_home
+def pagina_home(request):
+
+    return render(request, 'home.html')
