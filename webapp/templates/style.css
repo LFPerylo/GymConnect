@@ -87,6 +87,15 @@ input[type=submit]{
         .duvidaescrita{
             height: 400px;
             resize: none; /* Impede a redimensionamento */
-            padding-top: 10px; /* Ajuste o espaço acima do texto conforme necessário */
-            caret-color: blue; /* Cor do cursor de texto */
+            padding: 20px; /* Ajuste o espaço acima do texto conforme necessário */
+            caret-color: rgb(255, 0, 0); /* Cor do cursor de texto */
+            background-color: lightblue;
+            border: 2px black solid;
+            font: 14pt black bold;
+        }
+        #enviar_duvida{
+            margin-top: 15px;
+        }
+        #enviar_duvida:hover{
+            cursor: pointer;
         }
