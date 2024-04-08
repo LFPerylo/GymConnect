@@ -1,8 +1,8 @@
 from django.contrib import admin
-from django.urls import path
-from webapp import views
+from django.urls import path,include
+from webapp.migrations import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.pagina_login, name='login')
+    path('webapp/', include('webapp.urls'))
 ]
