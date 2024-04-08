@@ -12,3 +12,11 @@ def pagina_dicas(request):
 def pagina_home(request):
 
     return render(request, 'home.html')
+
+def pagina_duvidas(request):
+
+    return render(request,'duvidas.html')
+
+def pagina_treinospredefinidos(request):
+
+    return render(request,'treinospredefinidos.html')
