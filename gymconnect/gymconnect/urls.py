@@ -1,8 +1,15 @@
-from django.contrib import admin # type: ignore
-from django.urls import path,include # type: ignore
+
+from django.urls import path,include
 from webapp import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('webapp/', include('webapp.urls'))
+    path('', views.login, name="login"),
+    
+    path('', views.dicas, name="dicas"),
+
+    path('', views.home, name="home"),
+
+    path('', views.treinospredefinidos, name="treinospredefinidos"),
+
+    path('', views.duvidas, name="duvidas")
 ]

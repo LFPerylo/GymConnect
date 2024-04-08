@@ -1,22 +1,22 @@
 from django.shortcuts import render # type: ignore
 from django.http import HttpResponse  # type: ignore
 
-def pagina_login(request):
+def login(request):
         
-    return render(request, 'login.html')
+    return render(request, 'front/login.html')
 
-def pagina_dicas(request):
+def dicas(request):
 
     return render(request, 'dicas.html')
 
-def pagina_home(request):
+def home(request):
 
     return render(request, 'home.html')
 
-def pagina_duvidas(request):
+def duvidas(request):
 
     return render(request,'duvidas.html')
 
-def pagina_treinospredefinidos(request):
+def treinospredefinidos(request):
 
     return render(request,'treinospredefinidos.html')

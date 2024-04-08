@@ -5,5 +5,5 @@ function redirecionarParaLink(link) {
 
 document.getElementById('enviar').addEventListener('submit', function(event) {
     event.preventDefault(); 
-    window.open('./home.html', '_blank'); 
+    window.open('/home.html', '_blank'); 
 });
