@@ -36,6 +36,10 @@ Descrição do Produto:  O GymConnect é uma plataforma criada para facilitar a 
  <h2> Print do Quadro Jira </h2> 
   <img src="https://i.ibb.co/3FnPt2W/Captura-de-tela-2024-03-18-110610.png" alt="Captura-de-tela-2024-03-18-110610" border="0"></a>
   <h1> Entrega 2 </h1> <br>
+  <h2> Print do quadro jira </h2>
+  <a href="https://ibb.co/ctgX491"><img src="https://i.ibb.co/nfg8xyb/sprint-entrega-2.png" alt="sprint-entrega-2" border="0"></a>
+  <h2> Print do Backlog </h2> 
+  <a href="https://ibb.co/zfTgY2J"><img src="https://i.ibb.co/12tN5X6/Backlog-entrega-2.png" alt="Backlog-entrega-2" border="0"></a>
   <h2> Diagrama de Atividades </h2>
   <a href="https://ibb.co/T8SDqCG"><img src="https://i.ibb.co/WywNpTX/Diagrama-De-Atividade-FDS.jpg" alt="Diagrama-De-Atividade-FDS" border="0"></a>
   <h2> Screencast do uso do sistema</h2> 
