@@ -121,6 +121,7 @@
             cursor: pointer;
         }
 
+        /*predefinidos*/
         .parte-corpo {
             padding: 8px;
             background-color: lightblue;
@@ -145,15 +146,29 @@
         <h2>LOGIN</h2>
     </div>
     <div id="login_box">
-        <input type="text" name="msg" placeholder="usuário" type="text" required><br><br>
-        <input type="radio" id="professor" name="tipo" value="professor" required>
-        <label for="professor">Professor</label><br>
-        <input type="radio" id="aluno" name="tipo" value="aluno" required>
-        <label for="aluno">Aluno</label><br><br>
-        <input type="password" type="text" name="msg" placeholder="senha"><br><br>
-        <form action="{% url 'home' %}">
+        <form action="" id="enviar">
+            <input type="text" name="msg" placeholder="usuário" type="text" required><br><br>
+            <input type="radio" id="professor" name="tipo" value="professor" required>
+            <label for="professor">Professor</label><br>
+            <input type="radio" id="aluno" name="tipo" value="aluno" required>
+            <label for="aluno">Aluno</label><br><br>
+            <input type="password" type="text" name="msg" placeholder="senha"><br><br>
             <input type="submit" value="Enviar" id="enviar">
         </form>
+        <script>
+
+
+            function redirecionarParaLink(link) {
+                window.location.href = link;
+            }
+
+            document.getElementById('enviar').addEventListener('submit', function (event) {
+                event.preventDefault();
+                window.open('/home.html', '_blank');
+            });
+
+
+        </script>
     </div>
 </body>
 
