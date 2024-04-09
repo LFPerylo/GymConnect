@@ -52,6 +52,7 @@
         #botao {
             background-color: lightblue;
             padding: 5px;
+            
         }
 
         #botao:hover {
@@ -67,34 +68,22 @@
     <div id="home">
 
         <div id="dir">
-            <div id="botao" onclick="redirecionarParaLink('./dicas.html')">
-                <h3>DICAS</h3>
-            </div>
+            <form action="{% url 'dicas' %}">
+                <button id="botao">DICAS</button>
+            </form>
         </div>
         <div id="dir">
-            <div id="botao" onclick="redirecionarParaLink('./treinospredefinidos.html')">
-                <h3>TREINOS PREDEFINIDOS</h3>
-            </div>
+            <form action="{% url 'treinospredefinidos' %}">
+                <button id="botao">TREINOS PREDEFINIDOS</button>
+            </form>
         </div>
         <div id="dir">
-            <div id="botao" onclick="redirecionarParaLink('./duvidas.html')">
-                <h3>DÚVIDAS</h3>
-            </div>
+            <form action="{% url 'duvidas' %}">
+                <button id="botao">DÚVIDAS</button>
+            </form>
         </div>
 
     </div>
-    <script>
-
-        function redirecionarParaLink(link) {
-            window.location.href = link;
-        }
-
-        document.getElementById('enviar').addEventListener('submit', function (event) {
-            event.preventDefault();
-            window.open('/home.html', '_blank');
-        });
-
-    </script>
 </body>
 
 </html>

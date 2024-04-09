@@ -1,15 +1,18 @@
 
-from django.urls import path,include
+from django.urls import path
+from django.contrib import admin
 from webapp import views
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
+
     path('', views.login, name="login"),
     
-    path('', views.dicas, name="dicas"),
+    path('home/', views.home, name="home"),
+    
+    path('dicas/', views.dicas, name="dicas"),
 
-    path('', views.home, name="home"),
+    path('treino/', views.treinospredefinidos, name="treinospredefinidos"),
 
-    path('', views.treinospredefinidos, name="treinospredefinidos"),
-
-    path('', views.duvidas, name="duvidas")
+    path('duvidas/', views.duvidas, name="duvidas")
 ]

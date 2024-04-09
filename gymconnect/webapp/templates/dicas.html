@@ -85,6 +85,8 @@
         }
 
         #voltar {
+            border: lightblue;
+            background-color: lightblue;
             position: fixed;
             left: 10px;
             top: 0;
@@ -156,7 +158,9 @@
 
     </script>
     <div id="menu">
-        <h2 id="voltar" onclick="redirecionarParaLink('./home.html')">⇦</h2>
+        <form action="{% url 'home' %}">
+            <button id="voltar">⇦</button>
+        </form>
         <h2>Dicas</h2>
     </div>
     <div id="dicas_box">
