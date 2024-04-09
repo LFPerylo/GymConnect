@@ -40,6 +40,8 @@ Descrição do Produto:  O GymConnect é uma plataforma criada para facilitar a 
   <a href="https://ibb.co/T8SDqCG"><img src="https://i.ibb.co/WywNpTX/Diagrama-De-Atividade-FDS.jpg" alt="Diagrama-De-Atividade-FDS" border="0"></a>
   <h2> Screencast do uso do sistema</h2> 
  <a href="https://youtu.be/ZhURt-N44s8">Assista ao screencast do uso do sistema</a>
+ <h2> Relato da programação em par</h2> 
+ <a href="https://docs.google.com/document/d/1B7lG9zHkXjJLDx86paRaC1fSwkdVl9xpjtIY9MF-Ois/edit?usp=sharing"></a>
 
   
  
