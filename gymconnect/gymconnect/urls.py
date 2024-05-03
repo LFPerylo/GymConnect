@@ -1,15 +1,24 @@
 
-from django.urls import path,include
-from webapp import views
+from django.contrib import admin
+from django.urls import path, include
+from webapp import views  # Garanta que suas views estão corretamente importadas deste módulo
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('', views.login, name="login"),
     
-    path('dicas.html', views.dicas, name="dicas"),
+    path('dicas/', views.dicas, name="dicas"),
 
-    path('home.html', views.home, name="home"),
+    path('home_aluno/', views.home_aluno, name="homealuno"),
 
-    path('treinospredefinidos.html', views.treinospredefinidos, name="treinospredefinidos"),
+    path('home_adm/', views.home_adm, name="homeadm"),
 
-    path('duvidas.html', views.duvidas, name="duvidas")
+    path('treinospredefinidos/', views.treinospredefinidos, name="treinospredefinidos"),
+
+    path('duvidas/', views.duvidas, name="duvidas")
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
