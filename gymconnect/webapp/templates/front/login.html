@@ -1,175 +1,139 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GymConnect - Login</title>
+    <title>Gymconnect - Login</title>
     <style>
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            align-items: center;
             text-align: center;
+            margin: 0; /* Remove margin to fix the menu to the top properly */
+        }
+
+        #menu {
+            padding-top: 30px;
+            padding-bottom: 30px;
+            background-color: rgb(37, 37, 37);
+            color: white;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 50px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-bottom: 3px solid rgb(0, 255, 30);
+            z-index: 1000; /* Make sure the menu is above other content */
+        }
+
+        #logo{
+            width: 50%;
+            margin-top: 50px;
+            margin-bottom: 50px;
         }
 
         #login_box {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            text-align: center;
-            align-items: center;
-            margin-top: 220px;
-
+            width: 35%; /* Adjust width to match your design */
+            display: inline-block;
+            border: 3px rgb(0, 255, 30) groove;
+            background-color: rgb(37, 37, 37);
+            box-sizing: border-box;
+            margin-top: 140px; /* Adjust margin top to push down under fixed menu */
+            padding: 20px;
+            color: white;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        input {
-            border: 2px solid black;
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-group {
+            margin: 10px 0;
+        }
+
+        .input-group input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
             padding: 10px;
-            background-color: lightblue;
+            margin-top: 10px;
         }
 
-        input[type=text],
-        input[type=password] {
-            width: 40%;
-        }
-
-        input[type=submit] {
-            width: 20%;
-        }
-
-        #menu {
-            padding-top: 30px;
-            padding-bottom: 30px;
-            background-color: lightblue;
-            width: 100%;
-            text-align: center;
-            margin-bottom: 50px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            border-bottom: 1px solid black;
-        }
-
-        /*dicas */
-        #dicas_box {
-            margin-top: 220px;
-        }
-
-        #nutri {
-            width: 35%;
-            display: inline-block;
-            border: 1.5px black groove;
-            background-color: lightblue;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        #treino {
-            width: 35%;
-            margin-left: 10%;
-            background-color: lightblue;
-            display: inline-block;
-            border: 1.5px black groove;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        #menu {
-            padding-top: 30px;
-            padding-bottom: 30px;
-            background-color: lightblue;
-            width: 100%;
-            text-align: center;
-            margin-bottom: 50px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            border-bottom: 1px solid black;
-        }
-
-        #voltar {
-            position: fixed;
-            left: 10px;
-            top: 0;
-        }
-
-        #voltar:hover {
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        /*duvidas*/
-        #duvidas_box {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            text-align: center;
-            align-items: center;
-            margin-top: 220px;
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }input[type="radio"] {
+        /* Esconde os checkboxes padrão */
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: 20px; /* Define a largura do checkbox */
+        height: 20px; /* Define a altura do checkbox */
+        border: 2px solid rgb(0, 255, 30); /* Adiciona uma borda */
+        border-radius: 5px; /* Adiciona bordas arredondadas */
+        outline: none; /* Remove a borda de foco padrão */
+        cursor: pointer; /* Muda o cursor ao passar por cima */
+        margin-right: 55px; /* Espaçamento à direita */
+    }
 
-        }
+    /* Estilizando os labels dos checkboxes */
+    label {
+        font-size: 16px; /* Define o tamanho da fonte */
+    }
 
-        .duvidaescrita {
-            height: 400px;
-            resize: none;
-            padding: 20px;
-            caret-color: rgb(255, 0, 0);
-            background-color: lightblue;
-            border: 2px black solid;
-            font: 14pt black bold;
-        }
+    /* Estilizando os checkboxes quando estão marcados */
+    input[type="radio"]:checked {
+        background-color: rgb(0, 255, 30); /* Cor de fundo quando marcado */
+    }
 
-        #enviar_duvida {
-            margin-top: 15px;
-        }
-
-        #enviar_duvida:hover {
-            cursor: pointer;
-        }
-
-        /*predefinidos*/
-        .parte-corpo {
-            padding: 8px;
-            background-color: lightblue;
-            margin-top: 6px;
-            border: 1.5px black solid;
-        }
-
-        .parte-corpo:hover {
-            cursor: pointer;
-        }
-
-        #treino_add {
-            background-color: lightblue;
-            margin-top: 20px;
-            border: 1.5px solid black;
-        }
+    /* Adicionando um estilo hover para os checkboxes */
+    input[type="radio"]:hover {
+        background-color: #0d8c46; /* Cor de fundo ao passar o mouse */
+    }
     </style>
 </head>
-
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css"> <!-- Ajuste o caminho conforme necessário -->
+</head>
 <body>
-    <div id="menu">
-        <h2>LOGIN</h2>
-    </div>
+    <div id="menu"><h2>Gymconnect</h2></div>
     <div id="login_box">
-        <form action="" id="enviar">
-            <input type="text" name="msg" placeholder="usuário" type="text" required><br><br>
-            <input type="radio" id="professor" name="tipo" value="professor" required>
-            <label for="professor">Professor</label><br>
-            <input type="radio" id="aluno" name="tipo" value="aluno" required>
-            <label for="aluno">Aluno</label><br><br>
-            <input type="password" type="text" name="msg" placeholder="senha"><br><br>
-            <input type="submit" value="Enviar" id="enviar">
+        <img src="{{ imagem_url }}" alt="Logo" id="logo">
+        <!-- Formulário para processamento do login -->
+        <form action="/processar_formulario/" method="post" id="enviar">
+            {% csrf_token %}
+            <div class="input-group">
+                <input type="radio" id="administrador" name="tipo" value="administrador" required>
+                <label for="administrador">Professor</label>
+            </div>
+            <div class="input-group">
+                <input type="radio" id="usuario" name="tipo" value="usuario" required>
+                <label for="usuario">Aluno</label>
+            </div>
+            <input type="text" name="usuario" placeholder="Nome de usuário" required>
+            <input type="password" name="senha" placeholder="Senha" required>
+            <input type="submit" value="Enviar">
         </form>
-        <script>
-
-
-            function redirecionarParaLink(link) {
-                window.location.href = link;
-            }
-
-            document.getElementById('enviar').addEventListener('submit', function (event) {
-                event.preventDefault();
-                window.open('/home.html', '_blank');
-            });
-
-
-        </script>
     </div>
 </body>
-
 </html>
