@@ -132,9 +132,13 @@ input[type="radio"]:hover {
             <!-- Selecionar nome do aluno -->
             <select name="aluno">
                 {% for usuario in tipo %}
-                <option value="{{ usuario.id }}">{{ usuario.nome }}</option>
+                    {% if usuario.tipo == 'usuario' %}
+                        <option value="{{ usuario.id }}">{{ usuario.nome }}</option>
+                    {% endif %}
                 {% endfor %}
             </select>
+            
+            
             <!-- Campo de feedback -->
             <textarea name="feedback" placeholder="Digite seu feedback aqui..." required></textarea>
             <!-- Botão de enviar -->

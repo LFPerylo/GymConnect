@@ -17,7 +17,7 @@ def dicas(request):
 def home_aluno(request):
     if request.method == 'POST':
         tipo = request.POST.get('tipo')
-        usuario = request.POST.get('usuario')
+        nome = request.POST.get('nome')
         senha = request.POST.get('senha')
 
         if tipo == 'administrador':
