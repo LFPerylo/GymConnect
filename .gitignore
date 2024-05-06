@@ -106,3 +106,4 @@ _local_settings.py
 static/
 
 
+gymconnect/db.sqlite3
