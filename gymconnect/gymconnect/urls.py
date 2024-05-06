@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path, include
-from webapp import views  # Garanta que suas views estão corretamente importadas deste módulo
+from webapp import views 
 from django.conf import settings
 from django.conf.urls.static import static
 

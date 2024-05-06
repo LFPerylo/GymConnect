@@ -72,16 +72,17 @@
         }
 
         #menu {
+            background-color: rgb(37, 37, 37);
+            border: 2.5px groove rgb(0, 255, 30);
+            color: white;
             padding-top: 30px;
             padding-bottom: 30px;
-            background-color: lightblue;
             width: 100%;
             text-align: center;
             margin-bottom: 50px;
             position: fixed;
             top: 0;
-            left: 0;
-            border-bottom: 1px solid black;
+            left: 0; 
         }
 
         #voltar {
@@ -124,9 +125,10 @@
         /*predefinidos*/
         .parte-corpo {
             padding: 8px;
-            background-color: lightblue;
+            background-color: rgb(37, 37, 37);
+            border: 2.5px groove rgb(0, 255, 30);
+            color: white;
             margin-top: 6px;
-            border: 1.5px black solid;
         }
 
         .parte-corpo:hover {
@@ -134,9 +136,12 @@
         }
 
         #treino_add {
-            background-color: lightblue;
+            background-color: rgb(37, 37, 37);
+            border: 2.5px groove rgb(0, 255, 30);
+            color: white;
             margin-top: 20px;
-            border: 1.5px solid black;
+            padding-top: 30px;
+            padding-bottom: 30px;
         }
     </style>
 </head>
@@ -156,7 +161,7 @@
     </script>
     <div id="menu">
         <a href="{% url 'home_aluno' %}"> 
-            <h2 id="voltar">⇦</h2>
+            <h2 id="voltar" style="color: white;">⇦</h2>
         </a>
         <h2>TREINOS PRE-DEFINIDOS</h2>
     </div>
@@ -168,7 +173,7 @@
             <div id="braco" class="parte-corpo">Braço</div>
             <div id="peito" class="parte-corpo">Peito</div>
         </div>
-        <div id="treino_add"></div>
+        <div id="treino_add">Selecione um Treino</div>
     </div>
 
     <script>
