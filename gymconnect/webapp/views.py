@@ -6,6 +6,9 @@ from .models import Dados
 from .models import Feedback
 from .forms import FeedbackForm 
 from .forms import ProgressoForm
+from .models import ProgressoAluno
+from .models import Duvida 
+
 
 def login(request):
         
@@ -94,7 +97,20 @@ def registrar_progresso(request):
         if form.is_valid():
             form.save()
             return redirect('/')
-        
     else:
         form = ProgressoForm()
     return render(request, 'progresso.html', {'form': form})
+
+def enviar_duvida(request):
+    if request.method == 'POST':
+        duvida_escrita = request.POST.get('duvidaescrita')
+        nome_treinador = request.POST.get('treinador')
+        
+        # Crie um novo objeto de Duvida e salve no banco de dados
+        duvida = Duvida(duvida_escrita=duvida_escrita, nome_treinador=nome_treinador)
+        duvida.save()
+        
+        # Retorna uma resposta para o usuário
+        return redirect('/')
+    else:
+        return redirect('/')

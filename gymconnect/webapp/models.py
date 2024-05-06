@@ -24,7 +24,7 @@ class Feedback(models.Model):
     def __str__(self):
         return f"Feedback de {self.aluno}"
 
-class ProgressoAluno(models.Model):
+class Progresso(models.Model):
     nome_aluno = models.CharField(max_length=100)
     metrica = models.CharField(max_length=100)
     data = models.DateField()
@@ -33,4 +33,15 @@ class ProgressoAluno(models.Model):
     def __str__(self):
         return f"Progresso de {self.nome_aluno} em {self.metrica} em {self.data}"
 
-    
+class ProgressoAluno(models.Model):
+    progresso_observado = models.TextField()
+    metrica = models.CharField(max_length=100)
+    data = models.DateField()
+    nome_aluno = models.CharField(max_length=100)
+
+class Duvida(models.Model):
+    duvida_escrita = models.TextField()
+    nome_treinador = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.duvida_escrita

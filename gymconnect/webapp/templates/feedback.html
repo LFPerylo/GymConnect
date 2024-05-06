@@ -128,6 +128,7 @@ input[type="radio"]:hover {
         <!-- Formulário para enviar feedback -->
         <form action="/enviar_feedback/" method="post" id="enviar_feedback">
             <!-- CSRF Token -->
+            {% csrf_token %}
             <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
             <!-- Selecionar nome do aluno -->
             <select name="aluno">
