@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.hashers import make_password
-from .models import Dados  # Certifique-se de que o nome da classe está em CamelCase como é padrão
+from .models import Dados 
+from .models import Feedback
+from .forms import FeedbackForm 
 
 def login(request):
         
@@ -34,11 +36,11 @@ def home_adm(request):
 def processar_formulario(request):
     if request.method == 'POST':
         tipo = request.POST.get('tipo')
-        usuario = request.POST.get('usuario')
+        nome = request.POST.get('nome')
         senha = make_password(request.POST.get('senha'))  # Usa hashing para a senha
 
         # Criando um novo registro com as informações coletadas do formulário
-        registro = Dados(tipo=tipo, usuario=usuario, senha=senha)
+        registro = Dados(tipo=tipo, nome=nome, senha=senha)
         registro.save()  # Salva o novo registro no banco de dados
 
         # Redireciona com base no tipo de usuário
@@ -73,3 +75,14 @@ def progresso(request):
 def feedback(request):
 
     return render(request,'feedback.html')
+
+def enviar_feedback(request):
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'home_aluno.html', {'message': 'Feedback registrado com sucesso!'})
+            
+    else:
+        form = FeedbackForm()
+    return render(request, 'feedback.html', {'form': form})
