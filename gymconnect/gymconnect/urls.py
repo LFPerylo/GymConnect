@@ -10,13 +10,15 @@ urlpatterns = [
 
     path('', views.login, name="login"),
     path('dicas/', views.dicas, name="dicas"),
-    path('home_aluno/', views.home_aluno, name="homealuno"),
-    path('home_adm/', views.home_adm, name="homeadm"),
+    path('home_aluno/', views.home_aluno, name="home_aluno"),
+    path('home_adm/', views.home_adm, name="home_adm"),
     path('treinospredefinidos/', views.treinospredefinidos, name="treinospredefinidos"),
     path('duvidas/', views.duvidas, name="duvidas"),
     path('marcar_consulta/',views.marcar_consulta, name="marcar_consulta"),
     path('progresso/',views.progresso, name="progresso"),
-    path('feedback/',views.feedback, name="feedback")
+    path('feedback/',views.feedback, name="feedback"),
+    path('processar_formulario/', views.processar_formulario, name="processar_formulario"),
+    path('admin/', admin.site.urls)
     
 ]
 

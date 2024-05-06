@@ -19,9 +19,9 @@ def home_aluno(request):
         senha = request.POST.get('senha')
 
         if tipo == 'administrador':
-            return redirect('/home_adm')
+            return redirect('/home_adm/')
         elif tipo == 'aluno':
-            return redirect('/home_aluno')
+            return redirect('/home_aluno/')
         else:
             return HttpResponse("Usuário ou senha inválidos", status=401)
     return render(request, 'home_aluno.html')
@@ -43,9 +43,9 @@ def processar_formulario(request):
 
         # Redireciona com base no tipo de usuário
         if tipo == 'administrador':
-            return redirect('/home_adm')
+            return redirect('/home_adm/')
         elif tipo == 'usuario':
-            return redirect('/home_aluno')  # Mudança aqui para alinhar com a opção correta
+            return redirect('/home_aluno/')  # Mudança aqui para alinhar com a opção correta
         else:
             return redirect('/')  # Redireciona para a página inicial se o tipo não for válido
 
