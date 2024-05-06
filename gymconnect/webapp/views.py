@@ -93,7 +93,8 @@ def registrar_progresso(request):
         form = ProgressoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('progresso')  
+            return redirect('/')
+        
     else:
         form = ProgressoForm()
     return render(request, 'progresso.html', {'form': form})
