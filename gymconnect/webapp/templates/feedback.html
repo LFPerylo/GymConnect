@@ -104,11 +104,25 @@ input[type="radio"]:checked {
 input[type="radio"]:hover {
     background-color: #0d8c46;
 }
+#voltar {
+    position: fixed;
+    left: 10px;
+    top: 0;
+}
+
+#voltar:hover {
+    cursor: pointer;
+}
 
     </style>
 </head>
 <body>
-    <div id="menu"><h2>Gymconnect - FeedBack</h2></div>
+    <div id="menu">
+        <a href="{% url 'home_adm' %}"> 
+            <h2 id="voltar">⇦</h2>
+        </a>
+
+        <h2>Gymconnect - FeedBack</h2></div>
     <div id="feedback_box">
         <h2>FeedBack do Treinador</h2>
         <!-- Formulário para enviar feedback -->

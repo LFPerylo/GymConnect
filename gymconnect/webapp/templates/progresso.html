@@ -85,10 +85,25 @@ input[type="submit"]:hover {
     text-align: center;
     width: 100%;
 }
+#voltar {
+    position: fixed;
+    left: 10px;
+    top: 0;
+}
+
+#voltar:hover {
+    cursor: pointer;
+}
     </style>
 </head>
 <body>
-    <div id="menu"><h2>Gymconnect - Progresso</h2></div>
+    <div id="menu">
+        <a href="{% url 'home_aluno' %}"> 
+            <h2 id="voltar">⇦</h2>
+        </a>
+    
+        <h2>Gymconnect - Progresso</h2>
+    </div>
     <div id="progresso_box">
         <!-- Formulário para registrar progresso -->
         <h2>Progresso do Aluno</h2>

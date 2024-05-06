@@ -57,11 +57,24 @@
         #botao:hover {
             cursor: pointer;
         }
+        #voltar {
+            position: fixed;
+            left: 10px;
+            top: 0;
+        }
+
+        #voltar:hover {
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
     <div id="menu">
+        <a href="{% url 'login' %}"> 
+            <h2 id="voltar">⇦</h2>
+        </a>
+        
         <h2>HOME ALUNO</h2>
     </div>
     <div id="home">
@@ -85,6 +98,20 @@
             <div id="botao">
                 <a href="{% url 'duvidas' %}"> 
                     <h3>DÚVIDAS</h3>
+                </a>
+            </div>
+        </div>
+        <div id="dir">
+            <div id="botao">
+                <a href="{% url 'marcar_consulta' %}"> 
+                    <h3>MARCAR CONSULTA</h3>
+                </a>
+            </div>
+        </div>
+        <div id="dir">
+            <div id="botao">
+                <a href="{% url 'progresso' %}"> 
+                    <h3>REGISTRAR PROGRESSO</h3>
                 </a>
             </div>
         </div>

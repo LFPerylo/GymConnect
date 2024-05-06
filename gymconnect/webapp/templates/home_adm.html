@@ -57,28 +57,49 @@
         #botao:hover {
             cursor: pointer;
         }
+        #voltar {
+            position: fixed;
+            left: 10px;
+            top: 0;
+        }
+
+        #voltar:hover {
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
     <div id="menu">
+        <a href="{% url 'login' %}"> 
+            <h2 id="voltar">⇦</h2>
+        </a>
+
         <h2>HOME ADM</h2>
     </div>
     <div id="home">
 
         <div id="dir">
             <div id="botao" onclick="redirecionarParaLink('./dicas.html')">
-                <h3>DICAS</h3>
+                <h3>ENVIAR DICAS</h3>
             </div>
         </div>
         <div id="dir">
             <div id="botao" onclick="redirecionarParaLink('./treinospredefinidos.html')">
-                <h3>TREINOS PREDEFINIDOS</h3>
+                <h3>CRIAR TREINO PREDEFINIDO</h3>
             </div>
         </div>
         <div id="dir">
             <div id="botao" onclick="redirecionarParaLink('./duvidas.html')">
                 <h3>DÚVIDAS</h3>
+            </div>
+        </div>
+        <div id="dir">
+            <div id="botao">
+                <a href="{% url 'feedback' %}"> 
+                    <h3>FEEDBACK</h3>
+                </a>
+                
             </div>
         </div>
 

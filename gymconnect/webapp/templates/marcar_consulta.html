@@ -106,10 +106,24 @@
         input[type="submit"]:hover {
             background-color: #0056b3;
         }
+        #voltar {
+            position: fixed;
+            left: 10px;
+            top: 0;
+        }
+
+        #voltar:hover {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <div id="menu"><h2>Gymconnect - Agendar Consulta</h2></div>
+    <div id="menu">
+        <a href="{% url 'home_aluno' %}"> 
+            <h2 id="voltar">⇦</h2>
+        </a>
+        
+        <h2>Gymconnect - Agendar Consulta</h2></div>
     <div id="login_box">
         <h2>Agendar Consulta</h2>
         <!-- Formulário para agendar consulta -->
