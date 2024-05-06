@@ -118,8 +118,6 @@
 <body>
     <div id="menu"><h2>Gymconnect</h2></div>
     <div id="login_box">
-        <img src="{{ imagem_url }}" alt="Logo" id="logo">
-        <!-- Formulário para processamento do login -->
         <form action="/processar_formulario/" method="post" id="enviar">
             {% csrf_token %}
             <div class="input-group">

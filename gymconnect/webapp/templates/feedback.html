@@ -119,7 +119,7 @@ input[type="radio"]:hover {
 <body>
     <div id="menu">
         <a href="{% url 'home_adm' %}"> 
-            <h2 id="voltar">⇦</h2>
+            <h2 id="voltar" style="color: white;">⇦</h2>
         </a>
 
         <h2>FEEDBACK</h2></div>
@@ -132,7 +132,7 @@ input[type="radio"]:hover {
             <!-- Selecionar tipo de usuário -->
 
             <!-- Campo de feedback -->
-            <textarea name="feedback" placeholder="Digite seu feedback aqui..." required></textarea>
+            <textarea style="resize: none; height: 200px;"  name="feedback" placeholder="Digite seu feedback aqui..." required></textarea>
             <!-- Botão de enviar -->
             <input type="submit" value="Enviar">
         </form>
