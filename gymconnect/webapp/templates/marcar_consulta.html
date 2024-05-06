@@ -23,7 +23,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            border-bottom: 3px solid rgb(0, 255, 30);
+            border: 3px solid rgb(0, 255, 30);
             z-index: 1000; /* Make sure the menu is above other content */
         }
 
@@ -91,7 +91,7 @@
         textarea,
         input[type="submit"] {
             padding: 10px;
-            margin-top: 10px;
+            margin-top: 20px;
         }
 
         input[type="submit"] {
@@ -120,17 +120,17 @@
 <body>
     <div id="menu">
         <a href="{% url 'home_aluno' %}"> 
-            <h2 id="voltar">⇦</h2>
+            <h2 id="voltar" style="color: white;">⇦</h2>
         </a>
         
-        <h2>Gymconnect - Agendar Consulta</h2></div>
+        <h2>MARCAR CONSULTA</h2></div>
     <div id="login_box">
         <h2>Agendar Consulta</h2>
         <!-- Formulário para agendar consulta -->
         <form action="/agendar_consulta/" method="post" id="enviar">
             <input type="date" name="data" required>
             <input type="time" name="horario" required>
-            <textarea name="mensagem" placeholder="Mensagem (opcional)"></textarea>
+            <textarea style="resize: none; height: 200px;" name="mensagem" placeholder="Mensagem (opcional)"></textarea>
             <input type="submit" value="Agendar Consulta">
         </form>
     </div>

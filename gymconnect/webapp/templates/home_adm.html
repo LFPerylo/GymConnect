@@ -17,41 +17,37 @@
             margin-top: 220px;
         }
 
-        #dir {
+        
+        a.elem {
             width: 35%;
+            text-decoration: none;
             display: inline-block;
-            border: 1.5px black groove;
-            background-color: lightblue;
             box-sizing: border-box;
             margin-bottom: 15px;
             margin-left: 10px;
+            color: rgb(0, 0, 0);
+            border:rgb(0, 0, 0)
         }
-
-        #esq {
-            width: 35%;
-            margin-left: 20%;
-            background-color: lightblue;
-            display: inline-block;
-            border: 1.5px black groove;
-            box-sizing: border-box;
-        }
-
+        
         #menu {
             padding-top: 30px;
             padding-bottom: 30px;
-            background-color: lightblue;
+            background-color: rgb(37, 37, 37);
             width: 100%;
             text-align: center;
             margin-bottom: 50px;
             position: fixed;
             top: 0;
             left: 0;
+            color: white;
             border-bottom: 1px solid black;
         }
 
-        #botao {
-            background-color: lightblue;
-            padding: 5px;
+        a.elem {
+            background-color:  rgb(0, 255, 30);
+        }
+        a.elem:hover{
+            background-color: rgb(4, 181, 25);
         }
 
         #botao:hover {
@@ -72,7 +68,7 @@
 <body>
     <div id="menu">
         <a href="{% url 'login' %}"> 
-            <h2 id="voltar">⇦</h2>
+            <h2 id="voltar" style="color: white;">⇦</h2>
         </a>
 
         <h2>HOME ADM</h2>
@@ -80,26 +76,10 @@
     <div id="home">
 
         <div id="dir">
-            <div id="botao" onclick="redirecionarParaLink('./dicas.html')">
-                <h3>ENVIAR DICAS</h3>
-            </div>
-        </div>
-        <div id="dir">
-            <div id="botao" onclick="redirecionarParaLink('./treinospredefinidos.html')">
-                <h3>CRIAR TREINO PREDEFINIDO</h3>
-            </div>
-        </div>
-        <div id="dir">
-            <div id="botao" onclick="redirecionarParaLink('./duvidas.html')">
-                <h3>DÚVIDAS</h3>
-            </div>
-        </div>
-        <div id="dir">
             <div id="botao">
-                <a href="{% url 'feedback' %}"> 
+                <a class="elem" href="{% url 'feedback' %}"> 
                     <h3>FEEDBACK</h3>
                 </a>
-                
             </div>
         </div>
 

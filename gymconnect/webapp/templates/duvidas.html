@@ -19,10 +19,19 @@
 
         }
 
-        input {
-            border: 2px solid black;
-            padding: 10px;
-            background-color: lightblue;
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            padding: 10px 130px 10px 90px;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
         }
 
         input[type=text],
@@ -34,54 +43,25 @@
             width: 20%;
         }
 
-        #menu {
-            padding-top: 30px;
-            padding-bottom: 30px;
-            background-color: lightblue;
-            width: 100%;
-            text-align: center;
-            margin-bottom: 50px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            border-bottom: 1px solid black;
-        }
 
         /*dicas */
         #dicas_box {
             margin-top: 220px;
         }
 
-        #nutri {
-            width: 35%;
-            display: inline-block;
-            border: 1.5px black groove;
-            background-color: lightblue;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        #treino {
-            width: 35%;
-            margin-left: 10%;
-            background-color: lightblue;
-            display: inline-block;
-            border: 1.5px black groove;
-            padding: 20px;
-            box-sizing: border-box;
-        }
 
         #menu {
+            background-color: rgb(37, 37, 37);
+            border: 2.5px groove rgb(0, 255, 30);
+            color: white;
             padding-top: 30px;
             padding-bottom: 30px;
-            background-color: lightblue;
             width: 100%;
             text-align: center;
             margin-bottom: 50px;
             position: fixed;
             top: 0;
-            left: 0;
-            border-bottom: 1px solid black;
+            left: 0; 
         }
 
         #voltar {
@@ -104,13 +84,24 @@
         }
 
         .duvidaescrita {
-            height: 400px;
+            font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            height: 300px;
             resize: none;
-            padding: 20px;
-            caret-color: rgb(255, 0, 0);
-            background-color: lightblue;
-            border: 2px black solid;
-            font: 14pt black bold;
+            padding: 37px;
+            border-radius: 12px;
+            caret-color: rgb(0, 255, 30);
+            background-color: rgb(37, 37, 37);
+            border: 2px rgb(0, 255, 30) solid;
+            font: 12pt black bold;
+            color: white;
+        }
+        .nomedoprof{
+            padding: 7px;
+            border-radius: 12px;
+            background-color: rgb(37, 37, 37);
+            border: 2px rgb(0, 255, 30) solid;
+            font: 11pt black bold;
+            color: white;
         }
 
         #enviar_duvida {
@@ -140,8 +131,6 @@
         }
     </style>
 </head>
-<link rel="shortcut icon" href="./images/logo.png" type="imagem" />
-
 <body>
     <script>
 
@@ -157,7 +146,7 @@
     </script>
     <div id="menu">
         <a href="{% url 'home_aluno' %}"> 
-            <h2 id="voltar">⇦</h2>
+            <h2 id="voltar" style="color: white;">⇦</h2>
         </a>
         <h2>DÚVIDAS</h2>
     </div>
@@ -166,6 +155,7 @@
             <textarea id="conteudo" class="duvidaescrita" cols="30" rows="10"
                 placeholder="Digite sua dúvida aqui..."></textarea>
             <br>
+            <input type="text" class="nomedoprof" placeholder="Nome do Professor"><br>
             <input type="submit" value="Enviar" id="enviar_duvida">
         </form>
         <script>

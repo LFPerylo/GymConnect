@@ -35,16 +35,17 @@
         }
 
         #menu {
+            background-color: rgb(37, 37, 37);
+            border: 2.5px groove rgb(0, 255, 30);
+            color: white;
             padding-top: 30px;
             padding-bottom: 30px;
-            background-color: lightblue;
             width: 100%;
             text-align: center;
             margin-bottom: 50px;
             position: fixed;
             top: 0;
-            left: 0;
-            border-bottom: 1px solid black;
+            left: 0; 
         }
 
         /*dicas */
@@ -55,34 +56,24 @@
         #nutri {
             width: 35%;
             display: inline-block;
-            border: 1.5px black groove;
-            background-color: lightblue;
+            border: 2.5px rgb(0, 255, 30 ) groove;
+            background-color: rgb(37, 37, 37);
             padding: 20px;
             box-sizing: border-box;
+            color: white;
         }
 
         #treino {
             width: 35%;
             margin-left: 10%;
-            background-color: lightblue;
+            background-color: rgb(37, 37, 37);
             display: inline-block;
-            border: 1.5px black groove;
+            border: 2.5px rgb(0, 255, 30 ) groove;
             padding: 20px;
             box-sizing: border-box;
+            color: white;
         }
 
-        #menu {
-            padding-top: 30px;
-            padding-bottom: 30px;
-            background-color: lightblue;
-            width: 100%;
-            text-align: center;
-            margin-bottom: 50px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            border-bottom: 1px solid black;
-        }
 
         #voltar {
             position: fixed;
@@ -107,9 +98,8 @@
             height: 400px;
             resize: none;
             padding: 20px;
-            caret-color: rgb(255, 0, 0);
             background-color: lightblue;
-            border: 2px black solid;
+            border: 2px rgb(0, 255, 30 ) solid;
             font: 14pt black bold;
         }
 
@@ -124,7 +114,6 @@
         /*predefinidos*/
         .parte-corpo {
             padding: 8px;
-            background-color: lightblue;
             margin-top: 6px;
             border: 1.5px black solid;
         }
@@ -134,14 +123,12 @@
         }
 
         #treino_add {
-            background-color: lightblue;
+            background-color: rgb(0, 255, 30 );
             margin-top: 20px;
             border: 1.5px solid black;
         }
     </style>
 </head>
-<link rel="shortcut icon" href="./images/logo.png" type="imagem" />
-
 <body>
     <script>
 
@@ -157,11 +144,9 @@
     </script>
     <div id="menu">
         <a href="{% url 'home_aluno' %}"> 
-        <h2 id="voltar">
-            
-            ⇦</h2>
+        <h2 id="voltar" style="color: white;">⇦</h2>
         </a>
-        <h2>Dicas</h2>
+        <h2>DICAS</h2>
     </div>
     <div id="dicas_box">
 

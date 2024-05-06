@@ -17,41 +17,36 @@
             margin-top: 220px;
         }
 
-        #dir {
+        a.elem {
             width: 35%;
+            text-decoration: none;
             display: inline-block;
-            border: 1.5px black groove;
-            background-color: lightblue;
             box-sizing: border-box;
             margin-bottom: 15px;
             margin-left: 10px;
+            color: rgb(0, 0, 0);
+            border:rgb(0, 0, 0)
         }
-
-        #esq {
-            width: 35%;
-            margin-left: 20%;
-            background-color: lightblue;
-            display: inline-block;
-            border: 1.5px black groove;
-            box-sizing: border-box;
-        }
-
+        
         #menu {
             padding-top: 30px;
             padding-bottom: 30px;
-            background-color: lightblue;
+            background-color: rgb(37, 37, 37);
             width: 100%;
             text-align: center;
             margin-bottom: 50px;
             position: fixed;
             top: 0;
             left: 0;
+            color: white;
             border-bottom: 1px solid black;
         }
 
-        #botao {
-            background-color: lightblue;
-            padding: 5px;
+        a.elem {
+            background-color:  rgb(0, 255, 30);
+        }
+        a.elem:hover{
+            background-color: rgb(4, 181, 25);
         }
 
         #botao:hover {
@@ -72,7 +67,7 @@
 <body>
     <div id="menu">
         <a href="{% url 'login' %}"> 
-            <h2 id="voltar">⇦</h2>
+            <h2 style="color: white;" id="voltar">⇦</h2>
         </a>
         
         <h2>HOME ALUNO</h2>
@@ -81,14 +76,14 @@
 
         <div id="dir">
             <div id="botao">
-                <a href="{% url 'dicas' %}"> 
+                <a class="elem" href="{% url 'dicas' %}"> 
                     <h3>DICAS</h3>
                 </a>
             </div>
         </div>
         <div id="dir">
             <div id="botao">
-                <a href="{% url 'treinospredefinidos' %}"> 
+                <a  class="elem" href="{% url 'treinospredefinidos' %}"> 
                     <h3>TREINOS PREDEFINIDOS</h3>
                 </a>
 
@@ -96,21 +91,21 @@
         </div>
         <div id="dir">
             <div id="botao">
-                <a href="{% url 'duvidas' %}"> 
+                <a  class="elem" href="{% url 'duvidas' %}"> 
                     <h3>DÚVIDAS</h3>
                 </a>
             </div>
         </div>
         <div id="dir">
             <div id="botao">
-                <a href="{% url 'marcar_consulta' %}"> 
+                <a  class="elem" href="{% url 'marcar_consulta' %}"> 
                     <h3>MARCAR CONSULTA</h3>
                 </a>
             </div>
         </div>
         <div id="dir">
             <div id="botao">
-                <a href="{% url 'progresso' %}"> 
+                <a  class="elem" href="{% url 'progresso' %}"> 
                     <h3>REGISTRAR PROGRESSO</h3>
                 </a>
             </div>

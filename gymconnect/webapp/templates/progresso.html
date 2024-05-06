@@ -10,118 +10,114 @@
     align-items: center;
     text-align: center;
     margin: 0;
-}
-
-#menu {
-    padding-top: 30px;
-    padding-bottom: 30px;
-    background-color: rgb(37, 37, 37);
-    color: white;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 50px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    border-bottom: 3px solid rgb(0, 255, 30);
-    z-index: 1000;
-}
-
-#progresso_box {
-    width: 35%;
-    display: inline-block;
-    border: 3px rgb(0, 255, 30) groove;
-    background-color: rgb(37, 37, 37);
-    box-sizing: border-box;
-    margin-top: 140px;
-    padding: 60px;
-    color: white;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#logo{
-    width: 50%;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.input-group {
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
-}
-
-.input-group label {
-    margin-right: 10px;
-}
-
-input[type="text"],
-input[type="date"],
-input[type="submit"] {
-    padding: 10px;
-    margin-top: 10px;
-}
-
-input[type="submit"] {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-input[type="submit"]:hover {
-    background-color: #0056b3;
-}
-#alinhar_itens{
-    margin: 0 auto;
-    text-align: center;
-    width: 100%;
-}
-#voltar {
-    position: fixed;
-    left: 10px;
-    top: 0;
-}
-
-#voltar:hover {
-    cursor: pointer;
-}
+    }
+    
+    #menu {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        background-color: rgb(37, 37, 37);
+        color: white;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 50px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        border-bottom: 3px solid rgb(0, 255, 30);
+        z-index: 1000;
+    }
+    
+    #progresso_box {
+        width: 35%;
+        display: inline-block;
+        border: 3px rgb(0, 255, 30) groove;
+        background-color: rgb(37, 37, 37);
+        box-sizing: border-box;
+        margin-top: 140px;
+        padding: 60px;
+        color: white;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    #logo{
+        width: 50%;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .input-group {
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+    }
+    
+    .input-group label {
+        margin-right: 10px;
+    }
+    
+    input[type="text"],
+    input[type="date"],
+    input[type="submit"] {
+        padding: 10px;
+        margin-top: 10px;
+    }
+    
+    input[type="submit"] {
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+    #alinhar_itens{
+        margin: 0 auto;
+        text-align: center;
+        width: 100%;
+    }
+    #voltar {
+        position: fixed;
+        left: 10px;
+        top: 0;
+    }
+    
+    #voltar:hover {
+        cursor: pointer;
+    }
+    .centralizar{
+        width: 100%;
+    }
     </style>
 </head>
 <body>
     <div id="menu">
         <a href="{% url 'home_aluno' %}"> 
-            <h2 id="voltar">⇦</h2>
+            <h2 id="voltar" style="color: white;">⇦</h2>
         </a>
     
-        <h2>Gymconnect - Progresso</h2>
+        <h2>PROGRESSO</h2>
     </div>
     <div id="progresso_box">
-        <!-- Formulário para registrar progresso -->
         <h2>Progresso do Aluno</h2>
         <div id="alinhar_itens">
         <form action="/registrar_progresso/" method="post" id="registrar_progresso">
-            <!-- CSRF Token -->
             <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
-            <!-- Campo para inserir métrica de progresso -->
             <div class="input-group">
-                <label for="metrica">Métrica:</label>
-                <input type="text" id="metrica" name="metrica" placeholder="Peso ou Repetições" required>
+                <input class="centralizar" type="text" id="metrica" name="metrica" placeholder="Peso ou Repetições" required>
             </div>
-            <!-- Campo para inserir data -->
             <div class="input-group">
-                <label for="data">Data:</label>
-                <input type="date" id="data" name="data" required>
+                <input class="centralizar" type="date" id="data" name="data" required>
             </div>
-            <!-- Botão de enviar -->
             <input type="submit" value="Registrar">
         </form>
     </div>
