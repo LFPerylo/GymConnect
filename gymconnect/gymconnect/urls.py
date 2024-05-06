@@ -17,6 +17,7 @@ urlpatterns = [
     path('marcar_consulta/',views.marcar_consulta, name="marcar_consulta"),
     path('progresso/',views.progresso, name="progresso"),
     path('feedback/',views.feedback, name="feedback"),
+    path('registrar_progresso/', views.registrar_progresso, name='registrar_progresso'),
     path('processar_formulario/', views.processar_formulario, name="processar_formulario"),
     path('admin/', admin.site.urls)
     
