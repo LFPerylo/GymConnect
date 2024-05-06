@@ -7,10 +7,11 @@ class Dados(models.Model):
         ('usuario', 'Usuário'),
     )
 
-    tipo = models.CharField(max_length=50, choices=TIPO_USUARIO_CHOICES, default='usuario')
-    usuario = models.CharField(max_length=50)
-    senha = models.CharField(max_length=50)
-
+    class Dados(models.Model):
+        tipo = models.CharField(max_length=100)
+        usuario = models.CharField(max_length=100)
+        senha = models.CharField(max_length=100)
+    
     def __str__(self):
         # Método para retornar uma string representativa do objeto
         return f"Tipo: {self.tipo} - Nome do usuário: {self.usuario} - Senha: {self.senha}"
