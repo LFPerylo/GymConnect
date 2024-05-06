@@ -61,3 +61,15 @@ def duvidas(request):
 def treinospredefinidos(request):
 
     return render(request,'treinospredefinidos.html')
+
+def marcar_consulta(request):
+
+    return render(request, 'marcar_consulta.html')
+
+def progresso(request):
+
+    return render(request,'progresso.html')
+
+def feedback(request):
+
+    return render(request,'feedback.html')
