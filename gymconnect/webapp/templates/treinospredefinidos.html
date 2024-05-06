@@ -155,7 +155,9 @@
 
     </script>
     <div id="menu">
-        <h2 id="voltar" onclick="redirecionarParaLink('./home.html')">⇦</h2>
+        <a href="{% url 'home_aluno' %}"> 
+            <h2 id="voltar">⇦</h2>
+        </a>
         <h2>TREINOS PRE-DEFINIDOS</h2>
     </div>
     <div id="login_box">

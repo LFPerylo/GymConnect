@@ -67,18 +67,25 @@
     <div id="home">
 
         <div id="dir">
-            <div id="botao" onclick="redirecionarParaLink('./dicas.html')">
-                <h3>DICAS</h3>
+            <div id="botao">
+                <a href="{% url 'dicas' %}"> 
+                    <h3>DICAS</h3>
+                </a>
             </div>
         </div>
         <div id="dir">
-            <div id="botao" onclick="redirecionarParaLink('./treinospredefinidos.html')">
-                <h3>TREINOS PREDEFINIDOS</h3>
+            <div id="botao">
+                <a href="{% url 'treinospredefinidos' %}"> 
+                    <h3>TREINOS PREDEFINIDOS</h3>
+                </a>
+
             </div>
         </div>
         <div id="dir">
-            <div id="botao" onclick="redirecionarParaLink('./duvidas.html')">
-                <h3>DÚVIDAS</h3>
+            <div id="botao">
+                <a href="{% url 'duvidas' %}"> 
+                    <h3>DÚVIDAS</h3>
+                </a>
             </div>
         </div>
 
