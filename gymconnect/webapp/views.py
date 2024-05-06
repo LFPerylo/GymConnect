@@ -114,3 +114,19 @@ def enviar_duvida(request):
         return redirect('/')
     else:
         return redirect('/')
+    
+
+def enviar_feedback(request):
+    if request.method == 'POST':
+        duvida_escrita = request.POST.get('duvidaescrita')
+        nome_treinador = request.POST.get('treinador')
+        
+        # Crie um novo objeto de Duvida e salve no banco de dados
+        duvida = Duvida(duvida_escrita=duvida_escrita, nome_treinador=nome_treinador)
+        duvida.save()
+        
+        # Retorna uma resposta para o usuário
+        return redirect('/')
+    else:
+        return redirect('/')
+    

@@ -1,6 +1,6 @@
 
 from django.contrib import admin
-from .models import Dados, ProgressoAluno, Feedback, Duvida
+from .models import Dados, ProgressoAluno, Feedback, Duvida, Aluno, Feedback
 
 admin.site.register(Dados)
 admin.site.register(ProgressoAluno)
