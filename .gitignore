@@ -108,3 +108,4 @@ static/
 
 gymconnect/db.sqlite3
 gymconnect/db.sqlite3
+*.sqlite3
