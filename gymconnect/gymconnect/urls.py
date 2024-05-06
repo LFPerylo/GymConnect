@@ -13,7 +13,10 @@ urlpatterns = [
     path('home_aluno/', views.home_aluno, name="homealuno"),
     path('home_adm/', views.home_adm, name="homeadm"),
     path('treinospredefinidos/', views.treinospredefinidos, name="treinospredefinidos"),
-    path('duvidas/', views.duvidas, name="duvidas")
+    path('duvidas/', views.duvidas, name="duvidas"),
+    path('marcar_consulta/',views.marcar_consulta, name="marcar_consulta"),
+    path('progresso/',views.progresso, name="progresso"),
+    path('feedback/',views.feedback, name="feedback")
     
 ]
 
