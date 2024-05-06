@@ -5,6 +5,7 @@ from django.contrib.auth.hashers import make_password
 from .models import Dados 
 from .models import Feedback
 from .forms import FeedbackForm 
+from .forms import ProgressoForm
 
 def login(request):
         
@@ -86,3 +87,13 @@ def enviar_feedback(request):
     else:
         form = FeedbackForm()
     return render(request, 'feedback.html', {'form': form})
+
+def registrar_progresso(request):
+    if request.method == 'POST':
+        form = ProgressoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('progresso')  
+    else:
+        form = ProgressoForm()
+    return render(request, 'progresso.html', {'form': form})
