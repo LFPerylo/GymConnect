@@ -32,10 +32,11 @@
             margin-top: 50px;
             margin-bottom: 50px;
         }
-
+        ul, li{
+            list-style: none;
+        }
         #login_box {
             width: 35%; /* Adjust width to match your design */
-            display: inline-block;
             border: 3px rgb(0, 255, 30) groove;
             background-color: rgb(37, 37, 37);
             box-sizing: border-box;
@@ -127,13 +128,27 @@
     <div id="login_box">
         <h2>Agendar Consulta</h2>
         <!-- Formulário para agendar consulta -->
-        <form action="{/agendar_consulta/}" method="post" id="enviar">
+        <form action="/agendar_consulta/" method="post" id="enviar">
             {% csrf_token %}
             <input type="date" name="data" required>
             <input type="time" name="horario" required>
             <textarea style="resize: none; height: 200px;" name="mensagem" placeholder="Mensagem (opcional)"></textarea>
             <input type="submit" value="Agendar Consulta">
         </form>
+    </div>
+    <div id="login_box">    
+        <h2>Consultas Marcadas</h2>
+        <ul>
+            <!-- Loop para exibir as consultas -->
+            {% for consulta in consultas %}
+                <li>Data: {{ consulta.data }}</li>
+                <li>Horário: {{ consulta.horario }}</li>
+                <li>Mensagem: {{ consulta.mensagem }}</li>
+            {% empty %}
+                <!-- Se não houver consultas, exiba uma mensagem -->
+                <li>Nenhuma consulta marcada.</li>
+            {% endfor %}
+        </ul>
     </div>
 </body>
 </html>

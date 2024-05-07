@@ -131,20 +131,21 @@ def enviar_feedback(request):
         return redirect('/')
     
 
+
 def agendar_consulta(request):
     if request.method == 'POST':
-        data = request.POST.get('data')
-        horario = request.POST.get('horario')
-        mensagem = request.POST.get('mensagem', '')  # Mensagem é opcional
+        form = ProgressoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form = Consulta()
 
-        # Salvar no banco de dados
-        consulta = Consulta(data=data, horario=horario, mensagem=mensagem)
-        consulta.save()
+    # Recupere todos os progressos salvos no banco de dados
+    consultas = Consulta.objects.all()
+    
+    return render(request, 'marcar_consulta.html', {'form': form, 'consultas': consultas})
 
-        # Redirecionar para alguma página de sucesso
-        return redirect('pagina_sucesso')
-
-    return render(request, 'sua_template.html')
 
 def progresso(request):
     if request.method == 'POST':
