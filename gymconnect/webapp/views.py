@@ -8,7 +8,7 @@ from .forms import FeedbackForm
 from .forms import ProgressoForm
 from .models import Duvida
 from .models import Consulta 
-
+from .models import ProgressoAluno
 
 def login(request):
         
@@ -147,8 +147,15 @@ def agendar_consulta(request):
     return render(request, 'sua_template.html')
 
 def progresso(request):
+    if request.method == 'POST':
+        form = ProgressoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form = ProgressoForm()
+
     # Recupere todos os progressos salvos no banco de dados
-    progressos = ProgressoForm.objects.all()
+    progressos = ProgressoAluno.objects.all()
     
-    # Passe os progressos para o template como contexto
-    return render(request, 'progresso.html', {'progressos': progressos})
+    return render(request, 'progresso.html', {'form': form, 'progressos': progressos})

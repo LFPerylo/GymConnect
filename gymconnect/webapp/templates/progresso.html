@@ -11,7 +11,9 @@
             text-align: center;
             margin: 0;
         }
-        
+        ul, li{
+            list-style: none;
+        }
         #menu {
             padding-top: 30px;
             padding-bottom: 30px;
@@ -140,16 +142,19 @@
             </form>
         </div>
     </div>
-    <div class="progresso_box"> <!-- Alterado para class -->
+    <div class="progresso_box">
         <h2>Seus Progressos Salvos</h2>
         <ul>
-            {% for progresso in progressos %}
-                <li>Tipo de Métrica: {{ progresso.metrica }}</li>
-                <li>Data: {{ progresso.data }}</li>
-                <li>Observações: {{ progresso.progresso_observado }}</li>
-            {% empty %}
-                <li>Você ainda não registrou nenhum progresso.</li>
-            {% endfor %}
+            {% if progressos %}
+                {% for progresso in progressos %}
+                    <li>Tipo de Métrica: {{ progresso.metrica }}</li>
+                    <li>Data: {{ progresso.data }}</li>
+                    <li>Observações: {{ progresso.progresso_observado }}</li>
+                    <br>
+                {% endfor %}
+            {% else %}
+                <li>DEBUG: Variável progressos está vazia ou não foi passada corretamente.</li>
+            {% endif %}
         </ul>
     </div>
 </body>

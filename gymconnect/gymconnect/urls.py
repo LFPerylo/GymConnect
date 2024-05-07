@@ -22,7 +22,6 @@ urlpatterns = [
     path('registrar_progresso/', views.registrar_progresso, name="registrar_progresso"),
     path('enviar_feedback/', views.enviar_feedback, name="enviar_feedback"),
     path('enviar_duvida/', views.enviar_duvida, name='enviar_duvida'),
-    path('progresso/', views.progresso, name='progresso'),
     path('admin/', admin.site.urls)
     
 ]
