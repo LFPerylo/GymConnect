@@ -33,11 +33,12 @@
     border: 3px rgb(0, 255, 30) groove;
     background-color: rgb(37, 37, 37);
     box-sizing: border-box;
-    margin-top: 140px;
+    margin-top: 170px;
     padding: 20px;
     color: white;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 10px;
 }
 
 #logo{
@@ -112,6 +113,14 @@ input[type="radio"]:hover {
 
 #voltar:hover {
     cursor: pointer;
+    
+}
+a{
+    text-decoration:none;
+
+}
+a:hover{
+    color:green;
 }
 
     </style>
@@ -119,31 +128,37 @@ input[type="radio"]:hover {
 <body>
     <div id="menu">
         <a href="{% url 'home_adm' %}"> 
-            <h2 id="voltar">⇦</h2>
+            <h2 id="voltar" style="color:white;">⇦</h2>
         </a>
 
         <h2>FEEDBACK</h2></div>
     <div id="feedback_box">
         <h2>FeedBack do Treinador</h2>
-        <!-- Formulário para enviar feedback -->
-        <form action="/enviar_feedback/" method="post" id="enviar_feedback">
+        {% if erro %}
+            
+        <p style="color: red;">{{ erro }}</p>
+        
+        {% endif %}
+        {% if sucesso %}
+            
+        <p style="color: green;">{{ sucesso }}</p>
+        
+        {% endif %}
+        <form action="/enviar_feedback/" method="post">
             <!-- CSRF Token -->
             {% csrf_token %}
-            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
-            <!-- Selecionar nome do aluno -->
-            <select name="aluno">
-                {% for tipo in dados %}
-                    {% if tipo.tipo == 'usuario' %}
-                        <option value="{{ tipo.id }}">{{ tipo.nome }}</option>
-                    {% endif %}
-                {% endfor %}
-            </select>
-            
-            
-            <!-- Campo de feedback -->
-            <textarea name="feedback" placeholder="Digite seu feedback aqui..." required></textarea>
+            <!-- Campo de texto para o professor inserir o nome do aluno -->
+            <div>
+                <label for="id_aluno">Nome do Aluno:</label>
+                <input type="text" id="id_aluno" name="aluno" required>
+            </div>
+            <!-- Campo de texto para o professor inserir o feedback -->
+            <div>
+                <label for="id_feedback">Feedback:</label>
+                <textarea id="id_feedback" name="feedback" required></textarea>
+            </div>
             <!-- Botão de enviar -->
-            <input type="submit" value="Enviar">
+            <button type="submit">Enviar Feedback</button>
         </form>
         
     </div>

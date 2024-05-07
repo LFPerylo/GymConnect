@@ -124,17 +124,28 @@ def enviar_duvida(request):
 
 def enviar_feedback(request):
     if request.method == 'POST':
-        duvida_escrita = request.POST.get('duvidaescrita')
-        nome_treinador = request.POST.get('treinador')
-        
-        # Crie um novo objeto de Duvida e salve no banco de dados
-        duvida = Duvida(duvida_escrita=duvida_escrita, nome_treinador=nome_treinador)
-        duvida.save()
-        
-        # Retorna uma resposta para o usuário
-        return redirect('/')
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            feedback_texto = form.cleaned_data['feedback']
+            nome_aluno = form.cleaned_data['nome']
+
+            # Verifica se o nome do aluno está cadastrado como "usuario" no banco de dados
+            aluno = Dados.objects.filter(nome=nome_aluno, tipo='usuario').first()
+            if aluno:
+                # Cria uma instância do Feedback e salva no banco de dados
+                Feedback.objects.create(aluno=nome_aluno, feedback=feedback_texto)
+                
+                sucesso = "Feedback enviado com sucesso."
+                return redirect('/feedback/', {'mensagem_sucesso': sucesso})
+                
+            else:
+                # Se o aluno não estiver cadastrado, exibe uma mensagem de erro
+                erro = "O nome do aluno não corresponde a um usuário cadastrado."
+                return render(request, 'feedback.html', {'mensagem_erro': erro})
     else:
-        return redirect('/')
+        form = FeedbackForm()
+    
+    return render(request, 'feedback.html', {'form': form})
     
 
 def agendar_consulta(request):

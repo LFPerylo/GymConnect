@@ -19,12 +19,12 @@ class Dados(models.Model):
         return f"Tipo: {self.tipo} - Nome do usuário: {self.nome} - Senha: {self.senha}"
     
 class Feedback(models.Model):
-    aluno = models.ForeignKey(User, on_delete=models.CASCADE)
-    feedback = models.TextField()
+    aluno = models.CharField(max_length=50)
+    feedback = models.TextField(max_length=100)
 
     def __str__(self):
         return f"Feedback de {self.aluno}"
-
+    
 class Progresso(models.Model):
     nome_aluno = models.CharField(max_length=100)
     metrica = models.CharField(max_length=100)
