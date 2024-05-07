@@ -132,9 +132,9 @@ input[type="radio"]:hover {
             <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
             <!-- Selecionar nome do aluno -->
             <select name="aluno">
-                {% for usuario in tipo %}
-                    {% if usuario.tipo == 'usuario' %}
-                        <option value="{{ usuario.id }}">{{ usuario.nome }}</option>
+                {% for tipo in dados %}
+                    {% if tipo.tipo == 'usuario' %}
+                        <option value="{{ tipo.id }}">{{ tipo.nome }}</option>
                     {% endif %}
                 {% endfor %}
             </select>

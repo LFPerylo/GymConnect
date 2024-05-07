@@ -7,12 +7,17 @@ from .models import Feedback
 from .forms import FeedbackForm 
 from .forms import ProgressoForm
 from .models import Duvida
-from .models import Consulta 
+from .models import Consulta
+from .forms import CadastroForm, LoginForm
 
 
 def login(request):
         
     return render(request, 'front/login.html')
+
+def cadastro(request):
+
+    return render(request, 'front/cadastro.html')
 
 def dicas(request):
 
@@ -79,6 +84,7 @@ def progresso(request):
 def feedback(request):
 
     return render(request,'feedback.html')
+
 
 def enviar_feedback(request):
     if request.method == 'POST':
@@ -152,3 +158,36 @@ def progresso(request):
     
     # Passe os progressos para o template como contexto
     return render(request, 'progresso.html', {'progressos': progressos})
+
+def cadastrar_usuario(request):
+    if request.method == 'POST':
+        form = CadastroForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/login/')
+    else:
+        form = CadastroForm()
+    return render(request, 'cadastro.html', {'form': form})
+
+
+def fazer_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            nome = form.cleaned_data['nome']
+            senha = form.cleaned_data['senha']
+            tipo = form.cleaned_data['tipo']
+            Dados = Dados.objects.filter(nome=nome, senha=senha, tipo=tipo).first()
+            if Dados:
+                if Dados.tipo == 'usuario':
+                    # Redirecionar usuário para a página home do aluno
+                    return redirect('/home_aluno/')
+                elif Dados.tipo == 'administrador':
+                    # Redirecionar administrador para a página home do administrador
+                    return redirect('/home_adm/')
+            else:
+                # Exibir uma mensagem de erro
+                return render(request, 'login.html', {'form': form, 'erro': True})
+    else:
+        form = LoginForm()
+    return render(request, 'login.html', {'form': form, 'erro': False})

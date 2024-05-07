@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gymconnect - Login</title>
+    <title>Gymconnect - Cadastro</title>
     <style>
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -112,15 +112,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Cadastro</title>
     <link rel="stylesheet" href="style.css"> <!-- Ajuste o caminho conforme necessário -->
 </head>
 <body>
     <div id="menu"><h2>Gymconnect</h2></div>
+
     <div id="login_box">
-        <h2>Login</h2>
-        <!-- Formulário para enviar feedback -->
-        <form action="/fazer_login/" method="post">
+        <h2>Cadastro de Usuário</h2>
+
+        <form action="/cadastrar_usuario/" method="post">
             <!-- CSRF Token -->
             {% csrf_token %}
             <div class="input-group">
@@ -134,11 +135,8 @@
             <input type="text" name="nome" placeholder="Nome de usuário" required>
             <!-- Campo de senha -->
             <input type="password" name="senha" placeholder="Senha" required>
-            <!-- Botão de login -->
-            <input type="submit" value="Entrar">
+            <!-- Botão de cadastrar -->
+            <input type="submit" value="Cadastrar">
         </form>
-
-        
     </div>
 </body>
-</html>
