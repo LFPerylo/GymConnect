@@ -7,8 +7,8 @@ from .models import Feedback
 from .forms import FeedbackForm 
 from .forms import ProgressoForm
 from .models import Duvida
-from .models import Consulta
-from .forms import CadastroForm, LoginForm
+from .models import Consulta,Dica
+from .forms import CadastroForm, LoginForm,DicaForm
 
 
 def login(request):
@@ -85,6 +85,9 @@ def feedback(request):
 
     return render(request,'feedback.html')
 
+def dicas_adm(request):
+
+    return render(request,'dicasadm.html')
 
 def enviar_feedback(request):
     if request.method == 'POST':
@@ -207,4 +210,14 @@ def fazer_login(request):
         form = LoginForm()
         erro = None
     return render(request, 'front/login.html', {'form': form, 'erro': erro})
+
+def adicionar_dica(request):
+    if request.method == 'POST':
+        form = DicaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/dicas_adm/')
+    else:
+        form = DicaForm()
+    return render(request, 'dicasadm.html', {'form': form})
 
