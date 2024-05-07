@@ -51,6 +51,7 @@ Descrição do Produto:  O GymConnect é uma plataforma criada para facilitar a 
  <h1> Entrega 3 </h1> <br>
   <h2> Diagrama de Atividades </h2>
   <a href="https://ibb.co/sbw8vXq"><img src="https://i.ibb.co/S5nFXZB/Diagrama-entrega-3.jpg" alt="Diagrama-entrega-3" border="0"></a>
+   <h2> Relato da programação em par</h2> 
 
   
  
