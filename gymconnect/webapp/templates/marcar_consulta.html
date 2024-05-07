@@ -127,7 +127,7 @@
     <div id="login_box">
         <h2>Agendar Consulta</h2>
         <!-- Formulário para agendar consulta -->
-        <form action="{/agendar_consulta/}" method="post" id="enviar">
+        <form action="/agendar_consulta/" method="post" id="enviar">
             {% csrf_token %}
             <input type="date" name="data" required>
             <input type="time" name="horario" required>

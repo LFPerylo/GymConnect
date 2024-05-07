@@ -65,6 +65,15 @@
             padding: 10px;
             margin-top: 10px;
         }
+        #botao_cadastro{
+            text-decoration:none;
+            text-color(white);
+            size: 10px;
+             
+        }
+        #botao_cadastro:hover{
+            color: #0d8c46;
+        }
 
         input[type="submit"] {
             background-color: #007BFF;
@@ -137,6 +146,11 @@
             <!-- Botão de login -->
             <input type="submit" value="Entrar">
         </form>
+        
+        <a href="{% url 'cadastro' %}"> 
+            
+            <h2 id="botao_cadastro" style="color: white;">Cadastrar nova conta</h2>
+        </a>
 
         
     </div>
