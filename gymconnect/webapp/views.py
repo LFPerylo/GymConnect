@@ -7,7 +7,8 @@ from .models import Feedback
 from .forms import FeedbackForm 
 from .forms import ProgressoForm
 from .models import ProgressoAluno
-from .models import Duvida 
+from .models import Duvida
+from .models import Consulta 
 
 
 def login(request):
@@ -130,3 +131,25 @@ def enviar_feedback(request):
     else:
         return redirect('/')
     
+
+def agendar_consulta(request):
+    if request.method == 'POST':
+        data = request.POST.get('data')
+        horario = request.POST.get('horario')
+        mensagem = request.POST.get('mensagem', '')  # Mensagem é opcional
+
+        # Salvar no banco de dados
+        consulta = Consulta(data=data, horario=horario, mensagem=mensagem)
+        consulta.save()
+
+        # Redirecionar para alguma página de sucesso
+        return redirect('pagina_sucesso')
+
+    return render(request, 'sua_template.html')
+
+def progresso(request):
+    # Recupere todos os progressos salvos no banco de dados
+    progressos = ProgressoAluno.objects.all()
+    
+    # Passe os progressos para o template como contexto
+    return render(request, 'progresso.html', {'progressos': progressos})

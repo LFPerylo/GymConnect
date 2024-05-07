@@ -59,3 +59,11 @@ class Feedback(models.Model):
 
     def __str__(self):
         return f"Feedback para {self.aluno}"
+
+class Consulta(models.Model):
+    data = models.DateField()
+    horario = models.TimeField()
+    mensagem = models.TextField(blank=True)  # O campo mensagem é opcional
+
+    def __str__(self):
+        return f"Consulta em {self.data} às {self.horario}"
