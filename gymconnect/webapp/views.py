@@ -170,6 +170,10 @@ def cadastrar_usuario(request):
     return render(request, 'cadastro.html', {'form': form})
 
 
+from django.shortcuts import render, redirect
+from .forms import LoginForm
+from .models import Dados
+
 def fazer_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -177,17 +181,19 @@ def fazer_login(request):
             nome = form.cleaned_data['nome']
             senha = form.cleaned_data['senha']
             tipo = form.cleaned_data['tipo']
-            Dados = Dados.objects.filter(nome=nome, senha=senha, tipo=tipo).first()
-            if Dados:
-                if Dados.tipo == 'usuario':
+            # Consulta ao banco de dados para verificar o usuário
+            usuario = Dados.objects.filter(nome=nome, senha=senha, tipo=tipo).first()
+            if usuario:
+                if tipo == 'usuario':
                     # Redirecionar usuário para a página home do aluno
                     return redirect('/home_aluno/')
-                elif Dados.tipo == 'administrador':
+                elif tipo == 'administrador':
                     # Redirecionar administrador para a página home do administrador
                     return redirect('/home_adm/')
-            else:
-                # Exibir uma mensagem de erro
-                return render(request, 'login.html', {'form': form, 'erro': True})
+            
+            erro = 'Usuário não cadastrado ou credenciais incorretas.'
     else:
         form = LoginForm()
-    return render(request, 'login.html', {'form': form, 'erro': False})
+        erro = None
+    return render(request, 'front/login.html', {'form': form, 'erro': erro})
+

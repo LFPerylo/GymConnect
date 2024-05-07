@@ -39,16 +39,25 @@
             border: 3px rgb(0, 255, 30) groove;
             background-color: rgb(37, 37, 37);
             box-sizing: border-box;
-            margin-top: 140px; /* Adjust margin top to push down under fixed menu */
+            margin-top: 170px; /* Adjust margin top to push down under fixed menu */
             padding: 20px;
             color: white;
             margin-left: auto;
             margin-right: auto;
+            border-radius: 10px;
+            
         }
 
         form {
             display: flex;
             flex-direction: column;
+        }
+        a{
+            text-decoration:none;
+        }
+        a:hover{
+            color:#0d8c46;
+            
         }
 
         .input-group {
@@ -66,10 +75,10 @@
             margin-top: 10px;
         }
         #botao_cadastro{
-            text-decoration:none;
+           
             text-color(white);
             size: 10px;
-             
+            margin-top: 20px;  
         }
         #botao_cadastro:hover{
             color: #0d8c46;
@@ -128,7 +137,11 @@
     <div id="menu"><h2>Gymconnect</h2></div>
     <div id="login_box">
         <h2>Login</h2>
-        <!-- Formulário para enviar feedback -->
+        
+        {% if erro %}
+            <p style="color: red;">{{ erro }}</p>
+        {% endif %}
+        
         <form action="/fazer_login/" method="post">
             <!-- CSRF Token -->
             {% csrf_token %}
