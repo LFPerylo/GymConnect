@@ -55,6 +55,8 @@ Descrição do Produto:  O GymConnect é uma plataforma criada para facilitar a 
    <a href="https://docs.google.com/document/d/1fxzHgayqaTEsD30-rjfJAcwauRqxOfy3IMzpztICxpg/edit">Link para o exemplo adicional</a>
   <h2> Prints da Sprint  </h2>
     <img src="Captura de tela 2024-05-06 223216.png" border="0">
+  <h2> screencast das historias novas</h2>
+    <a href="https://www.loom.com/share/42a3ad9421b44e3db00b6de16fa8727b?sid=ed4818a9-a8ee-44f3-9ffb-c015e9054e77">Link do Screencast</a>
    
  
    
