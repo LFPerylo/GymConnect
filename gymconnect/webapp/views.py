@@ -6,7 +6,6 @@ from .models import Dados
 from .models import Feedback
 from .forms import FeedbackForm 
 from .forms import ProgressoForm
-from .models import ProgressoAluno
 from .models import Duvida
 from .models import Consulta 
 
@@ -149,7 +148,7 @@ def agendar_consulta(request):
 
 def progresso(request):
     # Recupere todos os progressos salvos no banco de dados
-    progressos = ProgressoAluno.objects.all()
+    progressos = ProgressoForm.objects.all()
     
     # Passe os progressos para o template como contexto
     return render(request, 'progresso.html', {'progressos': progressos})
