@@ -53,9 +53,9 @@ Descrição do Produto:  O GymConnect é uma plataforma criada para facilitar a 
   <a href="https://ibb.co/sbw8vXq"><img src="https://i.ibb.co/S5nFXZB/Diagrama-entrega-3.jpg" alt="Diagrama-entrega-3" border="0"></a>
    <h2> Relato da programação em par</h2> 
    <a href="https://docs.google.com/document/d/1fxzHgayqaTEsD30-rjfJAcwauRqxOfy3IMzpztICxpg/edit">Link para o exemplo adicional</a>
-  <h2>
+  <h2> Prints da Sprint  </h2>
     <a href="https://github.com/LFPerylo/PROJETO-FDS/blob/main/Captura%20de%20tela%202024-05-06%20222138.png"><img src="https://github.com/LFPerylo/PROJETO-FDS/blob/main/Captura%20de%20tela%202024-05-06%20222138.png" alt="print-sprint1" border="0"></a>
-  </h2>
+ 
    
 
   
