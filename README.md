@@ -49,6 +49,7 @@ Descrição do Produto:  O GymConnect é uma plataforma criada para facilitar a 
  <h2> Instruções de uso</h2> 
  <a href="https://docs.google.com/document/d/1eaLUUH-R3jjaE8Ec-t165yV-NiP86W-7N2EceEs_rfk/edit?usp=sharing">Link para como usar o sistema</a>
  <h1> Entrega 3 </h1> <br>
+  <h2> Diagrama de Atividades </h2>
 
   
  
