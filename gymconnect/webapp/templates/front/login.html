@@ -26,13 +26,7 @@
             border-bottom: 3px solid rgb(0, 255, 30);
             z-index: 1000; /* Make sure the menu is above other content */
         }
-
-        #logo{
-            width: 50%;
-            margin-top: 50px;
-            margin-bottom: 50px;
-        }
-
+        
         #login_box {
             width: 35%; /* Adjust width to match your design */
             display: inline-block;
@@ -122,6 +116,13 @@
     input[type="radio"]:hover {
         background-color: #0d8c46; /* Cor de fundo ao passar o mouse */
     }
+    img#logo{
+        text-align: center;
+        width: 60%;
+    }
+    div#logo{
+        margin: 0 auto;
+    }
     </style>
 </head>
 <!DOCTYPE html>
@@ -130,7 +131,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="style.css"> <!-- Ajuste o caminho conforme necessário -->
 </head>
 <body>
     <div id="menu"><h2>Gymconnect</h2></div>
@@ -140,7 +140,11 @@
         {% if erro %}
             <p style="color: red;">{{ erro }}</p>
         {% endif %}
-        
+        {% for imagem in imagens %}
+        <div id="logo">
+            <img id="logo" src="{{ imagem.imagem.url }}" alt="Imagem">
+        </div>
+        {% endfor %}
         <form action="/fazer_login/" method="post">
             <!-- CSRF Token -->
             {% csrf_token %}

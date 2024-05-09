@@ -27,12 +27,6 @@
             z-index: 1000; /* Make sure the menu is above other content */
         }
 
-        #logo{
-            width: 50%;
-            margin-top: 50px;
-            margin-bottom: 50px;
-        }
-
         #login_box {
             width: 35%; /* Adjust width to match your design */
             display: inline-block;
@@ -107,6 +101,13 @@
     input[type="radio"]:hover {
         background-color: #0d8c46; /* Cor de fundo ao passar o mouse */
     }
+    img#logo{
+        text-align: center;
+        width: 60%;
+    }
+    div#logo{
+        margin: 0 auto;
+    }
     </style>
 </head>
 <!DOCTYPE html>
@@ -122,7 +123,11 @@
 
     <div id="login_box">
         <h2>Cadastro de Usuário</h2>
-
+        {% for imagem in imagens %}
+        <div id="logo">
+            <img id="logo" src="{{ imagem.imagem.url }}" alt="Imagem">
+        </div>
+        {% endfor %}
         <form action="/cadastrar_usuario/" method="post">
             <!-- CSRF Token -->
             {% csrf_token %}

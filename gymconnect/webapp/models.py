@@ -67,3 +67,6 @@ class Consulta(models.Model):
 
     def __str__(self):
         return f"Consulta em {self.data} às {self.horario}"
+
+class Imagem(models.Model):
+    imagem = models.ImageField(upload_to='imagens/')

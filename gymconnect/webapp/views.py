@@ -9,15 +9,15 @@ from .forms import ProgressoForm
 from .models import Duvida
 from .models import Consulta
 from .forms import CadastroForm, LoginForm
-
+from .models import Imagem
 
 def login(request):
-        
-    return render(request, 'front/login.html')
+    imagens = Imagem.objects.all()
+    return render(request, 'front/login.html', {'imagens': imagens})
 
 def cadastro(request):
-
-    return render(request, 'front/cadastro.html')
+    imagens = Imagem.objects.all()
+    return render(request, 'front/cadastro.html', {'imagens': imagens})
 
 def dicas(request):
 
