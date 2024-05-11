@@ -7,24 +7,23 @@ from .models import Feedback
 from .forms import FeedbackForm 
 from .forms import ProgressoForm
 from .models import Duvida
-from .models import Consulta
-from .forms import CadastroForm, LoginForm
-from .models import Imagem
+from .models import Consulta,Dica
+from .forms import CadastroForm, LoginForm,DicaForm
 
 
 def login(request):
-    imagens = Imagem.objects.all()
-    return render(request, 'front/login.html', {'imagens': imagens})
+        
+    return render(request, 'front/login.html')
 
 def cadastro(request):
-    imagens = Imagem.objects.all()
-    return render(request, 'front/cadastro.html', {'imagens': imagens})
+
+    return render(request, 'front/cadastro.html')
 
 def dicas(request):
 
     return render(request, 'dicas.html')
 
-def home_aluno(request, nome_usuario=None):
+def home_aluno(request):
     if request.method == 'POST':
         tipo = request.POST.get('tipo')
         nome = request.POST.get('nome')
@@ -36,7 +35,7 @@ def home_aluno(request, nome_usuario=None):
             return redirect('/home_aluno/')
         else:
             return HttpResponse("Usuário ou senha inválidos", status=401)
-    return render(request, 'home_aluno.html', {'nome_usuario': nome_usuario})
+    return render(request, 'home_aluno.html')
 
 def home_adm(request):
     usuarios = Dados.objects.all()  # Obtém todos os usuários do banco de dados
@@ -86,6 +85,9 @@ def feedback(request):
 
     return render(request,'feedback.html')
 
+def dicas_adm(request):
+
+    return render(request,'dicasadm.html')
 
 def enviar_feedback(request):
     if request.method == 'POST':
@@ -182,6 +184,10 @@ def cadastrar_usuario(request):
     return render(request, 'cadastro.html', {'form': form})
 
 
+from django.shortcuts import render, redirect
+from .forms import LoginForm
+from .models import Dados
+
 def fazer_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -194,7 +200,7 @@ def fazer_login(request):
             if usuario:
                 if tipo == 'usuario':
                     # Redirecionar usuário para a página home do aluno
-                    return redirect('/home_aluno/' + nome)  # Passando o nome do usuário como parte da URL
+                    return redirect('/home_aluno/')
                 elif tipo == 'administrador':
                     # Redirecionar administrador para a página home do administrador
                     return redirect('/home_adm/')
@@ -204,3 +210,14 @@ def fazer_login(request):
         form = LoginForm()
         erro = None
     return render(request, 'front/login.html', {'form': form, 'erro': erro})
+
+def adicionar_dica(request):
+    if request.method == 'POST':
+        form = DicaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/dicas_adm/')
+    else:
+        form = DicaForm()
+    return render(request, 'dicasadm.html', {'form': form})
+
