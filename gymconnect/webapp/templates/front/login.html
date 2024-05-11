@@ -140,6 +140,7 @@
         {% if erro %}
             <p style="color: red;">{{ erro }}</p>
         {% endif %}
+        
         {% for imagem in imagens %}
         <div id="logo">
             <img id="logo" src="{{ imagem.imagem.url }}" alt="Imagem">

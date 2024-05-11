@@ -10,6 +10,8 @@ urlpatterns = [
 
     path('', views.login, name="login"),
     path('cadastro/',views.cadastro, name="cadastro"),
+    path('home_aluno/<str:nome_usuario>/', views.home_aluno, name="home_aluno"),
+    path('home_adm/<str:nome_usuario>/', views.home_adm, name="home_adm"),
     path('dicas/', views.dicas, name="dicas"),
     path('home_aluno/', views.home_aluno, name="home_aluno"),
     path('home_adm/', views.home_adm, name="home_adm"),
