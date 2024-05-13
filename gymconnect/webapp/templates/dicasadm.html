@@ -127,6 +127,21 @@
             margin-top: 20px;
             border: 1.5px solid black;
         }
+
+        #login_box {
+            width: 35%; /* Adjust width to match your design */
+            display: inline-block;
+            border: 3px rgb(0, 255, 30) groove;
+            background-color: rgb(37, 37, 37);
+            box-sizing: border-box;
+            margin-top: 170px; /* Adjust margin top to push down under fixed menu */
+            padding: 20px;
+            color: white;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+            
+        }
     </style>
 </head>
 <body>
@@ -148,6 +163,37 @@
         </a>
         <h2>DICAS ADM</h2>
     </div>
+
+    <div id="login_box">
+        <h2>Adicionar Dica</h2>
+        {% if erro %}
+            <p style="color: red;">{{ erro }}</p>
+        {% endif %}
+        {% if sucesso %}
+            <p style="color: green;">{{ sucesso }}</p>
+        {% endif %}
+        <form action="/adicionar_dica/" method="post">
+            <!-- CSRF Token -->
+            {% csrf_token %}
+            <!-- Campo de seleção para o tipo de dica -->
+            <div>
+                <label for="id_tipo">Tipo de Dica:</label>
+                <select id="id_tipo" name="tipo" required>
+                    <option value="nutricao">Nutrição</option>
+                    <option value="treino">Treino</option>
+                    <option value="cardio">Cardio</option>
+                </select>
+            </div>
+            <!-- Campo de texto para o professor inserir a dica -->
+            <div>
+                <label for="id_dica">Dica:</label>
+                <textarea id="id_dica" name="texto" required></textarea>
+            </div>
+            <!-- Botão de enviar -->
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    
 
 </body>
 

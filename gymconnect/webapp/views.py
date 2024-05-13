@@ -221,3 +221,7 @@ def adicionar_dica(request):
         form = DicaForm()
     return render(request, 'dicasadm.html', {'form': form})
 
+def exibir_dica(request):
+    dicas = Dica.objects.all()
+    return render(request, 'dicas.html', {'dicas': dicas})
+

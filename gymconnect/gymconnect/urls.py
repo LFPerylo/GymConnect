@@ -7,27 +7,35 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-
-    path('', views.login, name="login"),
-    path('cadastro/',views.cadastro, name="cadastro"),
-    path('dicas_adm/', views.dicas_adm, name="dicas_adm"),
-    path('dicas/', views.dicas, name="dicas"),
+    
     path('home_aluno/', views.home_aluno, name="home_aluno"),
     path('home_adm/', views.home_adm, name="home_adm"),
+
     path('treinospredefinidos/', views.treinospredefinidos, name="treinospredefinidos"),
-    path('duvidas/', views.duvidas, name="duvidas"),
+    
     path('marcar_consulta/',views.marcar_consulta, name="marcar_consulta"),
-    path('progresso/',views.progresso, name="progresso"),
-    path('feedback/',views.feedback, name="feedback"),
-    path('registrar_progresso/', views.registrar_progresso, name='registrar_progresso'),
+   
     path('processar_formulario/', views.processar_formulario, name="processar_formulario"),
-    path('registrar_progresso/', views.registrar_progresso, name="registrar_progresso"),
+    
     path('enviar_feedback/', views.enviar_feedback, name="enviar_feedback"),
+    path('feedback/',views.feedback, name="feedback"),
+    
     path('enviar_duvida/', views.enviar_duvida, name='enviar_duvida'),
+    path('duvidas/', views.duvidas, name="duvidas"),
+    
+    path('adicionar_dica/', views.adicionar_dica, name='adicionar_dica'),
+    path('exibir_dicas/', views.exibir_dicas, name='exibir_dicas'),
+    path('dicas_adm/', views.dicas_adm, name="dicas_adm"),
+    path('dicas/', views.dicas, name="dicas"),
+    
     path('progresso/', views.progresso, name='progresso'),
+    path('registrar_progresso/', views.registrar_progresso, name="registrar_progresso"),
+    
     path('admin/', admin.site.urls),
     path('cadastrar_usuario/', views.cadastrar_usuario, name="cadastrar_usuario"),
     path('fazer_login/', views.fazer_login, name="fazer_login"),
+    path('cadastro/',views.cadastro, name="cadastro"),
+    path('', views.login, name="login"),
     
 ]
 
