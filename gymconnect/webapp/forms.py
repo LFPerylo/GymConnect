@@ -1,8 +1,7 @@
 from django import forms
 from .models import Feedback
 from .models import ProgressoAluno
-from .models import Dados,Dica
-
+from .models import Dados
 
 class FeedbackForm(forms.ModelForm):
     class Meta:
@@ -25,10 +24,4 @@ class CadastroForm(forms.ModelForm):
     class Meta:
         model = Dados
         fields = ['nome', 'senha', 'tipo']
-
-class DicaForm(forms.ModelForm):
-    class Meta:
-        model = Dica
-        fields = ['tipo', 'texto']
-
 

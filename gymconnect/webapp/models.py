@@ -53,6 +53,13 @@ class Aluno(models.Model):
     def __str__(self):
         return self.nome
 
+class Feedback(models.Model):
+    aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE)
+    feedback = models.TextField()
+
+    def __str__(self):
+        return f"Feedback para {self.aluno}"
+
 class Consulta(models.Model):
     data = models.DateField()
     horario = models.TimeField()
@@ -60,16 +67,6 @@ class Consulta(models.Model):
 
     def __str__(self):
         return f"Consulta em {self.data} às {self.horario}"
-    
 
-class Dica(models.Model):
-    TIPO_DICA_CHOICES = (
-        ('nutricao', 'Nutrição'),
-        ('treino', 'Treino'),
-        ('cardio', 'Cardio'),
-    )
-    tipo = models.CharField(max_length=20, choices=TIPO_DICA_CHOICES)
-    texto = models.TextField()
-
-    def __str__(self):
-        return self.texto
+class Imagem(models.Model):
+    imagem = models.ImageField(upload_to='imagens/')
