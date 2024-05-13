@@ -24,7 +24,7 @@ urlpatterns = [
     path('duvidas/', views.duvidas, name="duvidas"),
     
     path('adicionar_dica/', views.adicionar_dica, name='adicionar_dica'),
-    path('exibir_dicas/', views.exibir_dicas, name='exibir_dicas'),
+    path('exibir_dica/', views.exibir_dica, name='exibir_dicas'),
     path('dicas_adm/', views.dicas_adm, name="dicas_adm"),
     path('dicas/', views.dicas, name="dicas"),
     
