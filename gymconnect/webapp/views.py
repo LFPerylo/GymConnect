@@ -8,7 +8,7 @@ from .forms import FeedbackForm
 from .forms import ProgressoForm
 from .models import Duvida
 from .models import Consulta
-from .forms import CadastroForm, LoginForm, DicaForm
+from .forms import CadastroForm, LoginForm, DicaForm,ConsultaForm
 from .models import Imagem
 
 
@@ -107,7 +107,7 @@ def registrar_progresso(request):
         form = ProgressoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('/progresso/')
     else:
         form = ProgressoForm()
     return render(request, 'progresso.html', {'form': form})
@@ -155,25 +155,14 @@ def enviar_feedback(request):
 
 def agendar_consulta(request):
     if request.method == 'POST':
-        data = request.POST.get('data')
-        horario = request.POST.get('horario')
-        mensagem = request.POST.get('mensagem', '')  # Mensagem é opcional
+        form = ConsultaForm(request.POST)
+        if form.is_valid(): 
+            form.save() 
+            return redirect('/marcar_consulta/')  
+    else:
+        form = ConsultaForm() 
 
-        # Salvar no banco de dados
-        consulta = Consulta(data=data, horario=horario, mensagem=mensagem)
-        consulta.save()
-
-        # Redirecionar para alguma página de sucesso
-        return redirect('pagina_sucesso')
-
-    return render(request, 'sua_template.html')
-
-def progresso(request):
-    # Recupere todos os progressos salvos no banco de dados
-    progressos = ProgressoForm.objects.all()
-    
-    # Passe os progressos para o template como contexto
-    return render(request, 'progresso.html', {'progressos': progressos})
+    return render(request, 'marcar_consulta.html', {'form': form})
 
 def cadastrar_usuario(request):
     if request.method == 'POST':

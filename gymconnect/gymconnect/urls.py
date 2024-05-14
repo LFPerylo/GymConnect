@@ -14,6 +14,8 @@ urlpatterns = [
     path('treinospredefinidos/', views.treinospredefinidos, name="treinospredefinidos"),
     
     path('marcar_consulta/',views.marcar_consulta, name="marcar_consulta"),
+    path('agendar_consulta/',views.agendar_consulta, name="agendar_consulta"),
+
    
     path('processar_formulario/', views.processar_formulario, name="processar_formulario"),
     
