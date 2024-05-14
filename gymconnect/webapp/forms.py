@@ -4,10 +4,12 @@ from .models import ProgressoAluno
 from .models import Dados, Dica,Consulta,TreinoPredefinido
 
 class FeedbackForm(forms.ModelForm):
+    nome_aluno = forms.CharField(max_length=50)
+    feedback = forms.CharField(widget=forms.Textarea)
+
     class Meta:
         model = Feedback
-        fields = ['aluno', 'feedback']
-
+        fields = ['nome_aluno', 'feedback']
 
 class ProgressoForm(forms.ModelForm):
     class Meta:

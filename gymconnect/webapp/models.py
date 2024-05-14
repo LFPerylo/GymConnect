@@ -16,14 +16,14 @@ class Dados(models.Model):
 
     def __str__(self):
         # Método para retornar uma string representativa do objeto
-        return f"Tipo: {self.tipo} - Nome do usuário: {self.nome} - Senha: {self.senha}"
+        return f"{self.nome}"
     
 class Feedback(models.Model):
-    aluno = models.CharField(max_length=50)
+    aluno = models.ForeignKey(Dados, on_delete=models.CASCADE)
     feedback = models.TextField(max_length=100)
 
     def __str__(self):
-        return f"Feedback de {self.aluno}"
+        return f"Feedback de {self.aluno.nome}"
     
 class Progresso(models.Model):
     nome_aluno = models.CharField(max_length=100)
@@ -46,19 +46,6 @@ class Duvida(models.Model):
 
     def __str__(self):
         return self.duvida_escrita
-
-class Aluno(models.Model):
-    nome = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.nome
-
-class Feedback(models.Model):
-    aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE)
-    feedback = models.TextField()
-
-    def __str__(self):
-        return f"Feedback para {self.aluno}"
 
 class Consulta(models.Model):
     data = models.DateField()

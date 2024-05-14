@@ -70,18 +70,6 @@ def feedback(request):
 
     return render(request,'feedback.html')
 
-
-def enviar_feedback(request):
-    if request.method == 'POST':
-        form = FeedbackForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return render(request, 'home_aluno.html', {'message': 'Feedback registrado com sucesso!'})
-            
-    else:
-        form = FeedbackForm()
-    return render(request, 'feedback.html', {'form': form})
-
 def registrar_progresso(request):
     if request.method == 'POST':
         form = ProgressoForm(request.POST)
@@ -111,27 +99,21 @@ def enviar_feedback(request):
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
         if form.is_valid():
+            nome_aluno = form.cleaned_data['nome_aluno']
             feedback_texto = form.cleaned_data['feedback']
-            nome_aluno = form.cleaned_data['nome']
 
-            # Verifica se o nome do aluno está cadastrado como "usuario" no banco de dados
-            aluno = Dados.objects.filter(nome=nome_aluno, tipo='usuario').first()
-            if aluno:
-                # Cria uma instância do Feedback e salva no banco de dados
-                Feedback.objects.create(aluno=nome_aluno, feedback=feedback_texto)
-                
-                sucesso = "Feedback enviado com sucesso."
-                return redirect('/feedback/', {'mensagem_sucesso': sucesso})
-                
+            # Verificar se o aluno existe e é do tipo "usuário"
+            if Dados.objects.filter(nome=nome_aluno, tipo='usuario').exists():
+                aluno = Dados.objects.get(nome=nome_aluno)
+                feedback = Feedback.objects.create(feedback=feedback_texto, aluno=aluno)
+                return redirect('/feedback/')  # Redirecionar para página de sucesso
             else:
-                # Se o aluno não estiver cadastrado, exibe uma mensagem de erro
-                erro = "O nome do aluno não corresponde a um usuário cadastrado."
-                return render(request, 'feedback.html', {'mensagem_erro': erro})
+                form.add_error('nome_aluno', 'Aluno não encontrado ou não é um usuário.')
+
     else:
         form = FeedbackForm()
-    
+
     return render(request, 'feedback.html', {'form': form})
-    
 
 def agendar_consulta(request):
     if request.method == 'POST':
@@ -189,7 +171,8 @@ def adicionar_dica(request):
     return render(request, 'dicasadm.html', {'form': form})
 
 def exibir_dica(request):
-    dicas = Dica.objects.all()
+    tipo_selecionado = request.GET.get('tipo')
+    dicas = Dica.objects.filter(tipo=tipo_selecionado) if tipo_selecionado else None
     return render(request, 'dicas.html', {'dicas': dicas})
 
 def criar_treino_predefinido(request):

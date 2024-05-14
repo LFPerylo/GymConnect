@@ -148,15 +148,31 @@
         </a>
         <h2>DICAS</h2>
     </div>
-    <div id="dicas_box">
-
-        <h1>Dicas</h1>
+    
+    <!-- dicas.html -->
+<div id="login_box">
+    <h2>Escolha o Tipo de Dica:</h2>
+    <form action="{% url 'exibir_dica' %}" method="get">
+        <select name="tipo">
+            <option value="nutricao">Nutrição</option>
+            <option value="treino">Treino</option>
+            <option value="cardio">Cardio</option>
+        </select>
+        <button type="submit">Ver Dicas</button>
+    </form>
+    
+    {% if dicas %}
+    <h2>Dicas</h2>
     <ul>
         {% for dica in dicas %}
-            <li>{{ dica.texto }} - {{ dica.tipo }}</li>
+        <li>{{ dica.tipo }}: {{ dica.texto }}</li>
         {% endfor %}
     </ul>
-    </div>
+    {% else %}
+    <p>Nenhuma dica encontrada para este tipo.</p>
+    {% endif %}
+</div>
+
 </body>
 
 </html>
