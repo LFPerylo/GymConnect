@@ -24,6 +24,10 @@ def dicas(request):
 
     return render(request, 'dicas.html')
 
+def dicas_adm(request):
+
+    return render(request, 'dicas_adm.html')
+
 def home_aluno(request, nome_usuario=None):
     if request.method == 'POST':
         tipo = request.POST.get('tipo')
