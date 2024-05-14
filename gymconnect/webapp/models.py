@@ -70,3 +70,15 @@ class Consulta(models.Model):
 
 class Imagem(models.Model):
     imagem = models.ImageField(upload_to='imagens/')
+
+class Dica(models.Model):
+    TIPO_DICA_CHOICES = (
+        ('nutricao', 'Nutrição'),
+        ('treino', 'Treino'),
+        ('cardio', 'Cardio'),
+    )
+    tipo = models.CharField(max_length=20, choices=TIPO_DICA_CHOICES)
+    texto = models.TextField()
+
+    def __str__(self):
+        return self.texto
