@@ -13,6 +13,8 @@ urlpatterns = [
 
     path('treinospredefinidos/', views.treinospredefinidos, name="treinospredefinidos"),
     path('treinospredefinidos_adm/', views.treinospredefinidos_adm, name="treinospredefinidos_adm"),
+    path('criar_treino_predefinido/', views.criar_treino_predefinido, name="criar_treino_predefinido"),
+    path('exibir_treino_predefinido/', views.exibir_treino_predefinido, name="exibir_treino_predefinido"),
     
     path('marcar_consulta/',views.marcar_consulta, name="marcar_consulta"),
     path('agendar_consulta/',views.agendar_consulta, name="agendar_consulta"),

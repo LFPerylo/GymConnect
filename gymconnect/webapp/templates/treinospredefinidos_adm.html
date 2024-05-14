@@ -169,7 +169,9 @@
         <h2>ADICIONAR TREINO PREDEFINIDO</h2>
     </div>
 
-    <h2>Formulário de Treinos Pré-definidos</h2>
+    <div id="login_box">
+
+    <h2>Criar Treino Pré-definido</h2>
     <form action="/criar_treino_predefinido/" method="post">
         {% csrf_token %}
         <label for="tipo_treino">Tipo de Treino:</label>
@@ -181,27 +183,28 @@
         </select>
         <br><br>
         <label for="exercicio1">Exercício 1:</label>
-        <input type="text" id="exercicio1" name="exercicio1" required>
-        Séries: <input type="number" name="series1" min="1" required>
-        Repetições: <input type="number" name="repeticoes1" min="1" required>
+        <input type="text" id="exercicio1_nome" name="exercicio1_nome" required>
+        Séries: <input type="number" value="exercicio1_series" name="exercicio1_series" min="1" required>
+        Repetições: <input type="number" value="exercicio1_repeticoes" name="exercicio1_repeticoes" min="1" required>
         <br><br>
         <label for="exercicio2">Exercício 2:</label>
-        <input type="text" id="exercicio2" name="exercicio2" required>
-        Séries: <input type="number" name="series2" min="1" required>
-        Repetições: <input type="number" name="repeticoes2" min="1" required>
+        <input type="text" id="exercicio2_nome" name="exercicio2_nome" required>
+        Séries: <input type="number" value="exercicio2_series" name="exercicio2_series" min="1" required>
+        Repetições: <input type="number" value="exercicio2_repeticoes" name="exercicio2_repeticoes" min="1" required>
         <br><br>
         <label for="exercicio3">Exercício 3:</label>
-        <input type="text" id="exercicio3" name="exercicio3" required>
-        Séries: <input type="number" name="series3" min="1" required>
-        Repetições: <input type="number" name="repeticoes3" min="1" required>
+        <input type="text" id="exercicio3_nome" name="exercicio3_nome" required>
+        Séries: <input type="number" value="exercicio3_series" name="exercicio3_series" min="1" required>
+        Repetições: <input type="number" value="exercicio3_repeticoes" name="exercicio3_repeticoes" min="1" required>
         <br><br>
         <label for="exercicio4">Exercício 4:</label>
-        <input type="text" id="exercicio4" name="exercicio4" required>
-        Séries: <input type="number" name="series4" min="1" required>
-        Repetições: <input type="number" name="repeticoes4" min="1" required>
+        <input type="text" id="exercicio4_nome" name="exercicio4_nome" required>
+        Séries: <input type="number" value="exercicio4_series" name="exercicio4_series" min="1" required>
+        Repetições: <input type="number" value="exercicio4_repeticoes" name="exercicio4_repeticoes" min="1" required>
         <br><br>
         <button type="submit">Salvar Treino</button>
     </form>
+</div>
         
 </body>
 

@@ -162,6 +162,7 @@
         });
 
     </script>
+    
     <div id="menu">
         <a href="{% url 'home_aluno' %}"> 
             <h2 id="voltar" style="color: white;">⇦</h2>
@@ -169,37 +170,29 @@
         <h2>TREINOS PREDEFINIDOS</h2>
     </div>
     <div id="login_box">
-        <div id="t">
-            <h3>Escolha um grupo muscular:</h3>
-            <div id="costas" class="parte-corpo">Costas</div>
-            <div id="perna" class="parte-corpo">Perna</div>
-            <div id="braco" class="parte-corpo">Braço</div>
-            <div id="peito" class="parte-corpo">Peito</div>
-        </div>
-        <div id="treino_add" class="parte-corpo">Selecione um Treino</div>
+    <h2>Escolha o Grupo Muscular:</h2>
+    <form action="{% url 'exibir_treino_predefinido' %}" method="get">
+        <select name="tipo_treino">
+            <option value="costas">Costas</option>
+            <option value="peito">Peito</option>
+            <option value="perna">Perna</option>
+            <option value="braco">Braço</option>
+        </select>
+        <button type="submit">Ver Treinos</button>
+    </form>
+
+    {% if treinos %}
+        <h2>Treinos Pré-definidos</h2>
+        <ul>
+            {% for treino in treinos %}
+                <li>{{ treino.tipo_treino }} - {{ treino.exercicio1_nome }}, {{ treino.exercicio2_nome }}, {{ treino.exercicio3_nome }}, {{ treino.exercicio4_nome }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum treino encontrado para este tipo.</p>
+    {% endif %}
+
     </div>
-
-    <script>
-        const treinos = {
-            "costas": "Treino de Costas: <br> - 4x 10-12 Puxada alta <br> - 4x 10-12 Remada curvada <br> - 4x 10-12 Pulldown",
-            "perna": "Treino de Pernas: <br> - 4x 10-12 Agachamento <br> - 4x 10-12 Leg press <br> - 4x 10-12 Cadeira extensora",
-            "braco": "Treino de Braços: <br> - 4x 10-12 Rosca direta <br> - 4x 10-12 Tríceps testa <br> - 4x 10-12 Desenvolvimento",
-            "peito": "Treino de Peito: <br> - 4x 10-12 Supino reto <br> - 4x 10-12 Supino inclinado <br> - 4x 10-12 Crucifixo"
-        };
-
-
-        document.querySelectorAll('.parte-corpo').forEach(item => {
-            item.addEventListener('click', event => {
-                const parteCorpo = event.target.id;
-                exibirTreino(parteCorpo);
-            });
-        });
-
-        function exibirTreino(parteCorpo) {
-            const treino = treinos[parteCorpo];
-            document.getElementById('treino_add').innerHTML = treino;
-        }
-    </script>
 </body>
 
 </html>

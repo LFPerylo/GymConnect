@@ -7,8 +7,8 @@ from .models import Feedback
 from .forms import FeedbackForm 
 from .forms import ProgressoForm
 from .models import Duvida
-from .models import Consulta
-from .forms import CadastroForm, LoginForm, DicaForm,ConsultaForm
+from .models import Consulta,TreinoPredefinido
+from .forms import CadastroForm, LoginForm, DicaForm,ConsultaForm,TreinoPredefinidoForm
 from .models import Imagem
 
 
@@ -102,9 +102,9 @@ def enviar_duvida(request):
         duvida.save()
         
         # Retorna uma resposta para o usuário
-        return redirect('/')
+        return redirect('/duvidas/')
     else:
-        return redirect('/')
+        return redirect('/duvidas/')
     
 
 def enviar_feedback(request):
@@ -194,34 +194,24 @@ def exibir_dica(request):
 
 def criar_treino_predefinido(request):
     if request.method == 'POST':
-        tipo_treino = request.POST.get('tipo_treino')
-        exercicios = [
-            {
-                'nome': request.POST.get('exercicio1'),
-                'series': int(request.POST.get('series1')),
-                'repeticoes': int(request.POST.get('repeticoes1'))
-            },
-            {
-                'nome': request.POST.get('exercicio2'),
-                'series': int(request.POST.get('series2')),
-                'repeticoes': int(request.POST.get('repeticoes2'))
-            },
-            {
-                'nome': request.POST.get('exercicio3'),
-                'series': int(request.POST.get('series3')),
-                'repeticoes': int(request.POST.get('repeticoes3'))
-            },
-            {
-                'nome': request.POST.get('exercicio4'),
-                'series': int(request.POST.get('series4')),
-                'repeticoes': int(request.POST.get('repeticoes4'))
-            },
-        ]
+        form = TreinoPredefinidoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # Redirecionar para alguma página de sucesso
+            return redirect('/treinospredefinidos_adm/')  # substitua '/sucesso/' pela URL da página de sucesso desejada
+    else:
+        form = TreinoPredefinidoForm()
 
-        # Aqui você pode salvar os dados no banco de dados, ou fazer qualquer outra ação necessária
+    return render(request, 'treinospredefinidos_adm.html', {'form': form})
 
-        # Redirecionar para alguma página de sucesso
-        return redirect('/treinospredefinidos_adm/')
 
-    return render(request, 'treinospredefinidos_adm.html')
+def exibir_treino_predefinido(request):
+    tipo_treino = request.GET.get('tipo_treino')
+    treinos = None
+    
+    if tipo_treino:
+        treinos = TreinoPredefinido.objects.filter(tipo_treino=tipo_treino)
+    
+    return render(request, 'treinospredefinidos.html', {'treinos': treinos})
+
 
