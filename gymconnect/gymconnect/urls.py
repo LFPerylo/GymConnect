@@ -12,12 +12,10 @@ urlpatterns = [
     path('home_adm/', views.home_adm, name="home_adm"),
 
     path('treinospredefinidos/', views.treinospredefinidos, name="treinospredefinidos"),
+    path('treinospredefinidos_adm/', views.treinospredefinidos_adm, name="treinospredefinidos_adm"),
     
     path('marcar_consulta/',views.marcar_consulta, name="marcar_consulta"),
     path('agendar_consulta/',views.agendar_consulta, name="agendar_consulta"),
-
-   
-    path('processar_formulario/', views.processar_formulario, name="processar_formulario"),
     
     path('enviar_feedback/', views.enviar_feedback, name="enviar_feedback"),
     path('feedback/',views.feedback, name="feedback"),
