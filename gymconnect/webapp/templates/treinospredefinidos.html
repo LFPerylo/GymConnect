@@ -185,7 +185,13 @@
         <h2>Treinos Pré-definidos</h2>
         <ul>
             {% for treino in treinos %}
-                <li>{{ treino.tipo_treino }} - {{ treino.exercicio1_nome }}, {{ treino.exercicio2_nome }}, {{ treino.exercicio3_nome }}, {{ treino.exercicio4_nome }}</li>
+                <li>{{ treino.tipo_treino }}</li>
+                <ul>
+                    <li>{{ treino.exercicio1_nome }} - Séries: {{ treino.exercicio1_series }}, Repetições: {{ treino.exercicio1_repeticoes }}</li>
+                    <li>{{ treino.exercicio2_nome }} - Séries: {{ treino.exercicio2_series }}, Repetições: {{ treino.exercicio2_repeticoes }}</li>
+                    <li>{{ treino.exercicio3_nome }} - Séries: {{ treino.exercicio3_series }}, Repetições: {{ treino.exercicio3_repeticoes }}</li>
+                    <li>{{ treino.exercicio4_nome }} - Séries: {{ treino.exercicio4_series }}, Repetições: {{ treino.exercicio4_repeticoes }}</li>
+                </ul>
             {% endfor %}
         </ul>
     {% else %}
