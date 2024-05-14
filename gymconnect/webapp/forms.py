@@ -1,7 +1,7 @@
 from django import forms
 from .models import Feedback
 from .models import ProgressoAluno
-from .models import Dados, Dica,Consulta
+from .models import Dados, Dica,Consulta,TreinoPredefinido
 
 class FeedbackForm(forms.ModelForm):
     class Meta:
@@ -34,4 +34,9 @@ class ConsultaForm(forms.ModelForm):
     class Meta:
         model = Consulta
         fields = ['data', 'horario', 'mensagem']
+
+class TreinoPredefinidoForm(forms.ModelForm):
+    class Meta:
+        model = TreinoPredefinido
+        fields = '__all__'
 

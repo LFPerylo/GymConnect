@@ -192,3 +192,36 @@ def exibir_dica(request):
     dicas = Dica.objects.all()
     return render(request, 'dicas.html', {'dicas': dicas})
 
+def criar_treino_predefinido(request):
+    if request.method == 'POST':
+        tipo_treino = request.POST.get('tipo_treino')
+        exercicios = [
+            {
+                'nome': request.POST.get('exercicio1'),
+                'series': int(request.POST.get('series1')),
+                'repeticoes': int(request.POST.get('repeticoes1'))
+            },
+            {
+                'nome': request.POST.get('exercicio2'),
+                'series': int(request.POST.get('series2')),
+                'repeticoes': int(request.POST.get('repeticoes2'))
+            },
+            {
+                'nome': request.POST.get('exercicio3'),
+                'series': int(request.POST.get('series3')),
+                'repeticoes': int(request.POST.get('repeticoes3'))
+            },
+            {
+                'nome': request.POST.get('exercicio4'),
+                'series': int(request.POST.get('series4')),
+                'repeticoes': int(request.POST.get('repeticoes4'))
+            },
+        ]
+
+        # Aqui você pode salvar os dados no banco de dados, ou fazer qualquer outra ação necessária
+
+        # Redirecionar para alguma página de sucesso
+        return redirect('/treinospredefinidos_adm/')
+
+    return render(request, 'treinospredefinidos_adm.html')
+

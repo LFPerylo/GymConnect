@@ -82,3 +82,27 @@ class Dica(models.Model):
 
     def __str__(self):
         return self.texto
+
+class TreinoPredefinido(models.Model):
+    TIPO_CHOICES = (
+        ('costas', 'Costas'),
+        ('peito', 'Peito'),
+        ('perna', 'Perna'),
+        ('braco', 'Braço'),
+    )
+    tipo_treino = models.CharField(max_length=20, choices=TIPO_CHOICES)
+    exercicio1_nome = models.CharField(max_length=100)
+    exercicio1_series = models.PositiveIntegerField()
+    exercicio1_repeticoes = models.PositiveIntegerField()
+    exercicio2_nome = models.CharField(max_length=100)
+    exercicio2_series = models.PositiveIntegerField()
+    exercicio2_repeticoes = models.PositiveIntegerField()
+    exercicio3_nome = models.CharField(max_length=100)
+    exercicio3_series = models.PositiveIntegerField()
+    exercicio3_repeticoes = models.PositiveIntegerField()
+    exercicio4_nome = models.CharField(max_length=100)
+    exercicio4_series = models.PositiveIntegerField()
+    exercicio4_repeticoes = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"{self.get_tipo_treino_display()} - {self.exercicio1_nome}, {self.exercicio2_nome}, {self.exercicio3_nome}, {self.exercicio4_nome}"
