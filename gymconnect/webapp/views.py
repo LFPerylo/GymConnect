@@ -70,6 +70,10 @@ def feedback(request):
 
     return render(request,'feedback.html')
 
+def feedback_aluno(request):
+
+    return render(request, 'feedback_aluno.html')
+
 def registrar_progresso(request):
     if request.method == 'POST':
         form = ProgressoForm(request.POST)
@@ -196,5 +200,29 @@ def exibir_treino_predefinido(request):
         treinos = TreinoPredefinido.objects.filter(tipo_treino=tipo_treino)
     
     return render(request, 'treinospredefinidos.html', {'treinos': treinos})
+
+def exibir_feedback(request):
+    if request.method == 'GET':
+        aluno_id = request.GET.get('aluno')
+
+        if aluno_id:
+            try:
+                aluno = Dados.objects.get(pk=aluno_id, tipo='usuario')
+                feedbacks = Feedback.objects.filter(aluno=aluno)
+                return render(request, 'feedback_aluno.html', {'feedbacks': feedbacks})
+            except Dados.DoesNotExist:
+                mensagem_erro = "Aluno não encontrado."
+            except Feedback.DoesNotExist:
+                mensagem_erro = "Não há feedback para este aluno."
+            except Exception as e:
+                mensagem_erro = str(e)
+
+            return render(request, 'feedback_aluno.html', {'mensagem_erro': mensagem_erro})
+
+        else:
+            alunos = Dados.objects.filter(tipo='usuario')
+            return render(request, 'feedback_aluno.html', {'alunos': alunos})
+
+    return render(request, 'feedback_aluno.html')
 
 

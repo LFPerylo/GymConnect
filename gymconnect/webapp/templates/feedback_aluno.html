@@ -127,40 +127,30 @@ a:hover{
 </head>
 <body>
     <div id="menu">
-        <a href="{% url 'home_adm' %}"> 
+        <a href="{% url 'home_aluno' %}"> 
             <h2 id="voltar" style="color:white;">⇦</h2>
         </a>
 
-        <h2>ENVIAR FEEDBACK</h2></div>
-    <div id="feedback_box">
-        <h1>Enviar Feedback</h1>
-        <form method="post">
-            {% csrf_token %}
-            <label for="nome_aluno">Nome do Aluno:</label><br>
-            <input type="text" id="nome_aluno" name="nome_aluno" required><br><br>
-            <label for="feedback">Feedback:</label><br>
-            <textarea id="feedback" name="feedback" required></textarea><br><br>
-            <button type="submit">Enviar Feedback</button>
-        </form>
-    
-        {% if form.errors %}
-        <div>
+        <h2>VIZUALIZAR FEEDBACK</h2></div>
+        <div id="feedback_box">
+            <form method="get">
+                <label for="nome_aluno">Digite o Nome do Aluno:</label><br>
+                <input type="text" id="nome_aluno" name="nome_aluno" required><br><br>
+                <button type="submit">Buscar Feedback</button>
+            </form>
+        
+            {% if feedbacks %}
+            <h2>Feedbacks para {{ nome_aluno }}:</h2>
             <ul>
-                {% for field, errors in form.errors.items %}
-                {% for error in errors %}
-                <li>{{ error }}</li>
-                {% endfor %}
+                {% for feedback in feedbacks %}
+                <li>{{ feedback.feedback }}</li>
                 {% endfor %}
             </ul>
-        </div>
-        {% endif %}
-    
-        {% if feedback_enviado %}
-        <div>
-            <p>O feedback foi enviado com sucesso para {{ feedback_enviado.aluno }}!</p>
-            <p>Feedback: {{ feedback_enviado.feedback }}</p>
-        </div>
-        {% endif %}
+            {% endif %}
+        
+            {% if mensagem_erro %}
+            <p>{{ mensagem_erro }}</p>
+            {% endif %}
     </div>
 </body>
 </html>

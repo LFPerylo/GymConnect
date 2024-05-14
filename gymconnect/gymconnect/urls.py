@@ -21,6 +21,8 @@ urlpatterns = [
     
     path('enviar_feedback/', views.enviar_feedback, name="enviar_feedback"),
     path('feedback/',views.feedback, name="feedback"),
+    path('feedback_aluno/',views.feedback_aluno, name="feedback_aluno"),
+
     
     path('enviar_duvida/', views.enviar_duvida, name='enviar_duvida'),
     path('duvidas/', views.duvidas, name="duvidas"),
