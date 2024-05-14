@@ -198,7 +198,7 @@ def fazer_login(request):
             if usuario:
                 if tipo == 'usuario':
                     # Redirecionar usuário para a página home do aluno
-                    return redirect('/home_aluno/' + nome)  # Passando o nome do usuário como parte da URL
+                    return redirect('/home_aluno/')  # Passando o nome do usuário como parte da URL
                 elif tipo == 'administrador':
                     # Redirecionar administrador para a página home do administrador
                     return redirect('/home_adm/')
