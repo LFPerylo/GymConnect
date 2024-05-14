@@ -2,13 +2,13 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.hashers import make_password
-from .models import Dados 
+from .models import Dados, Dica
 from .models import Feedback
 from .forms import FeedbackForm 
 from .forms import ProgressoForm
 from .models import Duvida
 from .models import Consulta
-from .forms import CadastroForm, LoginForm
+from .forms import CadastroForm, LoginForm, DicaForm
 from .models import Imagem
 
 
@@ -204,3 +204,18 @@ def fazer_login(request):
         form = LoginForm()
         erro = None
     return render(request, 'front/login.html', {'form': form, 'erro': erro})
+
+def adicionar_dica(request):
+    if request.method == 'POST':
+        form = DicaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/dicas_adm/')
+    else:
+        form = DicaForm()
+    return render(request, 'dicasadm.html', {'form': form})
+
+def exibir_dica(request):
+    dicas = Dica.objects.all()
+    return render(request, 'dicas.html', {'dicas': dicas})
+
