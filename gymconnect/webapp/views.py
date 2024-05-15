@@ -203,15 +203,15 @@ def exibir_treino_predefinido(request):
 
 def exibir_feedback(request):
     if request.method == 'GET':
-        aluno_id = request.GET.get('aluno')
+        nome_aluno = request.GET.get('nome_aluno')
 
-        if aluno_id:
+        if nome_aluno:
             try:
-                aluno = Dados.objects.get(pk=aluno_id, tipo='usuario')
+                aluno = Dados.objects.get(nome=nome_aluno, tipo='usuario')
                 feedbacks = Feedback.objects.filter(aluno=aluno)
-                return render(request, 'feedback_aluno.html', {'feedbacks': feedbacks})
+                return render(request, 'feedback_aluno.html', {'feedbacks': feedbacks, 'nome_aluno': nome_aluno})
             except Dados.DoesNotExist:
-                mensagem_erro = "Aluno não encontrado."
+                mensagem_erro = "Aluno não encontrado no banco de dados."
             except Feedback.DoesNotExist:
                 mensagem_erro = "Não há feedback para este aluno."
             except Exception as e:
@@ -220,8 +220,7 @@ def exibir_feedback(request):
             return render(request, 'feedback_aluno.html', {'mensagem_erro': mensagem_erro})
 
         else:
-            alunos = Dados.objects.filter(tipo='usuario')
-            return render(request, 'feedback_aluno.html', {'alunos': alunos})
+            return render(request, 'feedback_aluno.html')
 
     return render(request, 'feedback_aluno.html')
 

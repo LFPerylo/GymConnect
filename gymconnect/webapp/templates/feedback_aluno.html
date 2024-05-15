@@ -131,9 +131,15 @@ a:hover{
             <h2 id="voltar" style="color:white;">⇦</h2>
         </a>
 
-        <h2>VIZUALIZAR FEEDBACK</h2></div>
+        <h2>FEEDBACK ALUNO</h2></div>
         <div id="feedback_box">
-            <form method="get">
+            <h2>Visualizar Feedbacks</h2>
+            
+            {% if mensagem_erro %}
+            <p style="color: red;">{{ mensagem_erro }}</p>
+            {% endif %}
+            
+            <form action="{% url 'exibir_feedback' %}" method="get">
                 <label for="nome_aluno">Digite o Nome do Aluno:</label><br>
                 <input type="text" id="nome_aluno" name="nome_aluno" required><br><br>
                 <button type="submit">Buscar Feedback</button>
@@ -146,11 +152,9 @@ a:hover{
                 <li>{{ feedback.feedback }}</li>
                 {% endfor %}
             </ul>
+            {% elif nome_aluno %}
+            <p>Não há feedbacks para {{ nome_aluno }}.</p>
             {% endif %}
-        
-            {% if mensagem_erro %}
-            <p>{{ mensagem_erro }}</p>
-            {% endif %}
-    </div>
+        </div>
 </body>
 </html>
