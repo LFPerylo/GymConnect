@@ -62,6 +62,10 @@ def marcar_consulta(request):
 
     return render(request, 'marcar_consulta.html')
 
+def marcar_consulta_adm(request):
+
+    return render(request,'marcar_consulta_adm.html')
+
 def progresso(request):
 
     return render(request,'progresso.html')
@@ -224,4 +228,7 @@ def exibir_feedback(request):
 
     return render(request, 'feedback_aluno.html')
 
+def exibir_consultas(request):
+    consultas = Consulta.objects.all()
+    return render(request, 'marcar_consulta_adm.html', {'consultas': consultas})
 

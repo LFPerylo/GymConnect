@@ -18,6 +18,8 @@ urlpatterns = [
     
     path('marcar_consulta/',views.marcar_consulta, name="marcar_consulta"),
     path('agendar_consulta/',views.agendar_consulta, name="agendar_consulta"),
+    path('marcar_consulta_adm/',views.marcar_consulta_adm, name="marcar_consulta_adm"),
+    path('exibir_consultas/',views.exibir_consultas, name="exibir_consultas"),
     
     path('enviar_feedback/', views.enviar_feedback, name="enviar_feedback"),
     path('feedback/',views.feedback, name="feedback"),
