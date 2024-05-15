@@ -48,6 +48,7 @@ class Duvida(models.Model):
         return self.duvida_escrita
 
 class Consulta(models.Model):
+    
     data = models.DateField()
     horario = models.TimeField()
     mensagem = models.TextField(blank=True)  # O campo mensagem é opcional
