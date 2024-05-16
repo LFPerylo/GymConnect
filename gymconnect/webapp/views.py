@@ -25,6 +25,10 @@ def dicas(request):
 
     return render(request, 'dicas.html')
 
+def info(request):
+
+    return render(request, 'info.html')
+
 def dicas_adm(request):
 
     return render(request, 'dicas_adm.html')
@@ -296,3 +300,31 @@ def exibir_progresso(request):
 
     return render(request, 'progresso_adm.html', {'mensagem_erro': mensagem_erro, 'progressos': progressos})
 
+def exibir_informacoes(request):
+    if request.method == 'POST':
+        nome_desejado = request.POST.get('nome_aluno', None)
+
+        if nome_desejado:
+            # Filtrar os feedbacks pelo nome desejado
+            feedbacks = Feedback.objects.filter(aluno__nome=nome_desejado)
+
+            # Filtrar o progresso pelo nome desejado
+            progressos = Progresso.objects.filter(nome_aluno__nome=nome_desejado)
+
+            if not feedbacks.exists() and not progressos.exists():
+                mensagem = f"O aluno '{nome_desejado}' não possui feedbacks nem progresso registrados."
+            else:
+                mensagem = None
+
+            context = {
+                'feedbacks': feedbacks,
+                'progressos': progressos,
+                'mensagem': mensagem
+            }
+            return render(request, 'exibir_informacoes.html', context)
+        else:
+            mensagem = "Por favor, insira um nome de aluno válido."
+    else:
+        mensagem = None
+
+    return render(request, 'form_busca_aluno.html', {'mensagem': mensagem})

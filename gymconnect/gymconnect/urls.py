@@ -44,7 +44,7 @@ urlpatterns = [
     path('fazer_login/', views.fazer_login, name="fazer_login"),
     path('cadastro/',views.cadastro, name="cadastro"),
     path('', views.login, name="login"),
-    
+    path('info/', views.info, name="info"),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
