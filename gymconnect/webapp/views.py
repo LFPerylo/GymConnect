@@ -105,6 +105,7 @@ def enviar_duvida(request):
     
 
 def enviar_feedback(request):
+    mensagem_erro = ""
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
         if form.is_valid():
@@ -118,11 +119,13 @@ def enviar_feedback(request):
                 return redirect('/feedback/')  # Redirecionar para página de sucesso
             else:
                 form.add_error('nome_aluno', 'Aluno não encontrado ou não é um usuário.')
+                mensagem_erro = "Aluno não encontrado ou não é um usuário."
+                print(mensagem_erro)
 
     else:
         form = FeedbackForm()
 
-    return render(request, 'feedback.html', {'form': form})
+    return render(request, 'feedback.html', {'form': form, 'mensagem_erro': mensagem_erro})
 
 def agendar_consulta(request):
     if request.method == 'POST':

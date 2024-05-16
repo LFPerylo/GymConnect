@@ -134,7 +134,12 @@ a:hover{
         <h2>ENVIAR FEEDBACK</h2></div>
     <div id="feedback_box">
         <h1>Enviar Feedback</h1>
-        <form method="post">
+
+        {% if mensagem_erro %}
+            <p style="color: red;">{{ mensagem_erro }}</p>
+            {% endif %}
+
+            <form action="/enviar_feedback/" method="post" id="enviar">
             {% csrf_token %}
             <label for="nome_aluno">Nome do Aluno:</label><br>
             <input type="text" id="nome_aluno" name="nome_aluno" required><br><br>
@@ -142,18 +147,6 @@ a:hover{
             <textarea id="feedback" name="feedback" required></textarea><br><br>
             <button type="submit">Enviar Feedback</button>
         </form>
-    
-        {% if form.errors %}
-        <div>
-            <ul>
-                {% for field, errors in form.errors.items %}
-                {% for error in errors %}
-                <li>{{ error }}</li>
-                {% endfor %}
-                {% endfor %}
-            </ul>
-        </div>
-        {% endif %}
     
         {% if feedback_enviado %}
         <div>
