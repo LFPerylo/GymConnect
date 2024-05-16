@@ -71,6 +71,10 @@ def progresso(request):
 
     return render(request,'progresso.html')
 
+def progresso_adm(request):
+
+    return render(request, 'progresso_adm.html')
+
 def feedback(request):
 
     return render(request,'feedback.html')
@@ -272,4 +276,23 @@ def exibir_consultas(request):
     else:
     
         pass
+
+def exibir_progresso(request):
+    mensagem_erro = None
+    progressos = None
+
+    if request.method == 'POST':
+        nome_aluno = request.POST.get('nome_aluno')
+
+        # Verificar se o aluno existe e é do tipo "usuário"
+        if Dados.objects.filter(nome=nome_aluno, tipo='usuario').exists():
+            aluno = Dados.objects.get(nome=nome_aluno, tipo='usuario')
+            # Verificar se o aluno possui progresso registrado
+            progressos = Progresso.objects.filter(nome_aluno=aluno)
+            if not progressos:
+                mensagem_erro = "Este usuário não possui nenhum progresso registrado."
+        else:
+            mensagem_erro = "Usuário não cadastrado ou não é usuário."
+
+    return render(request, 'progresso_adm.html', {'mensagem_erro': mensagem_erro, 'progressos': progressos})
 

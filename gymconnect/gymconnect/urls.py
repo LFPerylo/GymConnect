@@ -35,7 +35,9 @@ urlpatterns = [
     path('dicas/', views.dicas, name="dicas"),
     
     path('progresso/', views.progresso, name='progresso'),
+    path('progresso_adm/', views.progresso_adm, name='progresso_adm'),
     path('registrar_progresso/', views.registrar_progresso, name="registrar_progresso"),
+    path('exibir_progresso/', views.exibir_progresso, name="exibir_progresso"),
     
     path('admin/', admin.site.urls),
     path('cadastrar_usuario/', views.cadastrar_usuario, name="cadastrar_usuario"),
