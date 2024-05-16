@@ -124,7 +124,34 @@
             <h2 id="voltar" style="color: white;">⇦</h2>
         </a>
         
-        <h2>VIZUALIZAR CONSULTAS</h2></div>
+        <h2>VIZUALIZAR CONSULTAS</h2>
+    </div>
+        <div id=login_box>
+
+            {% if mensagem_erro %}
+            <p style="color: red;">{{ mensagem_erro }}</p>
+            {% endif %}
+            
+        <form action="{% url 'exibir_consultas' %}" method="get">
+            <label for="data">Escolha uma data:</label>
+            <input type="date" id="data" name="data" required>
+            <button type="submit">Ver Consultas</button>
+        </form>
     
+        {% if consultas %}
+            <h2>Consultas Marcadas na Data Escolhida</h2>
+            <ul>
+                {% for consulta in consultas %}
+                    <li>Data: {{ consulta.data }}, Horário: {{ consulta.horario }}</li>
+                    {% if consulta.mensagem %}
+                        <li>Observação: {{ consulta.mensagem }}</li>
+                    {% endif %}
+                    <br>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Nenhuma consulta marcada na data escolhida.</p>
+        {% endif %}
+        </div>
 </body>
 </html>

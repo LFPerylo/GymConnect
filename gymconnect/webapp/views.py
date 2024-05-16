@@ -10,6 +10,7 @@ from .models import Duvida
 from .models import Consulta,TreinoPredefinido
 from .forms import CadastroForm, LoginForm, DicaForm,ConsultaForm,TreinoPredefinidoForm
 from .models import Imagem
+from datetime import datetime
 
 
 def login(request):
@@ -229,6 +230,21 @@ def exibir_feedback(request):
     return render(request, 'feedback_aluno.html')
 
 def exibir_consultas(request):
-    consultas = Consulta.objects.all()
-    return render(request, 'marcar_consulta_adm.html', {'consultas': consultas})
+    if request.method == 'GET':
+        data_selecionada = request.GET.get('data')
+        if data_selecionada:
+            try:
+                # Converta a data de string para o formato de data do Python
+                data_selecionada = datetime.strptime(data_selecionada, '%Y-%m-%d').date()
+                consultas = Consulta.objects.filter(data=data_selecionada)
+                return render(request, 'marcar_consulta_adm.html', {'consultas': consultas, 'data_selecionada': data_selecionada})
+            except ValueError:
+                mensagem_erro = "Formato de data inválido."
+                return render(request, 'marcar_consulta_adm.html', {'mensagem_erro': mensagem_erro})
+        else:
+            mensagem_erro = "Nenhuma data selecionada."
+            return render(request, 'marcar_consulta_adm.html', {'mensagem_erro': mensagem_erro})
+    else:
+        # Se não for um método GET, redirecione ou retorne algo apropriado
+        pass
 
