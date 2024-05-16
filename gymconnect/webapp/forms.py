@@ -1,6 +1,6 @@
 from django import forms
 from .models import Feedback
-from .models import ProgressoAluno
+from .models import Progresso
 from .models import Dados, Dica,Consulta,TreinoPredefinido
 
 class FeedbackForm(forms.ModelForm):
@@ -11,10 +11,16 @@ class FeedbackForm(forms.ModelForm):
         model = Feedback
         fields = ['nome_aluno', 'feedback']
 
-class ProgressoForm(forms.ModelForm):
-    class Meta:
-        model = ProgressoAluno
-        fields = ['progresso_observado', 'metrica', 'data', 'nome_aluno']
+class ProgressoForm(forms.Form):
+    nome_aluno = forms.CharField(max_length=50)
+    TIPO_PROGRESSO_CHOICES = (
+        ('forca', 'Força'),
+        ('resistencia', 'Resistência'),
+        ('circunferencia', 'Circunferência'),
+    )
+    tipo_progresso = forms.ChoiceField(choices=TIPO_PROGRESSO_CHOICES)
+    observacao = forms.CharField(widget=forms.Textarea)
+    data = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
 
 class LoginForm(forms.Form):
     nome = forms.CharField()

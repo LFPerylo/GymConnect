@@ -99,6 +99,21 @@
         .centralizar{
             width: 100%;
         }
+
+        #login_box {
+            width: 35%; /* Adjust width to match your design */
+            display: inline-block;
+            border: 3px rgb(0, 255, 30) groove;
+            background-color: rgb(37, 37, 37);
+            box-sizing: border-box;
+            margin-top: 200px; /* Adjust margin top to push down under fixed menu */
+            padding: 20px;
+            color: white;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+            
+        }
     </style>
 </head>
 <body>
@@ -108,50 +123,41 @@
         </a>
         <h2>PROGRESSO</h2>
     </div>
-    <div class="progresso_box"> <!-- Alterado para class -->
-        <h2>Progresso do Aluno</h2>
-        <div id="alinhar_itens">
-            <form action="/registrar_progresso/" method="post" id="registrar_progresso">
-                {% csrf_token %}
-                <div class="input-group">
-                    <label for="nome_aluno">Nome do Aluno:</label>
-                    <input class="centralizar" type="text" id="nome_aluno" name="nome_aluno" required>
-                </div>
-                <div class="input-group">
-                    <label for="metrica">Tipo de Métrica:</label>
-                    <select class="centralizar" id="metrica" name="metrica" required>
-                        <option value="peso">Peso</option>
-                        <option value="repeticoes">Repetições</option>
-                        <option value="tempo">Tempo</option>
-                        <option value="circunferencia">Circunferência</option>
-                        <option value="porcentagem_de_gordura">Porcentagem de Gordura</option>
-                        <option value="niveis_de_energia">Níveis de Energia</option>
-                        
-                    </select>
-                </div>
-                <div class="input-group">
-                    <label for="data">Data:</label>
-                    <input class="centralizar" type="date" id="data" name="data" required>
-                </div>
-                <div class="input-group">
-                    <label for="progresso_observado">Progresso Observado:</label>
-                    <textarea class="centralizar" id="progresso_observado" name="progresso_observado" placeholder="Adicione progresso observado aqui..."></textarea>
-                </div>
-                <input type="submit" value="Registrar">
-            </form>
-        </div>
-    </div>
     <div class="progresso_box"> 
-        <h2>Seus Progressos Salvos</h2>
-        <ul>
-            {% for progresso in progressos %}
-                <li>Tipo de Métrica: {{ progresso.metrica }}</li>
-                <li>Data: {{ progresso.data }}</li>
-                <li>Observações: {{ progresso.progresso_observado }}</li>
-            {% empty %}
-                <li>Você ainda não registrou nenhum progresso.</li>
-            {% endfor %}
-        </ul>
+        <h2>Registrar Progresso</h2>
+
+        {% if mensagem_erro %}
+            <p style="color: red;">{{ mensagem_erro }}</p>
+        {% endif %}
+
+        {% if mensagem_sucesso %}
+            <p style="color: green;">{{ mensagem_sucesso }}</p>
+        {% endif %}
+
+        <form action="/registrar_progresso/" method="post">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="nome_aluno">Nome do Aluno:</label>
+                <input type="text" id="nome_aluno" name="nome_aluno" required>
+            </div>
+            <div class="input-group">
+                <label for="tipo_progresso">Tipo de Progresso:</label>
+                <select id="tipo_progresso" name="tipo_progresso" required>
+                    <option value="forca">Força</option>
+                    <option value="resistencia">Resistência</option>
+                    <option value="circunferencia">Circunferência</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="observacao">Observação:</label>
+                <textarea id="observacao" name="observacao" required></textarea>
+            </div>
+            <div class="input-group">
+                <label for="data">Data:</label>
+                <input type="date" id="data" name="data" required>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
     </div>
 </body>
 </html>

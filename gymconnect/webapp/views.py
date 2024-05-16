@@ -7,7 +7,7 @@ from .models import Feedback
 from .forms import FeedbackForm 
 from .forms import ProgressoForm
 from .models import Duvida
-from .models import Consulta,TreinoPredefinido,ProgressoAluno
+from .models import Consulta,TreinoPredefinido,Progresso
 from .forms import CadastroForm, LoginForm, DicaForm,ConsultaForm,TreinoPredefinidoForm
 from .models import Imagem
 from datetime import datetime
@@ -80,27 +80,31 @@ def feedback_aluno(request):
     return render(request, 'feedback_aluno.html')
 
 def registrar_progresso(request):
+    mensagem_erro = None
+    mensagem_sucesso = None
+
     if request.method == 'POST':
         form = ProgressoForm(request.POST)
         if form.is_valid():
             nome_aluno = form.cleaned_data['nome_aluno']
-            progresso_observado = form.cleaned_data['progresso_observado']
-            metrica = form.cleaned_data['metrica']
+            tipo_progresso = form.cleaned_data['tipo_progresso']
+            observacao = form.cleaned_data['observacao']
             data = form.cleaned_data['data']
 
             
             if Dados.objects.filter(nome=nome_aluno, tipo='usuario').exists():
-                aluno = Dados.objects.get(nome=nome_aluno)
-                progresso = ProgressoAluno.objects.create(progresso_observado=progresso_observado, metrica=metrica, data=data, nome_aluno=aluno)
-                return redirect('/progresso/')  
-            else:
+                aluno = Dados.objects.get(nome=nome_aluno, tipo='usuario')
                 
-                return render(request, 'progresso.html', {'mensagem_erro': 'Usuário não existente ou não cadastrado como aluno.'})
-
+                progresso = Progresso.objects.create(nome_aluno=aluno, tipo_progresso=tipo_progresso, observacao=observacao, data=data)
+                mensagem_sucesso = "Progresso registrado com sucesso!"
+            else:
+                mensagem_erro = "Usuário não cadastrado ou não é aluno."
+        else:
+            mensagem_erro = "Formulário inválido. Por favor, verifique os dados informados."
     else:
         form = ProgressoForm()
 
-    return render(request, 'progresso.html', {'form': form})
+    return render(request, 'progresso.html', {'form': form, 'mensagem_erro': mensagem_erro,'mensagem_sucesso':mensagem_sucesso})
 
 def enviar_duvida(request):
     if request.method == 'POST':
@@ -119,6 +123,7 @@ def enviar_duvida(request):
 
 def enviar_feedback(request):
     mensagem_erro = ""
+    mensagem_sucesso = ""
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
         if form.is_valid():
@@ -129,7 +134,7 @@ def enviar_feedback(request):
             if Dados.objects.filter(nome=nome_aluno, tipo='usuario').exists():
                 aluno = Dados.objects.get(nome=nome_aluno)
                 feedback = Feedback.objects.create(feedback=feedback_texto, aluno=aluno)
-                return redirect('/feedback/')  
+                mensagem_sucesso = "Feedback registrado com sucesso!"
             else:
                 form.add_error('nome_aluno', 'Aluno não encontrado ou não é um usuário.')
                 mensagem_erro = "Aluno não encontrado ou não é um usuário."
@@ -138,7 +143,7 @@ def enviar_feedback(request):
     else:
         form = FeedbackForm()
 
-    return render(request, 'feedback.html', {'form': form, 'mensagem_erro': mensagem_erro})
+    return render(request, 'feedback.html', {'form': form, 'mensagem_erro': mensagem_erro, 'mensagem_sucesso': mensagem_sucesso})
 
 def agendar_consulta(request):
     if request.method == 'POST':

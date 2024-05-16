@@ -135,9 +135,13 @@ a:hover{
     <div id="feedback_box">
         <h1>Enviar Feedback</h1>
 
-        {% if mensagem_erro %}
-            <p style="color: red;">{{ mensagem_erro }}</p>
+            {% if mensagem_erro %}
+                <p style="color: red;">{{ mensagem_erro }}</p>
             {% endif %}
+
+            {% if mensagem_sucesso %}
+            <p style="color: green;">{{ mensagem_sucesso }}</p>
+        {% endif %}
 
             <form action="/enviar_feedback/" method="post" id="enviar">
             {% csrf_token %}
