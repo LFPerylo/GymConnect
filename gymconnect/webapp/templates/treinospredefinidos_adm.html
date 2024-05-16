@@ -172,6 +172,9 @@
     <div id="login_box">
 
     <h2>Criar Treino Pré-definido</h2>
+    {% if mensagem_sucesso %}
+        <p style="color: green;">{{ mensagem_sucesso }}</p>
+    {% endif %}
     <form action="/criar_treino_predefinido/" method="post">
         {% csrf_token %}
         <label for="tipo_treino">Tipo de Treino:</label>

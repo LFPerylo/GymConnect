@@ -146,15 +146,16 @@ def enviar_feedback(request):
     return render(request, 'feedback.html', {'form': form, 'mensagem_erro': mensagem_erro, 'mensagem_sucesso': mensagem_sucesso})
 
 def agendar_consulta(request):
+    mensagem_sucesso=""
     if request.method == 'POST':
         form = ConsultaForm(request.POST)
         if form.is_valid(): 
             form.save() 
-            return redirect('/marcar_consulta/')  
+            mensagem_sucesso = "consulta marcada com sucesso"  
     else:
         form = ConsultaForm() 
 
-    return render(request, 'marcar_consulta.html', {'form': form})
+    return render(request, 'marcar_consulta.html', {'form': form,'mensagem_sucesso': mensagem_sucesso})
 
 def cadastrar_usuario(request):
     if request.method == 'POST':
@@ -191,14 +192,15 @@ def fazer_login(request):
     return render(request, 'front/login.html', {'form': form, 'erro': erro})
 
 def adicionar_dica(request):
+    mensagem_sucesso=""
     if request.method == 'POST':
         form = DicaForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/dicas_adm/')
+            mensagem_sucesso= "Dica adicionada com sucesso"
     else:
         form = DicaForm()
-    return render(request, 'dicasadm.html', {'form': form})
+    return render(request, 'dicasadm.html', {'form': form, 'mensagem_sucesso':mensagem_sucesso})
 
 def exibir_dica(request):
     tipo_selecionado = request.GET.get('tipo')
@@ -206,16 +208,18 @@ def exibir_dica(request):
     return render(request, 'dicas.html', {'dicas': dicas})
 
 def criar_treino_predefinido(request):
+    mensagem_sucesso=""
     if request.method == 'POST':
         form = TreinoPredefinidoForm(request.POST)
         if form.is_valid():
             form.save()
+            mensagem_sucesso= "Treino Criado com sucesso"
             
-            return redirect('/treinospredefinidos_adm/')  
+            
     else:
         form = TreinoPredefinidoForm()
 
-    return render(request, 'treinospredefinidos_adm.html', {'form': form})
+    return render(request, 'treinospredefinidos_adm.html', {'form': form, 'mensagem_sucesso':mensagem_sucesso})
 
 
 def exibir_treino_predefinido(request):
