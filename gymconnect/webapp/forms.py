@@ -14,7 +14,7 @@ class FeedbackForm(forms.ModelForm):
 class ProgressoForm(forms.ModelForm):
     class Meta:
         model = ProgressoAluno
-        fields = ['nome_aluno', 'metrica', 'data', 'progresso_observado']
+        fields = ['progresso_observado', 'metrica', 'data', 'nome_aluno']
 
 class LoginForm(forms.Form):
     nome = forms.CharField()

@@ -24,21 +24,15 @@ class Feedback(models.Model):
 
     def __str__(self):
         return f"Feedback de {self.aluno.nome}"
-    
-class Progresso(models.Model):
-    nome_aluno = models.CharField(max_length=100)
-    metrica = models.CharField(max_length=100)
-    data = models.DateField()
-    progresso_observado = models.TextField()
-
-    def __str__(self):
-        return f"Progresso de {self.nome_aluno} em {self.metrica} em {self.data}"
 
 class ProgressoAluno(models.Model):
     progresso_observado = models.TextField()
     metrica = models.CharField(max_length=100)
     data = models.DateField()
-    nome_aluno = models.CharField(max_length=100)
+    nome_aluno = models.ForeignKey(Dados, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Progresso de {self.nome_aluno.nome} em {self.metrica} em {self.data}"
 
 class Duvida(models.Model):
     duvida_escrita = models.TextField()

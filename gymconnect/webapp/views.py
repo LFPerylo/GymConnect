@@ -7,7 +7,7 @@ from .models import Feedback
 from .forms import FeedbackForm 
 from .forms import ProgressoForm
 from .models import Duvida
-from .models import Consulta,TreinoPredefinido
+from .models import Consulta,TreinoPredefinido,ProgressoAluno
 from .forms import CadastroForm, LoginForm, DicaForm,ConsultaForm,TreinoPredefinidoForm
 from .models import Imagem
 from datetime import datetime
@@ -44,7 +44,7 @@ def home_aluno(request, nome_usuario=None):
     return render(request, 'home_aluno.html', {'nome_usuario': nome_usuario})
 
 def home_adm(request):
-    usuarios = Dados.objects.all()  # Obtém todos os usuários do banco de dados
+    usuarios = Dados.objects.all()  
     return render(request, 'home_adm.html', {'usuarios': usuarios})
 
 def duvidas(request):
@@ -83,10 +83,23 @@ def registrar_progresso(request):
     if request.method == 'POST':
         form = ProgressoForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('/progresso/')
+            nome_aluno = form.cleaned_data['nome_aluno']
+            progresso_observado = form.cleaned_data['progresso_observado']
+            metrica = form.cleaned_data['metrica']
+            data = form.cleaned_data['data']
+
+            
+            if Dados.objects.filter(nome=nome_aluno, tipo='usuario').exists():
+                aluno = Dados.objects.get(nome=nome_aluno)
+                progresso = ProgressoAluno.objects.create(progresso_observado=progresso_observado, metrica=metrica, data=data, nome_aluno=aluno)
+                return redirect('/progresso/')  
+            else:
+                
+                return render(request, 'progresso.html', {'mensagem_erro': 'Usuário não existente ou não cadastrado como aluno.'})
+
     else:
         form = ProgressoForm()
+
     return render(request, 'progresso.html', {'form': form})
 
 def enviar_duvida(request):
@@ -94,11 +107,11 @@ def enviar_duvida(request):
         duvida_escrita = request.POST.get('duvidaescrita')
         nome_treinador = request.POST.get('treinador')
         
-        # Crie um novo objeto de Duvida e salve no banco de dados
+    
         duvida = Duvida(duvida_escrita=duvida_escrita, nome_treinador=nome_treinador)
         duvida.save()
         
-        # Retorna uma resposta para o usuário
+    
         return redirect('/duvidas/')
     else:
         return redirect('/duvidas/')
@@ -112,11 +125,11 @@ def enviar_feedback(request):
             nome_aluno = form.cleaned_data['nome_aluno']
             feedback_texto = form.cleaned_data['feedback']
 
-            # Verificar se o aluno existe e é do tipo "usuário"
+            
             if Dados.objects.filter(nome=nome_aluno, tipo='usuario').exists():
                 aluno = Dados.objects.get(nome=nome_aluno)
                 feedback = Feedback.objects.create(feedback=feedback_texto, aluno=aluno)
-                return redirect('/feedback/')  # Redirecionar para página de sucesso
+                return redirect('/feedback/')  
             else:
                 form.add_error('nome_aluno', 'Aluno não encontrado ou não é um usuário.')
                 mensagem_erro = "Aluno não encontrado ou não é um usuário."
@@ -156,14 +169,14 @@ def fazer_login(request):
             nome = form.cleaned_data['nome']
             senha = form.cleaned_data['senha']
             tipo = form.cleaned_data['tipo']
-            # Consulta ao banco de dados para verificar o usuário
+            
             usuario = Dados.objects.filter(nome=nome, senha=senha, tipo=tipo).first()
             if usuario:
                 if tipo == 'usuario':
-                    # Redirecionar usuário para a página home do aluno
-                    return redirect('/home_aluno/')  # Passando o nome do usuário como parte da URL
+                    
+                    return redirect('/home_aluno/')  
                 elif tipo == 'administrador':
-                    # Redirecionar administrador para a página home do administrador
+                    
                     return redirect('/home_adm/')
             
             erro = 'Usuário não cadastrado ou credenciais incorretas.'
@@ -192,8 +205,8 @@ def criar_treino_predefinido(request):
         form = TreinoPredefinidoForm(request.POST)
         if form.is_valid():
             form.save()
-            # Redirecionar para alguma página de sucesso
-            return redirect('/treinospredefinidos_adm/')  # substitua '/sucesso/' pela URL da página de sucesso desejada
+            
+            return redirect('/treinospredefinidos_adm/')  
     else:
         form = TreinoPredefinidoForm()
 
@@ -237,7 +250,7 @@ def exibir_consultas(request):
         data_selecionada = request.GET.get('data')
         if data_selecionada:
             try:
-                # Converta a data de string para o formato de data do Python
+                
                 data_selecionada = datetime.strptime(data_selecionada, '%Y-%m-%d').date()
                 consultas = Consulta.objects.filter(data=data_selecionada)
                 return render(request, 'marcar_consulta_adm.html', {'consultas': consultas, 'data_selecionada': data_selecionada})
