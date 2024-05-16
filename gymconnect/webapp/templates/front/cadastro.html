@@ -116,7 +116,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-    <link rel="stylesheet" href="style.css"> <!-- Ajuste o caminho conforme necessário -->
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
     <div id="menu"><h2>Gymconnect</h2></div>
@@ -129,7 +129,7 @@
         </div>
         {% endfor %}
         <form action="/cadastrar_usuario/" method="post">
-            <!-- CSRF Token -->
+            
             {% csrf_token %}
             <div class="input-group">
                 <input type="radio" id="administrador" name="tipo" value="administrador" required>
@@ -140,9 +140,9 @@
                 <label for="usuario">Aluno</label>
             </div>
             <input type="text" name="nome" placeholder="Nome de usuário" required>
-            <!-- Campo de senha -->
+            
             <input type="password" name="senha" placeholder="Senha" required>
-            <!-- Botão de cadastrar -->
+            
             <input type="submit" value="Cadastrar">
         </form>
     </div>

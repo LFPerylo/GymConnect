@@ -147,7 +147,7 @@
         </div>
         {% endfor %}
         <form action="/fazer_login/" method="post">
-            <!-- CSRF Token -->
+            
             {% csrf_token %}
             <div class="input-group">
                 <input type="radio" id="administrador" name="tipo" value="administrador" required>
@@ -158,9 +158,9 @@
                 <label for="usuario">Aluno</label>
             </div>
             <input type="text" name="nome" placeholder="Nome de usuário" required>
-            <!-- Campo de senha -->
+            
             <input type="password" name="senha" placeholder="Senha" required>
-            <!-- Botão de login -->
+            
             <input type="submit" value="Entrar">
         </form>
         

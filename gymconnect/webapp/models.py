@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 class Dados(models.Model):
-    # Definindo as opções para o campo 'tipo'
+    
     TIPO_USUARIO_CHOICES = (
         ('administrador', 'Administrador'),
         ('usuario', 'Usuário'),
@@ -15,7 +15,7 @@ class Dados(models.Model):
     senha = models.CharField(max_length=50)
 
     def __str__(self):
-        # Método para retornar uma string representativa do objeto
+        
         return f"{self.nome}"
     
 class Feedback(models.Model):
@@ -45,7 +45,7 @@ class Consulta(models.Model):
     
     data = models.DateField()
     horario = models.TimeField()
-    mensagem = models.TextField(blank=True)  # O campo mensagem é opcional
+    mensagem = models.TextField(blank=True)  
 
     def __str__(self):
         return f"Consulta em {self.data} às {self.horario}"

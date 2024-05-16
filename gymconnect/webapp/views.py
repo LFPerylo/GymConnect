@@ -261,6 +261,6 @@ def exibir_consultas(request):
             mensagem_erro = "Nenhuma data selecionada."
             return render(request, 'marcar_consulta_adm.html', {'mensagem_erro': mensagem_erro})
     else:
-        # Se não for um método GET, redirecione ou retorne algo apropriado
+    
         pass
 
