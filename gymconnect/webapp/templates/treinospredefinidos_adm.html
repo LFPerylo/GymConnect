@@ -146,6 +146,50 @@
             padding-top: 30px;
             padding-bottom: 30px;
         }
+        footer {
+            background-color: rgb(37, 37, 37);;
+            color: white;
+            padding: 20px 0;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+        
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin: 10px;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 10px;
+            color: rgb(0, 255, 30); /* Cor do texto do título */
+        }
+        
+        .footer-section p, .footer-section a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Estilos para os links */
+        .footer-section a {
+            color: white; /* Cor dos links */
+        }
+        
+        .footer-section a:hover {
+            color: rgb(0, 255, 30); /* Cor dos links ao passar o mouse */
+        }
     </style>
 </head>
 
@@ -210,5 +254,28 @@
 </div>
         
 </body>
-
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Sobre Nós</h4>
+            <p>Nossa missão é proporcionar a melhor experiência para nossos usuários, oferecendo um ambiente intuitivo e eficiente para o gerenciamento de seus treinos, progressos, metas e feedbacks.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Contato</h4>
+            <p>Telefone: (81) 1234-5678</p>
+            <p>Email: contato@webapp.com</p>
+        </div>
+        <div class="footer-section">
+            <h4>Redes Sociais</h4>
+            <a href="https://facebook.com" target="_blank">Facebook</a>
+            <a href="https://twitter.com" target="_blank">Twitter</a>
+            <a href="https://instagram.com" target="_blank">Instagram</a>
+        </div>
+        <div class="footer-section">
+            <h4>Endereço</h4>
+            <p>Cais do Apolo, 77</p>
+            <p>Recife, Pernambuco</p>
+        </div>
+    </div>
+</footer>
 </html>
