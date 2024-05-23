@@ -93,3 +93,28 @@ class TreinoPredefinido(models.Model):
 
     def __str__(self):
         return f"{self.get_tipo_treino_display()} - {self.exercicio1_nome}, {self.exercicio2_nome}, {self.exercicio3_nome}, {self.exercicio4_nome}"
+    
+class Treino(models.Model):
+    TIPO_TREINO_CHOICES = (
+        ('costas', 'Costas'),
+        ('peito', 'Peito'),
+        ('perna', 'Perna'),
+        ('braco', 'Braço'),
+    )
+    tipo_treino = models.CharField(max_length=100, choices=TIPO_TREINO_CHOICES)
+    nome_aluno = models.ForeignKey(Dados, on_delete=models.CASCADE)
+    exercicio1 = models.CharField(max_length=100)
+    series1 = models.PositiveIntegerField()
+    repeticoes1 = models.PositiveIntegerField()
+    exercicio2 = models.CharField(max_length=100)
+    series2 = models.PositiveIntegerField()
+    repeticoes2 = models.PositiveIntegerField()
+    exercicio3 = models.CharField(max_length=100)
+    series3 = models.PositiveIntegerField()
+    repeticoes3 = models.PositiveIntegerField()
+    exercicio4 = models.CharField(max_length=100)
+    series4 = models.PositiveIntegerField()
+    repeticoes4 = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"Treino de {self.nome_aluno.nome} - {self.tipo_treino}"

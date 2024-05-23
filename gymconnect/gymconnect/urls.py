@@ -44,6 +44,7 @@ urlpatterns = [
 
     path('treino_personalizado/', views.treino_personalizado, name='treino_personalizado'),
     path('treino_personalizado_adm/', views.treino_personalizado_adm, name='treino_personalizado_adm'),
+    path('criar_treino/', views.criar_treino, name='criar_treino'),
     
     path('admin/', admin.site.urls),
     path('cadastrar_usuario/', views.cadastrar_usuario, name="cadastrar_usuario"),

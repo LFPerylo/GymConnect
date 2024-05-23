@@ -8,7 +8,7 @@ from .forms import FeedbackForm
 from .forms import ProgressoForm
 from .models import Duvida
 from .models import Consulta,TreinoPredefinido,Progresso,Duvida
-from .forms import CadastroForm, LoginForm, DicaForm,ConsultaForm,TreinoPredefinidoForm,DuvidaForm
+from .forms import CadastroForm, LoginForm, DicaForm,ConsultaForm,TreinoPredefinidoForm,DuvidaForm,TreinoForm
 from .models import Imagem
 from datetime import datetime
 
@@ -93,11 +93,11 @@ def feedback_aluno(request):
 
 def treino_personalizado(request):
 
-    return render(request, 'treino_personalizado')
+    return render(request, 'treino_personalizado.html')
 
 def treino_personalizado_adm(request):
 
-    return render(request, 'treino_personalizado_adm')
+    return render(request, 'treino_personalizado_adm.html')
 
 def registrar_progresso(request):
     mensagem_erro = None
@@ -369,3 +369,22 @@ def exibir_duvidas(request):
             mensagem_erro = str(e)
     
     return render(request, 'duvidas_adm.html', {'duvidas': duvidas, 'nome_treinador': nome_treinador, 'mensagem_erro': mensagem_erro})
+
+def criar_treino(request):
+    mensagem_erro = ""
+    mensagem_sucesso = ""
+    if request.method == 'POST':
+        form = TreinoForm(request.POST)
+        if form.is_valid():
+            nome_aluno = form.cleaned_data['nome_aluno']
+            if Dados.objects.filter(nome=nome_aluno, tipo='usuario').exists():
+                form.save()
+                mensagem_sucesso = "Treino enviado com sucesso!"
+            else:
+                mensagem_erro = "Aluno não encontrado ou não é usuário."
+        else:
+            mensagem_erro = "Formulário inválido. Por favor, verifique os dados informados."
+    else:
+        form = TreinoForm()
+    
+    return render(request, 'criar_treino.html', {'form': form, 'mensagem_erro': mensagem_erro, 'mensagem_sucesso': mensagem_sucesso})
