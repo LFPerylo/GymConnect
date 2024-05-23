@@ -48,10 +48,13 @@ class TreinoPredefinidoForm(forms.ModelForm):
         model = TreinoPredefinido
         fields = '__all__'
 
+
 class TreinoForm(forms.ModelForm):
+    nome_aluno = forms.ModelChoiceField(queryset=Dados.objects.filter(tipo='usuario'))
+
     class Meta:
         model = Treino
-        fields = ['tipo_treino', 'nome_aluno', 'exercicio1', 'series1', 'repeticoes1', 'exercicio2', 'series2', 'repeticoes2', 'exercicio3', 'series3', 'repeticoes3', 'exercicio4', 'series4', 'repeticoes4']
+        fields = '__all__'
 
 class DuvidaForm(forms.Form):
     nome_treinador = forms.CharField(max_length=100, label="Nome do Professor")

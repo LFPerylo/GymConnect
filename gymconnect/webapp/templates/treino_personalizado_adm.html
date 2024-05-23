@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GymConnect - Dicas</title>
+    <title>GymConnect - Criar Treinos Personalizados</title>
     <style>
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -204,66 +204,49 @@
             <p style="color: green;">{{ mensagem_sucesso }}</p>
         {% endif %}
         
-        <form action="{% url 'criar_treino' %}" method="post" id="enviar">
+        <form action="{% url 'criar_treino' %}" method="post">
             {% csrf_token %}
             <div class="input-group">
-                <label for="id_tipo_treino">Tipo de Treino</label>
-                {{ form.tipo_treino }}
+                <label for="tipo_treino">Tipo de Treino:</label>
+                <select id="tipo_treino" name="tipo_treino" required>
+                    <option value="costas">Costas</option>
+                    <option value="peito">Peito</option>
+                    <option value="perna">Perna</option>
+                    <option value="braco">Braço</option>
+                </select>
             </div>
             <div class="input-group">
-                <label for="id_nome_aluno">Nome do Aluno</label>
-                {{ form.nome_aluno }}
+                <label for="nome_aluno">Nome do Aluno:</label><br>
+                <input type="text" id="nome_aluno" name="nome_aluno" required><br><br>
             </div>
             <div class="input-group">
-                <label for="id_exercicio1">Exercício 1</label>
-                {{ form.exercicio1 }}
+                <label for="exercicio1_nome">Exercício 1:</label>
+                <input type="text" id="exercicio1_nome" name="exercicio1_nome" required>
+                Séries: <input type="number" id="exercicio1_series" name="exercicio1_series" min="1" required>
+                Repetições: <input type="number" id="exercicio1_repeticoes" name="exercicio1_repeticoes" min="1" required>
             </div>
             <div class="input-group">
-                <label for="id_series1">Séries 1</label>
-                {{ form.series1 }}
+                <label for="exercicio2_nome">Exercício 2:</label>
+                <input type="text" id="exercicio2_nome" name="exercicio2_nome" required>
+                Séries: <input type="number" id="exercicio2_series" name="exercicio2_series" min="1" required>
+                Repetições: <input type="number" id="exercicio2_repeticoes" name="exercicio2_repeticoes" min="1" required>
             </div>
             <div class="input-group">
-                <label for="id_repeticoes1">Repetições 1</label>
-                {{ form.repeticoes1 }}
+                <label for="exercicio3_nome">Exercício 3:</label>
+                <input type="text" id="exercicio3_nome" name="exercicio3_nome" required>
+                Séries: <input type="number" id="exercicio3_series" name="exercicio3_series" min="1" required>
+                Repetições: <input type="number" id="exercicio3_repeticoes" name="exercicio3_repeticoes" min="1" required>
             </div>
             <div class="input-group">
-                <label for="id_exercicio2">Exercício 2</label>
-                {{ form.exercicio2 }}
+                <label for="exercicio4_nome">Exercício 4:</label>
+                <input type="text" id="exercicio4_nome" name="exercicio4_nome" required>
+                Séries: <input type="number" id="exercicio4_series" name="exercicio4_series" min="1" required>
+                Repetições: <input type="number" id="exercicio4_repeticoes" name="exercicio4_repeticoes" min="1" required>
             </div>
-            <div class="input-group">
-                <label for="id_series2">Séries 2</label>
-                {{ form.series2 }}
-            </div>
-            <div class="input-group">
-                <label for="id_repeticoes2">Repetições 2</label>
-                {{ form.repeticoes2 }}
-            </div>
-            <div class="input-group">
-                <label for="id_exercicio3">Exercício 3</label>
-                {{ form.exercicio3 }}
-            </div>
-            <div class="input-group">
-                <label for="id_series3">Séries 3</label>
-                {{ form.series3 }}
-            </div>
-            <div class="input-group">
-                <label for="id_repeticoes3">Repetições 3</label>
-                {{ form.repeticoes3 }}
-            </div>
-            <div class="input-group">
-                <label for="id_exercicio4">Exercício 4</label>
-                {{ form.exercicio4 }}
-            </div>
-            <div class="input-group">
-                <label for="id_series4">Séries 4</label>
-                {{ form.series4 }}
-            </div>
-            <div class="input-group">
-                <label for="id_repeticoes4">Repetições 4</label>
-                {{ form.repeticoes4 }}
-            </div>
-            <button type="submit" class="button">Enviar</button>
+            <button type="submit">Salvar Treino</button>
         </form>
+    </div>
+    
     </div>
 
 

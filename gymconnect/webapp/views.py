@@ -7,7 +7,7 @@ from .models import Feedback
 from .forms import FeedbackForm 
 from .forms import ProgressoForm
 from .models import Duvida
-from .models import Consulta,TreinoPredefinido,Progresso,Duvida
+from .models import Consulta,TreinoPredefinido,Progresso,Duvida,Treino
 from .forms import CadastroForm, LoginForm, DicaForm,ConsultaForm,TreinoPredefinidoForm,DuvidaForm,TreinoForm
 from .models import Imagem
 from datetime import datetime
@@ -251,6 +251,25 @@ def criar_treino_predefinido(request):
 
     return render(request, 'treinospredefinidos_adm.html', {'form': form, 'mensagem_sucesso':mensagem_sucesso})
 
+def criar_treino(request):
+    mensagem_erro = ""
+    mensagem_sucesso = ""
+    if request.method == 'POST':
+        form = TreinoForm(request.POST)
+        if form.is_valid():
+            treino = form.save(commit=False)
+            nome_aluno = form.cleaned_data['nome_aluno']
+            aluno = Dados.objects.get(nome=nome_aluno, tipo='usuario')
+            treino.nome_aluno = aluno
+            treino.save()
+            mensagem_sucesso = "Treino enviado com sucesso!"
+        else:
+            mensagem_erro = "Formulário inválido. Por favor, verifique os dados informados."
+            print(form.errors) 
+    else:
+        form = TreinoForm()
+
+    return render(request, 'treino_personalizado_adm.html', {'form': form, 'mensagem_erro': mensagem_erro, 'mensagem_sucesso': mensagem_sucesso})
 
 def exibir_treino_predefinido(request):
     tipo_treino = request.GET.get('tipo_treino')
@@ -370,21 +389,3 @@ def exibir_duvidas(request):
     
     return render(request, 'duvidas_adm.html', {'duvidas': duvidas, 'nome_treinador': nome_treinador, 'mensagem_erro': mensagem_erro})
 
-def criar_treino(request):
-    mensagem_erro = ""
-    mensagem_sucesso = ""
-    if request.method == 'POST':
-        form = TreinoForm(request.POST)
-        if form.is_valid():
-            nome_aluno = form.cleaned_data['nome_aluno']
-            if Dados.objects.filter(nome=nome_aluno, tipo='usuario').exists():
-                form.save()
-                mensagem_sucesso = "Treino enviado com sucesso!"
-            else:
-                mensagem_erro = "Aluno não encontrado ou não é usuário."
-        else:
-            mensagem_erro = "Formulário inválido. Por favor, verifique os dados informados."
-    else:
-        form = TreinoForm()
-    
-    return render(request, 'criar_treino.html', {'form': form, 'mensagem_erro': mensagem_erro, 'mensagem_sucesso': mensagem_sucesso})
