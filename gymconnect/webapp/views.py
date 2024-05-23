@@ -7,8 +7,8 @@ from .models import Feedback
 from .forms import FeedbackForm 
 from .forms import ProgressoForm
 from .models import Duvida
-from .models import Consulta,TreinoPredefinido,Progresso
-from .forms import CadastroForm, LoginForm, DicaForm,ConsultaForm,TreinoPredefinidoForm
+from .models import Consulta,TreinoPredefinido,Progresso,Duvida
+from .forms import CadastroForm, LoginForm, DicaForm,ConsultaForm,TreinoPredefinidoForm,DuvidaForm
 from .models import Imagem
 from datetime import datetime
 
@@ -55,6 +55,10 @@ def duvidas(request):
 
     return render(request,'duvidas.html')
 
+def duvidas_adm(request):
+
+    return render(request,'duvidas_adm.html')
+
 def treinospredefinidos(request):
 
     return render(request,'treinospredefinidos.html')
@@ -87,6 +91,14 @@ def feedback_aluno(request):
 
     return render(request, 'feedback_aluno.html')
 
+def treino_personalizado(request):
+
+    return render(request, 'treino_personalizado')
+
+def treino_personalizado_adm(request):
+
+    return render(request, 'treino_personalizado_adm')
+
 def registrar_progresso(request):
     mensagem_erro = None
     mensagem_sucesso = None
@@ -115,19 +127,29 @@ def registrar_progresso(request):
     return render(request, 'progresso.html', {'form': form, 'mensagem_erro': mensagem_erro,'mensagem_sucesso':mensagem_sucesso})
 
 def enviar_duvida(request):
+    mensagem_erro = ""
+    mensagem_sucesso = ""
     if request.method == 'POST':
-        duvida_escrita = request.POST.get('duvidaescrita')
-        nome_treinador = request.POST.get('treinador')
-        
-    
-        duvida = Duvida(duvida_escrita=duvida_escrita, nome_treinador=nome_treinador)
-        duvida.save()
-        
-    
-        return redirect('/duvidas/')
+        form = DuvidaForm(request.POST)
+        if form.is_valid():
+            nome_treinador = form.cleaned_data['nome_treinador']
+            duvida_escrita = form.cleaned_data['duvida_escrita']
+            
+            try:
+                treinador = Dados.objects.get(nome=nome_treinador)
+                if treinador.tipo == 'administrador':
+                    Duvida.objects.create(nome_treinador=treinador, duvida_escrita=duvida_escrita)
+                    mensagem_sucesso = "Dúvida enviada com sucesso"
+                else:
+                    mensagem_erro = "O nome enviado não é professor"
+            except Dados.DoesNotExist:
+                mensagem_erro = "Professor não encontrado/existente"
+        else:
+            mensagem_erro = "Formulário inválido. Por favor, verifique os dados informados."
     else:
-        return redirect('/duvidas/')
+        form = DuvidaForm()
     
+    return render(request, 'duvidas.html', {'form': form, 'mensagem_erro': mensagem_erro, 'mensagem_sucesso': mensagem_sucesso})
 
 def enviar_feedback(request):
     mensagem_erro = ""
@@ -328,3 +350,22 @@ def exibir_informacoes(request):
         mensagem = None
 
     return render(request, 'form_busca_aluno.html', {'mensagem': mensagem})
+
+def exibir_duvidas(request):
+    mensagem_erro = ""
+    duvidas = None
+    nome_treinador = ""
+
+    if request.method == 'GET' and 'nome_treinador' in request.GET:
+        nome_treinador = request.GET.get('nome_treinador')
+        try:
+            treinador = Dados.objects.get(nome=nome_treinador, tipo='administrador')
+            duvidas = Duvida.objects.filter(nome_treinador=treinador)
+            if not duvidas:
+                mensagem_erro = "Não há dúvidas registradas para este treinador."
+        except Dados.DoesNotExist:
+            mensagem_erro = "Treinador não encontrado no banco de dados."
+        except Exception as e:
+            mensagem_erro = str(e)
+    
+    return render(request, 'duvidas_adm.html', {'duvidas': duvidas, 'nome_treinador': nome_treinador, 'mensagem_erro': mensagem_erro})

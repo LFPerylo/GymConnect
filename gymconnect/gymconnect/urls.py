@@ -28,6 +28,9 @@ urlpatterns = [
 
     path('enviar_duvida/', views.enviar_duvida, name='enviar_duvida'),
     path('duvidas/', views.duvidas, name="duvidas"),
+    path('duvidas_adm/',views.duvidas_adm, name="duvidas_adm"),
+    path('exibir_duvidas/',views.exibir_duvidas, name="exibir_duvidas"),
+
     
     path('adicionar_dica/', views.adicionar_dica, name='adicionar_dica'),
     path('exibir_dica/', views.exibir_dica, name='exibir_dica'),
@@ -38,6 +41,9 @@ urlpatterns = [
     path('progresso_adm/', views.progresso_adm, name='progresso_adm'),
     path('registrar_progresso/', views.registrar_progresso, name="registrar_progresso"),
     path('exibir_progresso/', views.exibir_progresso, name="exibir_progresso"),
+
+    path('treino_personalizado/', views.treino_personalizado, name='treino_personalizado'),
+    path('treino_personalizado_adm/', views.treino_personalizado_adm, name='treino_personalizado_adm'),
     
     path('admin/', admin.site.urls),
     path('cadastrar_usuario/', views.cadastrar_usuario, name="cadastrar_usuario"),

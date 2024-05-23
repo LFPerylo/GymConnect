@@ -1,7 +1,7 @@
 from django import forms
 from .models import Feedback
 from .models import Progresso
-from .models import Dados, Dica,Consulta,TreinoPredefinido
+from .models import Dados, Dica,Consulta,TreinoPredefinido,Duvida
 
 class FeedbackForm(forms.ModelForm):
     nome_aluno = forms.CharField(max_length=50)
@@ -47,4 +47,9 @@ class TreinoPredefinidoForm(forms.ModelForm):
     class Meta:
         model = TreinoPredefinido
         fields = '__all__'
+
+class DuvidaForm(forms.Form):
+    nome_treinador = forms.CharField(max_length=100, label="Nome do Professor")
+    duvida_escrita = forms.CharField(widget=forms.Textarea, label="Dúvida")
+       
 

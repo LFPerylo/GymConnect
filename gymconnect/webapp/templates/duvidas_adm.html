@@ -204,31 +204,37 @@
 
     </script>
     <div id="menu">
-        <a href="{% url 'home_aluno' %}"> 
+        <a href="{% url 'home_adm' %}"> 
             <h2 id="voltar" style="color: white;">⇦</h2>
         </a>
-        <h2>ENVIAR DÚVIDAS</h2>
+        <h2>VIZUALIZAR DÚVIDAS</h2>
     </div>
-    <div id="login_box">
-        <h2>PREENCHA O FORMULARIO</h2>
+    
+     <div id=login_box>
+
             {% if mensagem_erro %}
-                <p style="color: red;">{{ mensagem_erro }}</p>
+            <p style="color: red;">{{ mensagem_erro }}</p>
             {% endif %}
-            {% if mensagem_sucesso %}
-                <p style="color: green;">{{ mensagem_sucesso }}</p>
-            {% endif %}
-            <form action="{% url 'enviar_duvida' %}" method="post" id="enviar">
-                {% csrf_token %}
+            <h2>PREENCHA O FORMULÁRIO</h2>
+            <form action="{% url 'exibir_duvidas' %}" method="get" id="pesquisar">
                 <div class="input-group">
-                    <label for="nome_treinador">Nome do Professor:</label>
+                    <label for="nome_treinador">Nome do Treinador:</label>
                     <input type="text" id="nome_treinador" name="nome_treinador" required>
                 </div>
-                <div class="input-group">
-                    <label for="duvida_escrita">Dúvida:</label>
-                    <textarea id="duvida_escrita" name="duvida_escrita" rows="4" required></textarea>
-                </div>
-                <button type="submit">Enviar</button>
+                <button type="submit">Pesquisar</button>
             </form>
+    
+    
+   
+        
+        {% if duvidas %}
+            <h2>Dúvidas Registradas para {{ nome_treinador }}</h2>
+            <ul>
+                {% for duvida in duvidas %}
+                    <li>{{ duvida.duvida_escrita }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     </div>
 </body>
 <footer>

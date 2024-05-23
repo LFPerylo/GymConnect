@@ -40,8 +40,8 @@ class Progresso(models.Model):
         return f"{self.nome_aluno} - {self.tipo_progresso} em {self.data}"
 
 class Duvida(models.Model):
+    nome_treinador = models.ForeignKey(Dados, on_delete=models.CASCADE)
     duvida_escrita = models.TextField()
-    nome_treinador = models.CharField(max_length=100)
 
     def __str__(self):
         return self.duvida_escrita
