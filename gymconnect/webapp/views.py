@@ -295,6 +295,29 @@ def exibir_treino_predefinido(request):
     
     return render(request, 'treinospredefinidos.html', {'treinos': treinos})
 
+def visualizar_treinos(request):
+    if request.method == 'GET':
+        nome_aluno = request.GET.get('nome_aluno')
+
+        if nome_aluno:
+            try:
+                aluno = Dados.objects.get(nome=nome_aluno, tipo='usuario')
+                treinos = Treino.objects.filter(aluno=aluno)
+                return render(request, 'treino_personalizado.html', {'treinos': treinos, 'nome_aluno': nome_aluno})
+            except Dados.DoesNotExist:
+                mensagem_erro = "Aluno não encontrado no banco de dados."
+            except Treino.DoesNotExist:
+                mensagem_erro = "Não há treinos registrados para este aluno."
+            except Exception as e:
+                mensagem_erro = str(e)
+
+            return render(request, 'treino_personalizado.html', {'mensagem_erro': mensagem_erro})
+
+        else:
+            return render(request, 'treino_personalizado.html')
+
+    return render(request, 'treino_personalizado.html')
+
 def exibir_feedback(request):
     if request.method == 'GET':
         nome_aluno = request.GET.get('nome_aluno')

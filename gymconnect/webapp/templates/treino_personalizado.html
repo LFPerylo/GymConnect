@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GymConnect - Dicas</title>
+    <title>GymConnect - Treinos Personalizados</title>
     <style>
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -17,6 +17,19 @@
             align-items: center;
             margin-top: 220px;
 
+        }
+        #feedback_box {
+            width: 35%;
+            display: inline-block;
+            border: 3px rgb(0, 255, 30) groove;
+            background-color: rgb(37, 37, 37);
+            box-sizing: border-box;
+            margin-top: 170px;
+            padding: 20px;
+            color: white;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
         }
 
         input {
@@ -188,10 +201,40 @@
     </script>
     <div id="menu">
         <a href="{% url 'home_aluno' %}"> 
-        <h2 id="voltar" style="color: white;">⇦</h2>
+            <h2 id="voltar" style="color:white;">⇦</h2>
         </a>
-        <h2>DICAS</h2>
-    </div>
+
+        <h2>TREINOS PERSONALIZADOS</h2></div>
+        <div id="feedback_box">
+            <h2>Visualizar Treinos</h2>
+            
+            {% if mensagem_erro %}
+            <p style="color: red;">{{ mensagem_erro }}</p>
+            {% endif %}
+            
+            <form action="{% url 'exibir_treino' %}" method="get">
+                <label for="nome_aluno">Digite o Nome do Aluno:</label><br>
+                <input type="text" id="nome_aluno" name="nome_aluno" required><br><br>
+                <button type="submit">Buscar Treino</button>
+            </form>
+        
+            {% if treinos %}
+            <h2>Treinos para {{ nome_aluno }}:</h2>
+            <ul>
+                {% for treino in treinos %}
+                <li>Tipo de Treino: {{ treino.get_tipo_treino_display }}</li>
+                <ul>
+                    <li>Exercício 1: {{ treino.exercicio1_nome }} - Séries: {{ treino.exercicio1_series }} - Repetições: {{ treino.exercicio1_repeticoes }}</li>
+                    <li>Exercício 2: {{ treino.exercicio2_nome }} - Séries: {{ treino.exercicio2_series }} - Repetições: {{ treino.exercicio2_repeticoes }}</li>
+                    <li>Exercício 3: {{ treino.exercicio3_nome }} - Séries: {{ treino.exercicio3_series }} - Repetições: {{ treino.exercicio3_repeticoes }}</li>
+                    <li>Exercício 4: {{ treino.exercicio4_nome }} - Séries: {{ treino.exercicio4_series }} - Repetições: {{ treino.exercicio4_repeticoes }}</li>
+                </ul>
+                {% endfor %}
+            </ul>
+            {% elif nome_aluno %}
+            <p>Não há Treinos criados para {{ nome_aluno }}.</p>
+            {% endif %}
+        </div>
     
     
 
