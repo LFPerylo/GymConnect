@@ -195,58 +195,55 @@
     </div>
     
     <div id="login_box">
-        
-        {% if mensagem_erro %}
-            <p style="color: red;">{{ mensagem_erro }}</p>
-        {% endif %}
 
+        <h2>Preencha o Formulário</h2>
         {% if mensagem_sucesso %}
             <p style="color: green;">{{ mensagem_sucesso }}</p>
         {% endif %}
-        
-        <form action="{% url 'criar_treino' %}" method="post">
-            {% csrf_token %}
-            <div class="input-group">
-                <label for="tipo_treino">Tipo de Treino:</label>
-                <select id="tipo_treino" name="tipo_treino" required>
-                    <option value="costas">Costas</option>
-                    <option value="peito">Peito</option>
-                    <option value="perna">Perna</option>
-                    <option value="braco">Braço</option>
-                </select>
-            </div>
-            <div class="input-group">
-                <label for="nome_aluno">Nome do Aluno:</label><br>
-                <input type="text" id="nome_aluno" name="nome_aluno" required><br><br>
-            </div>
-            <div class="input-group">
-                <label for="exercicio1_nome">Exercício 1:</label>
-                <input type="text" id="exercicio1_nome" name="exercicio1_nome" required>
-                Séries: <input type="number" id="exercicio1_series" name="exercicio1_series" min="1" required>
-                Repetições: <input type="number" id="exercicio1_repeticoes" name="exercicio1_repeticoes" min="1" required>
-            </div>
-            <div class="input-group">
-                <label for="exercicio2_nome">Exercício 2:</label>
-                <input type="text" id="exercicio2_nome" name="exercicio2_nome" required>
-                Séries: <input type="number" id="exercicio2_series" name="exercicio2_series" min="1" required>
-                Repetições: <input type="number" id="exercicio2_repeticoes" name="exercicio2_repeticoes" min="1" required>
-            </div>
-            <div class="input-group">
-                <label for="exercicio3_nome">Exercício 3:</label>
-                <input type="text" id="exercicio3_nome" name="exercicio3_nome" required>
-                Séries: <input type="number" id="exercicio3_series" name="exercicio3_series" min="1" required>
-                Repetições: <input type="number" id="exercicio3_repeticoes" name="exercicio3_repeticoes" min="1" required>
-            </div>
-            <div class="input-group">
-                <label for="exercicio4_nome">Exercício 4:</label>
-                <input type="text" id="exercicio4_nome" name="exercicio4_nome" required>
-                Séries: <input type="number" id="exercicio4_series" name="exercicio4_series" min="1" required>
-                Repetições: <input type="number" id="exercicio4_repeticoes" name="exercicio4_repeticoes" min="1" required>
-            </div>
-            <button type="submit">Salvar Treino</button>
-        </form>
-    </div>
-    
+        {% if mensagem_erro %}
+        <p style="color: red;">{{ mensagem_erro }}</p>
+    {% endif %}
+    <form action="{% url 'criar_treino' %}" method="post">
+        {% csrf_token %}
+        <div class="input-group">
+            <label for="tipo_treino">Tipo de Treino:</label>
+            <select id="tipo_treino" name="tipo_treino" required>
+                <option value="costas">Costas</option>
+                <option value="peito">Peito</option>
+                <option value="perna">Perna</option>
+                <option value="braco">Braço</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="nome_aluno">Nome do Aluno:</label>
+            <input type="text" id="nome_aluno" name="nome_aluno" required>
+        </div>
+        <div class="input-group">
+            <label for="exercicio1_nome">Exercício 1:</label>
+            <input type="text" id="exercicio1_nome" name="exercicio1_nome" required>
+            Séries: <input type="number" id="exercicio1_series" name="exercicio1_series" min="1" required>
+            Repetições: <input type="number" id="exercicio1_repeticoes" name="exercicio1_repeticoes" min="1" required>
+        </div>
+        <div class="input-group">
+            <label for="exercicio2_nome">Exercício 2:</label>
+            <input type="text" id="exercicio2_nome" name="exercicio2_nome" required>
+            Séries: <input type="number" id="exercicio2_series" name="exercicio2_series" min="1" required>
+            Repetições: <input type="number" id="exercicio2_repeticoes" name="exercicio2_repeticoes" min="1" required>
+        </div>
+        <div class="input-group">
+            <label for="exercicio3_nome">Exercício 3:</label>
+            <input type="text" id="exercicio3_nome" name="exercicio3_nome" required>
+            Séries: <input type="number" id="exercicio3_series" name="exercicio3_series" min="1" required>
+            Repetições: <input type="number" id="exercicio3_repeticoes" name="exercicio3_repeticoes" min="1" required>
+        </div>
+        <div class="input-group">
+            <label for="exercicio4_nome">Exercício 4:</label>
+            <input type="text" id="exercicio4_nome" name="exercicio4_nome" required>
+            Séries: <input type="number" id="exercicio4_series" name="exercicio4_series" min="1" required>
+            Repetições: <input type="number" id="exercicio4_repeticoes" name="exercicio4_repeticoes" min="1" required>
+        </div>
+        <button type="submit" class="button">Salvar Treino</button>
+    </form>
     </div>
 
 

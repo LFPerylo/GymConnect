@@ -257,15 +257,30 @@ def criar_treino(request):
     if request.method == 'POST':
         form = TreinoForm(request.POST)
         if form.is_valid():
-            treino = form.save(commit=False)
             nome_aluno = form.cleaned_data['nome_aluno']
-            aluno = Dados.objects.get(nome=nome_aluno, tipo='usuario')
-            treino.nome_aluno = aluno
-            treino.save()
-            mensagem_sucesso = "Treino enviado com sucesso!"
+            tipo_treino = form.cleaned_data['tipo_treino']
+            exercicio1_nome = form.cleaned_data['exercicio1_nome']
+            exercicio1_repeticoes = form.cleaned_data['exercicio1_repeticoes']
+            exercicio1_series = form.cleaned_data['exercicio1_series']
+            exercicio2_nome = form.cleaned_data['exercicio2_nome']
+            exercicio2_repeticoes = form.cleaned_data['exercicio2_repeticoes']
+            exercicio2_series = form.cleaned_data['exercicio2_series']
+            exercicio3_nome = form.cleaned_data['exercicio3_nome']
+            exercicio3_repeticoes = form.cleaned_data['exercicio3_repeticoes']
+            exercicio3_series = form.cleaned_data['exercicio3_series']
+            exercicio4_nome = form.cleaned_data['exercicio4_nome']
+            exercicio4_repeticoes= form.cleaned_data['exercicio4_repeticoes']
+            exercicio4_series= form.cleaned_data['exercicio4_series']
+
+            if Dados.objects.filter(nome=nome_aluno, tipo='usuario').exists():
+                nome_aluno = Dados.objects.get(nome=nome_aluno)
+                Treino.objects.create( aluno=nome_aluno,tipo_treino=tipo_treino,exercicio1_nome=exercicio1_nome,exercicio1_repeticoes=exercicio1_repeticoes,exercicio1_series=exercicio1_series,exercicio2_nome=exercicio2_nome,exercicio2_repeticoes=exercicio2_repeticoes,exercicio2_series=exercicio2_series,exercicio3_nome=exercicio3_nome,exercicio3_repeticoes=exercicio3_repeticoes,exercicio3_series=exercicio3_series,exercicio4_nome=exercicio4_nome,exercicio4_repeticoes=exercicio4_repeticoes,exercicio4_series=exercicio4_series)
+                
+                mensagem_sucesso = "Treino criado com sucesso!"
+            else:
+                mensagem_erro = "Usuário não cadastrado ou não é aluno."
         else:
             mensagem_erro = "Formulário inválido. Por favor, verifique os dados informados."
-            print(form.errors) 
     else:
         form = TreinoForm()
 
