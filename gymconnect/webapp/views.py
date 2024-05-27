@@ -545,6 +545,6 @@ def cadastrar_info(request):
     else:
         form = InfoForm()
 
-    return render(request, 'info.html', {'form': form, 'mensagem_erro': mensagem_erro})
+    return render(request, 'info.html', {'form': form, 'mensagem_erro': mensagem_erro, 'mensagem_sucesso': mensagem_sucesso})
 
 
