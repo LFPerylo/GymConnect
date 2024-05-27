@@ -50,6 +50,9 @@ urlpatterns = [
     path('editar_treinos/<int:treino_id>/', views.editar_treinos, name='editar_treinos'),
     path('exibir_treinos/', views.exibir_treinos, name='exibir_treinos'),
 
+    path('metas/', views.metas, name="metas"),
+    path('criar_meta/', views.criar_meta, name="criar_meta"),
+
     
     path('admin/', admin.site.urls),
     path('cadastrar_usuario/', views.cadastrar_usuario, name="cadastrar_usuario"),

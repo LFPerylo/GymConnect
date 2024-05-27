@@ -123,3 +123,18 @@ class Treino(models.Model):
 
     def __str__(self):
         return f"Treino de {self.aluno.nome} - {self.get_tipo_treino_display()} - {self.exercicio1_nome}, {self.exercicio2_nome}, {self.exercicio3_nome}, {self.exercicio4_nome}"
+
+
+class Metas(models.Model):
+    TIPO_META_CHOICES = (
+        ('perda de peso', 'Perda de Peso'),
+        ('ganho de massa', 'Ganho de Massa'),
+        ('melhoria de resistencia', 'Melhoria de Resistência'),
+    )
+
+    aluno = models.ForeignKey(Dados, on_delete=models.CASCADE)
+    tipo_meta = models.CharField(max_length=50, choices=TIPO_META_CHOICES)
+    observacoes = models.TextField(blank=True)
+
+    def __str__(self):
+        return f"Meta de {self.aluno.nome} - {self.get_tipo_meta_display()}"

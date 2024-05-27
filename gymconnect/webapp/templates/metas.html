@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gymconnect - Criar Metas</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            align-items: center;
+            text-align: center;
+            margin: 0;
+        }
+        
+        #menu {
+            padding-top: 30px;
+            padding-bottom: 30px;
+            background-color: rgb(37, 37, 37);
+            color: white;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 50px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-bottom: 3px solid rgb(0, 255, 30);
+            z-index: 1000;
+        }
+        
+        .progresso_box {
+            width: 35%;
+            border: 3px rgb(0, 255, 30) groove;
+            background-color: rgb(37, 37, 37);
+            box-sizing: border-box;
+            margin-top: 140px;
+            padding: 60px;
+            color: white;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px; /* Adicionado para espaço entre as seções */
+            border-radius: 10px;
+        }
+        
+        #logo{
+            width: 50%;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .input-group {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .input-group label {
+            margin-right: 10px;
+        }
+        
+        input[type="text"],
+        input[type="date"],
+        select,
+        textarea,
+        input[type="submit"] {
+            padding: 10px;
+            margin-top: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        
+        #voltar {
+            position: fixed;
+            left: 10px;
+            top: 0;
+        }
+        
+        #voltar:hover {
+            cursor: pointer;
+        }
+        
+        .centralizar{
+            width: 100%;
+        }
+
+        #login_box {
+            width: 35%; /* Adjust width to match your design */
+            display: inline-block;
+            border: 3px rgb(0, 255, 30) groove;
+            background-color: rgb(37, 37, 37);
+            box-sizing: border-box;
+            margin-top: 200px; /* Adjust margin top to push down under fixed menu */
+            padding: 20px;
+            color: white;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+            
+        }
+        footer {
+            background-color: rgb(37, 37, 37);;
+            color: white;
+            padding: 20px 0;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+        
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin: 10px;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 10px;
+            color: rgb(0, 255, 30); /* Cor do texto do título */
+        }
+        
+        .footer-section p, .footer-section a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Estilos para os links */
+        .footer-section a {
+            color: white; /* Cor dos links */
+        }
+        
+        .footer-section a:hover {
+            color: rgb(0, 255, 30); /* Cor dos links ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+    <div id="menu">
+        <a href="{% url 'home_aluno' %}"> 
+            <h2 id="voltar" style="color: white;">⇦</h2>
+        </a>
+        <h2>Metas</h2>
+    </div>
+    <div class="progresso_box"> 
+        <h2>Criar Metas</h2>
+
+        {% if mensagem_erro %}
+        <p style="color: red;">{{ mensagem_erro }}</p>
+        {% endif %}
+        {% if mensagem_sucesso %}
+        <p style="color: green;">{{ mensagem_sucesso }}</p>
+        {% endif %}
+
+        <form action="/criar_meta/" method="post">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="nome_aluno">Nome do Aluno:</label>
+                <input type="text" id="nome_aluno" name="nome_aluno" required>
+            </div>
+            <div class="input-group">
+                <label for="tipo_meta">Tipo de Meta:</label>
+                <select id="tipo_meta" name="tipo_meta" required>
+                    <option value="perda de peso">Perda de Peso</option>
+                    <option value="melhoria de resistencia">Melhoria de Resistência</option>
+                    <option value="ganho de massa">Ganho de Massa</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="observacoes">Observação:</label>
+                <textarea id="observacoes" name="observacoes" required></textarea>
+            </div>
+            
+            <button type="submit">Enviar</button>
+        </form>
+    
+    </div>
+</body>
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Sobre Nós</h4>
+            <p>Nossa missão é proporcionar a melhor experiência para nossos usuários, oferecendo um ambiente intuitivo e eficiente para o gerenciamento de seus treinos, progressos, metas e feedbacks.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Contato</h4>
+            <p>Telefone: (81) 1234-5678</p>
+            <p>Email: contato@webapp.com</p>
+        </div>
+        <div class="footer-section">
+            <h4>Redes Sociais</h4>
+            <a href="https://facebook.com" target="_blank">Facebook</a>
+            <a href="https://twitter.com" target="_blank">Twitter</a>
+            <a href="https://instagram.com" target="_blank">Instagram</a>
+        </div>
+        <div class="footer-section">
+            <h4>Endereço</h4>
+            <p>Cais do Apolo, 77</p>
+            <p>Recife, Pernambuco</p>
+        </div>
+    </div>
+</footer>
+</html>

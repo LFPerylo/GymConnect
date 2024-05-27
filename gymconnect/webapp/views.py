@@ -8,7 +8,7 @@ from .forms import FeedbackForm
 from .forms import ProgressoForm
 from .models import Duvida
 from .models import Consulta,TreinoPredefinido,Progresso,Duvida,Treino
-from .forms import CadastroForm, LoginForm, DicaForm,ConsultaForm,TreinoPredefinidoForm,DuvidaForm,TreinoForm,TreinoEditForm,NomeAlunoForm
+from .forms import CadastroForm, LoginForm, DicaForm,ConsultaForm,TreinoPredefinidoForm,DuvidaForm,TreinoForm,TreinoEditForm,NomeAlunoForm,MetasForm
 from .models import Imagem
 from datetime import datetime
 
@@ -58,6 +58,10 @@ def duvidas(request):
 def duvidas_adm(request):
 
     return render(request,'duvidas_adm.html')
+
+def metas(request):
+
+    return render(request, 'metas.html')
 
 def treinospredefinidos(request):
 
@@ -129,6 +133,33 @@ def registrar_progresso(request):
         form = ProgressoForm()
 
     return render(request, 'progresso.html', {'form': form, 'mensagem_erro': mensagem_erro,'mensagem_sucesso':mensagem_sucesso})
+
+def criar_meta(request):
+    mensagem_erro = ""
+    mensagem_sucesso = ""
+
+    if request.method == 'POST':
+        form = MetasForm(request.POST)
+        if form.is_valid():
+            nome_aluno = form.cleaned_data['nome_aluno']
+            try:
+                aluno = Dados.objects.get(nome=nome_aluno, tipo='usuario')
+                meta = form.save(commit=False)
+                meta.aluno = aluno
+                meta.save()
+                mensagem_sucesso = "Meta registrada com sucesso!"
+            except Dados.DoesNotExist:
+                mensagem_erro = "O nome digitado não é aluno."
+        else:
+            mensagem_erro = "Formulário inválido. Por favor, verifique os dados informados."
+    else:
+        form = MetasForm()
+
+    return render(request, 'metas.html', {
+        'form': form,
+        'mensagem_erro': mensagem_erro,
+        'mensagem_sucesso': mensagem_sucesso,
+    })
 
 def enviar_duvida(request):
     mensagem_erro = ""
@@ -474,4 +505,5 @@ def exibir_duvidas(request):
             mensagem_erro = str(e)
     
     return render(request, 'duvidas_adm.html', {'duvidas': duvidas, 'nome_treinador': nome_treinador, 'mensagem_erro': mensagem_erro})
+
 

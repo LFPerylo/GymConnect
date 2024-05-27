@@ -229,7 +229,10 @@
         <h2>Buscar Treinos por Nome do Aluno</h2>
         <form method="post" action="{% url 'exibir_treinos' %}">
             {% csrf_token %}
-            {{ nome_aluno_form.as_p }}
+            <div class="input-group">
+                <label for="nome_aluno">Nome do Aluno:</label>
+                <input type="text" id="nome_aluno" name="nome_aluno" required>
+            </div>
             <button type="submit">Buscar</button>
         </form>
     
@@ -255,8 +258,41 @@
             <div id="edit-form-{{ treino.id }}" style="display:none;">
                 <form method="post" action="{% url 'editar_treinos' treino.id %}">
                     {% csrf_token %}
-                    {{ treino_edit_form.as_p }}
-                    <button type="submit">Salvar</button>
+                    <div class="input-group">
+                        <label for="tipo_treino">Tipo de Treino:</label>
+                        <select id="tipo_treino" name="tipo_treino" required>
+                            <option value="costas">Costas</option>
+                            <option value="peito">Peito</option>
+                            <option value="perna">Perna</option>
+                            <option value="braco">Braço</option>
+                        </select>
+                    </div>
+            
+                    <div class="input-group">
+                        <label for="exercicio1_nome">Exercício 1:</label>
+                        <input type="text" id="exercicio1_nome" name="exercicio1_nome" required>
+                        Séries: <input type="number" id="exercicio1_series" name="exercicio1_series" min="1" required>
+                        Repetições: <input type="number" id="exercicio1_repeticoes" name="exercicio1_repeticoes" min="1" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="exercicio2_nome">Exercício 2:</label>
+                        <input type="text" id="exercicio2_nome" name="exercicio2_nome" required>
+                        Séries: <input type="number" id="exercicio2_series" name="exercicio2_series" min="1" required>
+                        Repetições: <input type="number" id="exercicio2_repeticoes" name="exercicio2_repeticoes" min="1" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="exercicio3_nome">Exercício 3:</label>
+                        <input type="text" id="exercicio3_nome" name="exercicio3_nome" required>
+                        Séries: <input type="number" id="exercicio3_series" name="exercicio3_series" min="1" required>
+                        Repetições: <input type="number" id="exercicio3_repeticoes" name="exercicio3_repeticoes" min="1" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="exercicio4_nome">Exercício 4:</label>
+                        <input type="text" id="exercicio4_nome" name="exercicio4_nome" required>
+                        Séries: <input type="number" id="exercicio4_series" name="exercicio4_series" min="1" required>
+                        Repetições: <input type="number" id="exercicio4_repeticoes" name="exercicio4_repeticoes" min="1" required>
+                    </div>
+                    <button type="submit" class="button">Salvar Treino</button>
                 </form>
             </div>
         </li>
