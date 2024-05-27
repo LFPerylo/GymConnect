@@ -138,3 +138,13 @@ class Metas(models.Model):
 
     def __str__(self):
         return f"Meta de {self.aluno.nome} - {self.get_tipo_meta_display()}"
+    
+class Info(models.Model):
+    professor = models.ForeignKey(Dados, on_delete=models.CASCADE)
+    telefone = models.CharField(max_length=50)
+    instagram = models.CharField(max_length=100, blank=True, null=True)
+    facebook = models.CharField(max_length=100, blank=True, null=True)
+    email = models.EmailField()
+
+    def __str__(self):
+        return f"Informações de {self.professor.nome}"

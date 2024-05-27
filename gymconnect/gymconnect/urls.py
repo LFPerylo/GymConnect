@@ -52,6 +52,8 @@ urlpatterns = [
 
     path('metas/', views.metas, name="metas"),
     path('criar_meta/', views.criar_meta, name="criar_meta"),
+    path('metas_adm/', views.metas_adm, name="metas_adm"),
+    path('exibir_metas/',views.exibir_metas,name="exibir_metas"),
 
     
     path('admin/', admin.site.urls),
@@ -60,6 +62,7 @@ urlpatterns = [
     path('cadastro/',views.cadastro, name="cadastro"),
     path('', views.login, name="login"),
     path('info/', views.info, name="info"),
+    path('cadastrar_info/',views.cadastrar_info, name="cadastrar_info")
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

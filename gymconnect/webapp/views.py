@@ -7,8 +7,8 @@ from .models import Feedback
 from .forms import FeedbackForm 
 from .forms import ProgressoForm
 from .models import Duvida
-from .models import Consulta,TreinoPredefinido,Progresso,Duvida,Treino
-from .forms import CadastroForm, LoginForm, DicaForm,ConsultaForm,TreinoPredefinidoForm,DuvidaForm,TreinoForm,TreinoEditForm,NomeAlunoForm,MetasForm
+from .models import Consulta,TreinoPredefinido,Progresso,Duvida,Treino,Metas
+from .forms import CadastroForm, LoginForm, DicaForm,ConsultaForm,TreinoPredefinidoForm,DuvidaForm,TreinoForm,TreinoEditForm,NomeAlunoForm,MetasForm,InfoForm
 from .models import Imagem
 from datetime import datetime
 
@@ -62,6 +62,10 @@ def duvidas_adm(request):
 def metas(request):
 
     return render(request, 'metas.html')
+
+def metas_adm(request):
+
+    return render(request,'metas_adm.html')
 
 def treinospredefinidos(request):
 
@@ -446,10 +450,10 @@ def exibir_progresso(request):
     if request.method == 'POST':
         nome_aluno = request.POST.get('nome_aluno')
 
-        # Verificar se o aluno existe e é do tipo "usuário"
+       
         if Dados.objects.filter(nome=nome_aluno, tipo='usuario').exists():
             aluno = Dados.objects.get(nome=nome_aluno, tipo='usuario')
-            # Verificar se o aluno possui progresso registrado
+            
             progressos = Progresso.objects.filter(nome_aluno=aluno)
             if not progressos:
                 mensagem_erro = "Este usuário não possui nenhum progresso registrado."
@@ -458,15 +462,32 @@ def exibir_progresso(request):
 
     return render(request, 'progresso_adm.html', {'mensagem_erro': mensagem_erro, 'progressos': progressos})
 
+def exibir_metas(request):
+    mensagem_erro = None
+    metas = None
+
+    if request.method == 'POST':
+        nome_aluno = request.POST.get('nome_aluno')
+
+        if Dados.objects.filter(nome=nome_aluno, tipo='usuario').exists():
+            aluno = Dados.objects.get(nome=nome_aluno, tipo='usuario')
+            metas = Metas.objects.filter(aluno=aluno)
+            if not metas:
+                mensagem_erro = "Este usuário não possui nenhuma meta registrada."
+        else:
+            mensagem_erro = "Usuário não cadastrado ou não é usuário."
+
+    return render(request, 'metas_adm.html', {'mensagem_erro': mensagem_erro, 'metas': metas})
+
 def exibir_informacoes(request):
     if request.method == 'POST':
         nome_desejado = request.POST.get('nome_aluno', None)
 
         if nome_desejado:
-            # Filtrar os feedbacks pelo nome desejado
+           
             feedbacks = Feedback.objects.filter(aluno__nome=nome_desejado)
 
-            # Filtrar o progresso pelo nome desejado
+            
             progressos = Progresso.objects.filter(nome_aluno__nome=nome_desejado)
 
             if not feedbacks.exists() and not progressos.exists():
@@ -505,5 +526,25 @@ def exibir_duvidas(request):
             mensagem_erro = str(e)
     
     return render(request, 'duvidas_adm.html', {'duvidas': duvidas, 'nome_treinador': nome_treinador, 'mensagem_erro': mensagem_erro})
+
+def cadastrar_info(request):
+    mensagem_erro = None
+    mensagem_sucesso=""
+
+    if request.method == 'POST':
+        form = InfoForm(request.POST)
+        if form.is_valid():
+            nome_professor = form.cleaned_data['professor']
+            if Dados.objects.filter(nome=nome_professor, tipo='administrador').exists():
+                form.save()
+                mensagem_sucesso = "Informações cadastradas com sucesso!"
+            else:
+                mensagem_erro = "O nome digitado não é de um professor cadastrado."
+        else:
+            mensagem_erro = "Formulário inválido. Por favor, verifique os dados informados."
+    else:
+        form = InfoForm()
+
+    return render(request, 'info.html', {'form': form, 'mensagem_erro': mensagem_erro})
 
 

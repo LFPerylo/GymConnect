@@ -1,7 +1,7 @@
 from django import forms
 from .models import Feedback
 from .models import Progresso
-from .models import Dados, Dica,Consulta,TreinoPredefinido,Duvida,Treino,Metas
+from .models import Dados, Dica,Consulta,TreinoPredefinido,Duvida,Treino,Metas,Info
 
 class FeedbackForm(forms.ModelForm):
     nome_aluno = forms.CharField(max_length=50)
@@ -83,4 +83,9 @@ class MetasForm(forms.ModelForm):
     class Meta:
         model = Metas
         fields = ['nome_aluno', 'tipo_meta', 'observacoes']
+
+class InfoForm(forms.ModelForm):
+    class Meta:
+        model = Info
+        fields = ['professor', 'telefone', 'instagram', 'facebook', 'email']
 
