@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.hashers import make_password
@@ -8,7 +8,7 @@ from .forms import FeedbackForm
 from .forms import ProgressoForm
 from .models import Duvida
 from .models import Consulta,TreinoPredefinido,Progresso,Duvida,Treino
-from .forms import CadastroForm, LoginForm, DicaForm,ConsultaForm,TreinoPredefinidoForm,DuvidaForm,TreinoForm
+from .forms import CadastroForm, LoginForm, DicaForm,ConsultaForm,TreinoPredefinidoForm,DuvidaForm,TreinoForm,TreinoEditForm,NomeAlunoForm
 from .models import Imagem
 from datetime import datetime
 
@@ -98,6 +98,10 @@ def treino_personalizado(request):
 def treino_personalizado_adm(request):
 
     return render(request, 'treino_personalizado_adm.html')
+
+def pagina_editar_treino(request):
+
+    return render(request,'pagina_editar_treino.html')
 
 def registrar_progresso(request):
     mensagem_erro = None
@@ -285,6 +289,50 @@ def criar_treino(request):
         form = TreinoForm()
 
     return render(request, 'treino_personalizado_adm.html', {'form': form, 'mensagem_erro': mensagem_erro, 'mensagem_sucesso': mensagem_sucesso})
+
+def exibir_treinos(request):
+    mensagem_erro = ""
+    treinos = None
+
+    if request.method == 'POST':
+        nome_aluno_form = NomeAlunoForm(request.POST)
+        if nome_aluno_form.is_valid():
+            nome_aluno = nome_aluno_form.cleaned_data['nome_aluno']
+            try:
+                aluno = Dados.objects.get(nome=nome_aluno, tipo='usuario')
+                treinos = Treino.objects.filter(aluno=aluno)
+                if not treinos:
+                    mensagem_erro = "Não há treinos cadastrados para o aluno."
+            except Dados.DoesNotExist:
+                mensagem_erro = "O nome selecionado não é aluno."
+                
+        else:
+            mensagem_erro = "Formulário inválido. Por favor, verifique os dados informados."
+    else:
+        nome_aluno_form = NomeAlunoForm()
+
+    return render(request, 'pagina_editar_treino.html', {
+        'nome_aluno_form': nome_aluno_form,
+        'treinos': treinos,
+        'mensagem_erro': mensagem_erro,
+    })
+
+def editar_treinos(request, treino_id):
+    treino = get_object_or_404(Treino, id=treino_id)
+
+    if request.method == 'POST':
+        form = TreinoEditForm(request.POST, instance=treino)
+        if form.is_valid():
+            form.save()
+            mensagem_sucesso = "Treino editado com sucesso!"
+    else:
+        form = TreinoEditForm(instance=treino)
+
+    return render(request, 'pagina_editar_treino.html', {
+        'treino_edit_form': form,
+        'treinos': Treino.objects.filter(aluno=treino.aluno),
+        'nome_aluno_form': NomeAlunoForm(initial={'nome_aluno': treino.aluno.nome}),
+    })
 
 def exibir_treino_predefinido(request):
     tipo_treino = request.GET.get('tipo_treino')

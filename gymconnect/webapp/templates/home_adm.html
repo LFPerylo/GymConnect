@@ -117,8 +117,8 @@
             <h2 id="voltar" style="color: white;">⇦</h2>
         </a>
 
-        <h2>HOME ADM</h2>
-        <p style="font-size: 15pt; color: rgb(0, 255, 30);">Bem-vindo, {{ nome_usuario }}!</p>
+        <h2>HOME PROFESSOR</h2>
+        <p style="font-size: 15pt; color: rgb(0, 255, 30);">Bem-vindo, {{ nome }}!</p>
     </div>
     <div id="home">
 
@@ -182,6 +182,14 @@
             <div id="botao">
                 <a class="elem" href="{% url 'treino_personalizado_adm' %}"> 
                     <h3>CRIAR TREINO PERSONALIZADO</h3>
+                </a>
+            </div>
+        </div>
+
+        <div id="dir">
+            <div id="botao">
+                <a class="elem" href="{% url 'pagina_editar_treino' %}"> 
+                    <h3>EDITAR TREINOS PERSONALIZADOS</h3>
                 </a>
             </div>
         </div>

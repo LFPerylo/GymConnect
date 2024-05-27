@@ -46,6 +46,10 @@ urlpatterns = [
     path('treino_personalizado_adm/', views.treino_personalizado_adm, name='treino_personalizado_adm'),
     path('criar_treino/', views.criar_treino, name='criar_treino'),
     path('exibir_treino/', views.visualizar_treinos, name='exibir_treino'),
+    path('pagina_editar_treino/', views.pagina_editar_treino, name='pagina_editar_treino'),
+    path('editar_treinos/<int:treino_id>/', views.editar_treinos, name='editar_treinos'),
+    path('exibir_treinos/', views.exibir_treinos, name='exibir_treinos'),
+
     
     path('admin/', admin.site.urls),
     path('cadastrar_usuario/', views.cadastrar_usuario, name="cadastrar_usuario"),

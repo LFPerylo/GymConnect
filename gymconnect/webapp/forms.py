@@ -62,6 +62,17 @@ class TreinoForm(forms.ModelForm):
             'exercicio4_nome', 'exercicio4_series', 'exercicio4_repeticoes'
         ]
 
+class NomeAlunoForm(forms.Form):
+    nome_aluno = forms.CharField(label='Nome do Aluno', max_length=100)
+    
+class TreinoEditForm(forms.ModelForm):
+    class Meta:
+        model = Treino
+        fields = ['tipo_treino', 'exercicio1_nome', 'exercicio1_series', 'exercicio1_repeticoes', 
+                  'exercicio2_nome', 'exercicio2_series', 'exercicio2_repeticoes',
+                  'exercicio3_nome', 'exercicio3_series', 'exercicio3_repeticoes',
+                  'exercicio4_nome', 'exercicio4_series', 'exercicio4_repeticoes']
+        
 class DuvidaForm(forms.Form):
     nome_treinador = forms.CharField(max_length=100, label="Nome do Professor")
     duvida_escrita = forms.CharField(widget=forms.Textarea, label="Dúvida")
