@@ -63,7 +63,8 @@ urlpatterns = [
     path('', views.login, name="login"),
     path('cadastrar_info/', views.cadastrar_info, name='cadastrar_info'),
     path('info/', views.info, name="info"),
-    
+    path('pesquisar_professor/', views.pesquisar_professor, name='pesquisar_professor'),
+    path('info_professor/<int:professor_id>/', views.info_professor, name='info_professor'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

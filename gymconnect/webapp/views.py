@@ -187,6 +187,23 @@ def cadastrar_info(request):
     return render(request, 'info.html', {'form': form, 'mensagem_erro': mensagem_erro,'mensagem_sucesso':mensagem_sucesso})
 
 
+def pesquisar_professor(request):
+    if request.method == 'POST':
+        nome_professor = request.POST.get('nome_professor')
+        try:
+            professor = Dados.objects.get(nome=nome_professor, tipo='administrador')
+            return render(request, 'pesquisar_professor.html', {'professor': professor})
+        except Dados.DoesNotExist:
+            mensagem_erro = "Professor não encontrado."
+            return render(request, 'pesquisar_professor.html', {'mensagem_erro': mensagem_erro})
+    return render(request, 'pesquisar_professor.html')
+
+def info_professor(request, professor_id):
+    professor = get_object_or_404(Dados, pk=professor_id)
+    informacoes = Info.objects.filter(professor=professor)
+    return render(request, 'pesquisar_professor.html', {'professor': professor, 'informacoes': informacoes})
+
+
 def enviar_duvida(request):
     mensagem_erro = ""
     mensagem_sucesso = ""
