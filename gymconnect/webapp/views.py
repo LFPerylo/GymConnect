@@ -7,7 +7,7 @@ from .models import Feedback
 from .forms import FeedbackForm 
 from .forms import ProgressoForm
 from .models import Duvida
-from .models import Consulta,TreinoPredefinido,Progresso,Duvida,Treino,Metas
+from .models import Consulta,TreinoPredefinido,Progresso,Duvida,Treino,Metas,Info
 from .forms import CadastroForm, LoginForm, DicaForm,ConsultaForm,TreinoPredefinidoForm,DuvidaForm,TreinoForm,TreinoEditForm,NomeAlunoForm,MetasForm,InfoForm
 from .models import Imagem
 from datetime import datetime
@@ -164,6 +164,28 @@ def criar_meta(request):
         'mensagem_erro': mensagem_erro,
         'mensagem_sucesso': mensagem_sucesso,
     })
+
+def cadastrar_info(request):
+    mensagem_sucesso=""
+    mensagem_erro=''
+    if request.method == 'POST':
+        form = InfoForm(request.POST)
+        if form.is_valid():
+            professor_nome = form.cleaned_data['professor']
+            try:
+                professor = Dados.objects.get(nome=professor_nome)
+                if professor.tipo == 'usuario':
+                    mensagem_erro = "O nome digitado não é de um professor."
+                else:
+                    form.save()
+                    mensagem_sucesso="Informações cadastradas com sucesso"
+            except Dados.DoesNotExist:
+                mensagem_erro = "Usuário não existente."
+    else:
+        form = InfoForm()
+        
+    return render(request, 'info.html', {'form': form, 'mensagem_erro': mensagem_erro,'mensagem_sucesso':mensagem_sucesso})
+
 
 def enviar_duvida(request):
     mensagem_erro = ""
@@ -527,24 +549,7 @@ def exibir_duvidas(request):
     
     return render(request, 'duvidas_adm.html', {'duvidas': duvidas, 'nome_treinador': nome_treinador, 'mensagem_erro': mensagem_erro})
 
-def cadastrar_info(request):
-    mensagem_erro = None
-    mensagem_sucesso=""
 
-    if request.method == 'POST':
-        form = InfoForm(request.POST)
-        if form.is_valid():
-            nome_professor = form.cleaned_data['professor']
-            if Dados.objects.filter(nome=nome_professor, tipo='administrador').exists():
-                form.save()
-                mensagem_sucesso = "Informações cadastradas com sucesso!"
-            else:
-                mensagem_erro = "O nome digitado não é de um professor cadastrado."
-        else:
-            mensagem_erro = "Formulário inválido. Por favor, verifique os dados informados."
-    else:
-        form = InfoForm()
 
-    return render(request, 'info.html', {'form': form, 'mensagem_erro': mensagem_erro, 'mensagem_sucesso': mensagem_sucesso})
 
 

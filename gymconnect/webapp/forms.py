@@ -89,3 +89,11 @@ class InfoForm(forms.ModelForm):
         model = Info
         fields = ['professor', 'telefone', 'instagram', 'facebook', 'email']
 
+    def clean_professor(self):
+        professor = self.cleaned_data['professor']
+        try:
+            dados = Dados.objects.get(nome=professor, tipo='administrador')
+        except Dados.DoesNotExist:
+            raise forms.ValidationError("O nome do professor não corresponde a um professor do tipo 'administrador'.")
+        return dados
+
