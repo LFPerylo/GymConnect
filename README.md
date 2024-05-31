@@ -35,5 +35,29 @@ Descrição do Produto:  O GymConnect é uma plataforma criada para facilitar a 
  <img src="https://i.ibb.co/1z7T79s/Backlog-1.png" />
  <h2> Print do Quadro Jira </h2> 
   <img src="https://i.ibb.co/3FnPt2W/Captura-de-tela-2024-03-18-110610.png" alt="Captura-de-tela-2024-03-18-110610" border="0"></a>
- 
- 
+  <h1> Entrega 2 </h1> <br>
+  <h2> Print do quadro jira </h2>
+  <a href="https://ibb.co/ctgX491"><img src="https://i.ibb.co/nfg8xyb/sprint-entrega-2.png" alt="sprint-entrega-2" border="0"></a>
+  <h2> Print do Backlog </h2> 
+  <a href="https://ibb.co/zfTgY2J"><img src="https://i.ibb.co/12tN5X6/Backlog-entrega-2.png" alt="Backlog-entrega-2" border="0"></a>
+  <h2> Diagrama de Atividades </h2>
+  <a href="https://ibb.co/T8SDqCG"><img src="https://i.ibb.co/WywNpTX/Diagrama-De-Atividade-FDS.jpg" alt="Diagrama-De-Atividade-FDS" border="0"></a>
+  <h2> Screencast do uso do sistema</h2> 
+ <a href="https://youtu.be/ZhURt-N44s8">Assista ao screencast do uso do sistema</a>
+ <h2> Relato da programação em par</h2> 
+<a href="https://docs.google.com/document/d/1B7lG9zHkXjJLDx86paRaC1fSwkdVl9xpjtIY9MF-Ois/edit?usp=sharing">Link para o exemplo adicional</a>
+ <h2> Instruções de uso</h2> 
+ <a href="https://docs.google.com/document/d/1eaLUUH-R3jjaE8Ec-t165yV-NiP86W-7N2EceEs_rfk/edit?usp=sharing">Link para como usar o sistema</a>
+ <h1> Entrega 3 </h1> <br>
+  <h2> Diagrama de Atividades </h2>
+  <a href="https://ibb.co/sbw8vXq"><img src="https://i.ibb.co/S5nFXZB/Diagrama-entrega-3.jpg" alt="Diagrama-entrega-3" border="0"></a>
+   <h2> Relato da programação em par</h2> 
+   <a href="https://docs.google.com/document/d/1fxzHgayqaTEsD30-rjfJAcwauRqxOfy3IMzpztICxpg/edit">Link para o exemplo adicional</a>
+  <h2> Prints da Sprint  </h2>
+    <img src="Captura de tela 2024-05-06 223216.png" border="0">
+  <h2> screencast das historias novas</h2>
+    <a href="https://www.loom.com/share/42a3ad9421b44e3db00b6de16fa8727b?sid=ed4818a9-a8ee-44f3-9ffb-c015e9054e77">Link do Screencast</a>
+  <h2> screencast do Figma</h2>
+     <a href="https://www.loom.com/share/4c836f8efbd744d898db138dd5502e78?sid=ed9f4657-7beb-4f75-a923-0a708a3c8370">Link do Screencast do figma</a>
+  <h2>Como acessar nosso site</h2>
+  Entrando na branch "prod1" e abrindo o codigo no vscode basta escrever no terminal "cd gymconnect" e utilizar o comando "python manage.py runserver"
