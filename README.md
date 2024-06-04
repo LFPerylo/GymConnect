@@ -61,3 +61,7 @@ Descrição do Produto:  O GymConnect é uma plataforma criada para facilitar a 
      <a href="https://www.loom.com/share/4c836f8efbd744d898db138dd5502e78?sid=ed9f4657-7beb-4f75-a923-0a708a3c8370">Link do Screencast do figma</a>
   <h2>Como acessar nosso site</h2>
   Entrando na branch "prod1" e abrindo o codigo no vscode basta escrever no terminal "cd gymconnect" e utilizar o comando "python manage.py runserver"
+  <h1> Entrega 4 </h1> <br>
+  <h2> Diagrama de Atividades </h2>
+  <a href="![diagrama 4](https://github.com/LFPerylo/PROJETO-FDS/assets/142416610/4f85e9a2-25f3-4389-b09a-6a751683e9b3)
+" alt="Diagrama-entrega-4" border="0"></a>
