@@ -70,3 +70,5 @@ Descrição do Produto:  O GymConnect é uma plataforma criada para facilitar a 
     <a href="https://www.loom.com/share/5d15ae9584314aa9b040c103d857231a?sid=323f6f25-7edc-4ef2-92bd-333297546f38">Historias do Aluno</a>
 <h2> Link da Sprint </h2>
     <a href="https://projetofds.atlassian.net/jira/software/projects/PF/boards/2?sprints=2&atlOrigin=eyJpIjoiN2FkNGNlZTk4YmM3NDA2YWFmZWU4NGYzOWU5Njk0ODIiLCJwIjoiaiJ9">Sprint 04</a>
+<h2> Link do Pair programming </h2>    
+    <a href="https://docs.google.com/document/d/1fxzHgayqaTEsD30-rjfJAcwauRqxOfy3IMzpztICxpg/edit">Pair Programming</a>
