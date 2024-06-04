@@ -74,3 +74,5 @@ Descrição do Produto:  O GymConnect é uma plataforma criada para facilitar a 
     <a href="https://docs.google.com/document/d/1fxzHgayqaTEsD30-rjfJAcwauRqxOfy3IMzpztICxpg/edit">Pair Programming</a>
 <h2> Instruções para montar o ambiente </h2>    
     Entrando na branch "verificar" e abrindo o codigo no vscode basta escrever no terminal "cd gymconnect" e utilizar o comando "python manage.py runserver"
+<h2> screencast do Figma</h2>
+    <a href="https://www.loom.com/share/548e9d5da053442685d04b3a214a494e?sid=3d80d22d-45a7-47f8-aa14-8a259e833741">Screencast do figma</a>
