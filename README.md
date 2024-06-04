@@ -63,7 +63,7 @@ Descrição do Produto:  O GymConnect é uma plataforma criada para facilitar a 
   Entrando na branch "prod1" e abrindo o codigo no vscode basta escrever no terminal "cd gymconnect" e utilizar o comando "python manage.py runserver"
   <h1> Entrega 4 </h1> <br>
   <h2> Diagrama de Atividades </h2>
-  <img src="Captura de tela 2024-05-06 223216.png" border="0">
+  <img src="diagrama 4.jpg" border="0">
 <h2> screencast das historias</h2>
     <a href="https://www.loom.com/share/1bfee22dbf1d4c0b9174c0401989c2e2?sid=f4c429c4-bef8-4c12-bd57-49e307177bd1">Historias do professor</a><br>
     <a href="https://www.loom.com/share/5d15ae9584314aa9b040c103d857231a?sid=323f6f25-7edc-4ef2-92bd-333297546f38">Historias do Aluno</a>
