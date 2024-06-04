@@ -72,3 +72,5 @@ Descrição do Produto:  O GymConnect é uma plataforma criada para facilitar a 
     <a href="https://projetofds.atlassian.net/jira/software/projects/PF/boards/2?sprints=2&atlOrigin=eyJpIjoiN2FkNGNlZTk4YmM3NDA2YWFmZWU4NGYzOWU5Njk0ODIiLCJwIjoiaiJ9">Sprint 03</a>
 <h2> Link do Pair programming </h2>    
     <a href="https://docs.google.com/document/d/1fxzHgayqaTEsD30-rjfJAcwauRqxOfy3IMzpztICxpg/edit">Pair Programming</a>
+<h2> Instruções para montar o ambiente </h2>    
+    Entrando na branch "verificar" e abrindo o codigo no vscode basta escrever no terminal "cd gymconnect" e utilizar o comando "python manage.py runserver"
