@@ -308,7 +308,7 @@ def adicionar_dica(request):
             mensagem_sucesso= "Dica adicionada com sucesso"
     else:
         form = DicaForm()
-    return render(request, 'dicasadm.html', {'form': form, 'mensagem_sucesso':mensagem_sucesso})
+    return render(request, 'dicas_adm.html', {'form': form, 'mensagem_sucesso':mensagem_sucesso})
 
 def exibir_dica(request):
     tipo_selecionado = request.GET.get('tipo')
