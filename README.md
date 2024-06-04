@@ -67,3 +67,4 @@ Descrição do Produto:  O GymConnect é uma plataforma criada para facilitar a 
 " alt="Diagrama-entrega-4" border="0"></a>
 <h2> screencast das historias</h2>
     <a href="https://www.loom.com/share/1bfee22dbf1d4c0b9174c0401989c2e2?sid=f4c429c4-bef8-4c12-bd57-49e307177bd1">Historias do professor</a>
+    <a href="https://www.loom.com/share/5d15ae9584314aa9b040c103d857231a?sid=323f6f25-7edc-4ef2-92bd-333297546f38">Historias do Aluno</a>
